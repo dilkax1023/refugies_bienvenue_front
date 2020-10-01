@@ -1,0 +1,34 @@
+body {
+	height: 100%;
+	width: 100vw;
+	background: linear-gradient(
+		180deg,
+		#e7d3d3 0%,
+		rgba(230, 206, 229, 0.88) 100%
+	);
+}
+
+.login_page img {
+	width: 100%;
+	height: 100vh;
+}
+
+.navbar {
+	height: 95vh;
+	width: 100%;
+}
+
+.main {
+	background: #f9f9f9;
+}
+
+.main .card_rdv {
+	box-shadow: 10px 12px 18px rgba(0, 0, 0, 0.25);
+	border-radius: 10px;
+}
+
+.search-bar {
+	background-image: linear-gradient(180deg, #9093cf 0%, #cfcfcf 100%);
+	border-radius: 10px;
+	/* height: 8vh; */
+}
