@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 import Login from './components/layouts/Login';
 import Home from './components/layouts/Home';
+import Contact from './components/layouts/Contact';
 
 class App extends React.Component {
 	render() {
@@ -13,10 +14,7 @@ class App extends React.Component {
 					<Switch>
 						<Route path='/' exact component={Login} />
 						<Route path='/home' component={Home} />
-						{/* <Route path='/' component={Popular} />
-						<Route path='/popular-battle' component={PopularBattle} />
-						<Route path='/my-list' exact component={MyList} />
-						<Route path='/my-list/:id' component={MovieDetails} /> */}
+						<Route path='/contact' component={Contact} />
 					</Switch>
 				</React.Fragment>
 			</Router>
