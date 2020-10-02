@@ -1,5 +1,5 @@
 import React from 'react';
-import Card from '../core/CardRdv';
+import Card from '../core/Card';
 
 const Main = () => {
 	return (
