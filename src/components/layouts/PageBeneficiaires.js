@@ -1,8 +1,8 @@
 import React from 'react';
 import Navbar from './Navbar';
-import Card from '../core/Card';
+import Beneficiaires from './Beneficiaires';
 
-const Home = props => {
+const PageBeneficiaires = props => {
 	return (
 		<div className='my-3 mx-5'>
 			<div className='row'>
@@ -10,11 +10,11 @@ const Home = props => {
 					<Navbar />
 				</div>
 				<div className='col-md-9 col-lg-10 main'>
-					<Card title='CONTACT' />
+					<Beneficiaires />
 				</div>
 			</div>
 		</div>
 	);
 };
 
-export default Home;
+export default PageBeneficiaires;
