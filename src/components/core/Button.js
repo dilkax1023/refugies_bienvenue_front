@@ -1,10 +1,11 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 const Button = props => {
 	return (
-		<a href={props.path} className='btn btn-success w-100 mt-4'>
+		<NavLink to={props.path} className='btn btn-success w-100 mt-4'>
 			{props.name}
-		</a>
+		</NavLink>
 	);
 };
 

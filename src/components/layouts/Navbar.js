@@ -5,14 +5,14 @@ import Button from '../core/Button';
 const Navbar = () => {
 	return (
 		<div className='d-flex flex-column align-items-center w-100'>
-			<h2 className='text-center mb-5'>Refugies Bienvenu</h2>
-			<Button path='/beneficiere' name='Bénéficières' />
-			<Button path='/hebergeur' name='hebergement' />
-			<Button path='/rdvdesuivi' name='RDV DE SUIVI' />
-			<Button path='/rdvdesuivi' name='Contact' />
-			<Button path='/rdvdesuivi' name='Statistics' />
-			<Button path='/rdvdesuivi' name='Bilan' />
-			<Button path='/rdvdesuivi' name='Admin' />
+			<h2 className='text-center mb-5'>REFUGEES BIENVENU</h2>
+			<Button path='/beneficiary' name='BÉNÉFICIAIRE' />
+			<Button path='/hebergement' name='HÉBERGEMENT' />
+			<Button path='/rdv' name='RDV DE SUIVI' />
+			<Button path='/contact' name='CONTACT' />
+			<Button path='/stats' name='STATISTIQUES' />
+			<Button path='/bilan' name='BILAN' />
+			<Button path='/admin' name='ADMIN' />
 		</div>
 	);
 };
