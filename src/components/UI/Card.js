@@ -1,6 +1,6 @@
 import React from 'react';
 
-const CardRdv = ({ title, smallCard, content }) => {
+const Card = ({ title, smallCard, content }) => {
 	return (
 		<div className='card_rdv card mt-3'>
 			<div className='card-header text-center text-danger font-weight-bold border-0 px-1  mb-2'>
@@ -22,4 +22,4 @@ const CardRdv = ({ title, smallCard, content }) => {
 	);
 };
 
-export default CardRdv;
+export default Card;

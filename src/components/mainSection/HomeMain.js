@@ -1,7 +1,7 @@
 import React from 'react';
-import Card from '../core/Card';
+import Card from '../UI/Card';
 
-const Main = () => {
+const HomeMain = () => {
 	return (
 		<React.Fragment>
 			<div className='row'>
@@ -86,4 +86,4 @@ const Main = () => {
 	);
 };
 
-export default Main;
+export default HomeMain;

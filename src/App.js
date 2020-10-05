@@ -2,12 +2,12 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
-import Login from './components/layouts/Login';
-import Home from './components/layouts/Home';
-import Contact from './components/layouts/Contact';
-import PageBeneficiaires from './components/layouts/PageBeneficiaires';
-import Hebergement from './components/layouts/Hebergement';
-import RdvDeSuivi from './components/layouts/RdvDeSuivi';
+import Login from './pages/login/Login';
+import Home from './pages/home/Home';
+import Contact from './pages/contact/Contact';
+import PageBeneficiaires from './pages/beneficiaires/PageBeneficiaires';
+import Hebergement from './pages/hebergement/Hebergement';
+import RdvDeSuivi from './pages/rdv/RdvDeSuivi';
 
 class App extends React.Component {
 	render() {

@@ -1,8 +1,8 @@
 import React from 'react';
-import Navbar from './Navbar';
-import Main from './Main';
+import Navbar from '../../components/navigation/Navbar';
+import Card from '../../components/UI/Card';
 
-const Home = props => {
+const Hebergement = props => {
 	return (
 		<div className='my-3 mx-5'>
 			<div className='row'>
@@ -10,11 +10,11 @@ const Home = props => {
 					<Navbar />
 				</div>
 				<div className='col-md-9 col-lg-10 main'>
-					<Main />
+					<Card title='Hébergement' />
 				</div>
 			</div>
 		</div>
 	);
 };
 
-export default Home;
+export default Hebergement;

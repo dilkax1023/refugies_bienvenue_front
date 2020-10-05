@@ -1,8 +1,8 @@
 import React from 'react';
-import Navbar from './Navbar';
-import Card from '../core/Card';
+import Navbar from '../../components/navigation/Navbar';
+import Beneficiaires from '../../components/mainSection/Beneficiaires';
 
-const RdvDeSuivi = props => {
+const PageBeneficiaires = props => {
 	return (
 		<div className='my-3 mx-5'>
 			<div className='row'>
@@ -10,11 +10,11 @@ const RdvDeSuivi = props => {
 					<Navbar />
 				</div>
 				<div className='col-md-9 col-lg-10 main'>
-					<Card title='RDV DE SUIVI' />
+					<Beneficiaires />
 				</div>
 			</div>
 		</div>
 	);
 };
 
-export default RdvDeSuivi;
+export default PageBeneficiaires;

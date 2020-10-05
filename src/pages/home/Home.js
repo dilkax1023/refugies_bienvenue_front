@@ -1,6 +1,6 @@
 import React from 'react';
-import Navbar from './Navbar';
-import Card from '../core/Card';
+import Navbar from '../../components/navigation/Navbar';
+import HomeMain from '../../components/mainSection/HomeMain';
 
 const Home = props => {
 	return (
@@ -10,7 +10,7 @@ const Home = props => {
 					<Navbar />
 				</div>
 				<div className='col-md-9 col-lg-10 main'>
-					<Card title='CONTACT' />
+					<HomeMain />
 				</div>
 			</div>
 		</div>
