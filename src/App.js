@@ -5,6 +5,8 @@ import "./App.css";
 import Login from "./components/layouts/Login";
 import Home from "./components/layouts/Home";
 import Contact from "./components/layouts/Contact";
+import Beneficiaires from "./components/layouts/Beneficiaires";
+import Hebergement from "./components/layouts/Hebergement";
 
 class App extends React.Component {
   render() {
@@ -15,6 +17,8 @@ class App extends React.Component {
             <Route path="/" exact component={Login} />
             <Route path="/home" component={Home} />
             <Route path="/contact" component={Contact} />
+            <Route path="/beneficiaires" component={Beneficiaires} />
+            <Route path="/hebergement" component={Hebergement} />
           </Switch>
         </React.Fragment>
       </Router>
