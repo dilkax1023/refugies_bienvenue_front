@@ -1,10 +1,17 @@
 import React from 'react';
 
-const Card = ({ title, smallCard, content }) => {
+const Card = ({ title, smallCard, content, onLogout }) => {
 	return (
 		<div className='card_rdv card mt-3'>
-			<div className='card-header text-center text-danger font-weight-bold border-0 px-1  mb-2'>
-				{title}
+			<div className='card-header text-center text-danger font-weight-bold border-0 px-1  mb-2 d-flex justify-content-between'>
+				<span>{title} </span>
+				{title === 'Profile' && (
+					<button
+						onClick={onLogout}
+						className='btn btn-outline-success'>
+						Logout
+					</button>
+				)}
 			</div>
 			<ul className='list-unstyled border-none'>
 				{smallCard ? (

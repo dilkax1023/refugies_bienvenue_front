@@ -2,7 +2,7 @@ import React from 'react';
 import Card from '../UI/Card';
 import SeachBar from '../searchbar/SearchBar';
 
-const HomeMain = () => {
+const HomeMain = props => {
 	return (
 		<React.Fragment>
 			<div className='row'>
@@ -44,7 +44,7 @@ const HomeMain = () => {
 					</div>
 				</div>
 				<div className='col-lg-3'>
-					<Card title='Profile' />
+					<Card title='Profile' onLogout={props.onLogout} />
 				</div>
 			</div>
 			<SeachBar />
