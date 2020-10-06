@@ -3,14 +3,24 @@ import Card from '../UI/Card';
 import SeachBar from '../searchbar/SearchBar';
 
 class HomeMain extends React.Component {
-	state = {
-		term: '',
-		beneficiairesData: [],
-	};
+	constructor(props) {
+		super(props);
+		this.state = {
+			term: '',
+			beneficiairesData: [],
+			nbrDePersonneEnFormation: null,
+			meetings: [],
+		};
+	}
 
 	componentDidMount() {
 		// this.setState({ authLoading: true });
-		fetch('http://localhost:3002/api/beneficiaries')
+		this.fetchData('http://localhost:3002/api/beneficiaries');
+		this.fetchData('http://localhost:3002/api/meetings');
+	}
+
+	fetchData = url => {
+		fetch(url)
 			.then(res => {
 				if (res.status !== 200) {
 					throw new Error('Failed to fetch user status.');
@@ -18,11 +28,16 @@ class HomeMain extends React.Component {
 				return res.json();
 			})
 			.then(resData => {
-				console.log('resData', resData);
-				this.setState({ beneficiairesData: resData.data });
+				console.log('resDa', resData.data);
+				if (url === 'http://localhost:3002/api/beneficiaries') {
+					this.setState({ beneficiairesData: resData.data });
+				}
+				if (url === 'http://localhost:3002/api/meetings') {
+					this.setState({ meetings: resData.data });
+				}
 			})
 			.catch(err => console.log(err));
-	}
+	};
 
 	onInputChange = term => {
 		this.setState({ term: term });
@@ -30,10 +45,19 @@ class HomeMain extends React.Component {
 
 	onClickSearch = e => {
 		e.preventDefault();
-		console.log(this.state.term);
 	};
 
 	render() {
+		console.log(this.state.meetings);
+
+		let personneEnFormation;
+		const beneficiaires = [...this.state.beneficiairesData];
+		if (beneficiaires.length > 0) {
+			personneEnFormation = beneficiaires.filter(
+				person => person.followsCourse === true
+			).length;
+		}
+
 		return (
 			<React.Fragment>
 				<div className='row'>
@@ -46,7 +70,7 @@ class HomeMain extends React.Component {
 								<Card
 									title='Personnes en formation'
 									smallCard='small'
-									content='25%'
+									content={personneEnFormation}
 								/>
 							</div>
 							<div className='col-6'>

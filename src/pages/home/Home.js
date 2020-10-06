@@ -3,10 +3,6 @@ import Navbar from '../../components/navigation/Navbar';
 import HomeMain from '../../components/mainSection/HomeMain';
 
 class Home extends Component {
-	state = {
-		term: '',
-	};
-
 	render() {
 		return (
 			<div className='my-3 mx-5'>
