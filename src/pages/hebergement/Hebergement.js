@@ -13,7 +13,7 @@ class Hebergement extends React.Component {
 
       //   volunteers: [],
       //   errorMessage: null,
-      date: new Date("06", "10", "2020"),
+      date: new Date("2020-06-10"),
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
