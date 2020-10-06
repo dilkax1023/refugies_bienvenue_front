@@ -1,3 +1,54 @@
+h1 {
+  margin: 30px;
+}
 div {
   margin-bottom: 15px;
+  text-align: center;
 }
+div .identification,
+.adresse,
+.benevole,
+.bancaire,
+.formation,
+.profession,
+.logement,
+.sante {
+  /* background-color: rgb(51, 93, 156); */
+  /* -webkit-border-radius: 50px 50px 50px 50px; */
+  text-align: center;
+  border-radius: 10px 10px 10px 10px;
+  background: #fff;
+  padding: 30px;
+  width: 100%;
+  margin-top: 50px;
+  position: relative;
+  -webkit-box-shadow: 0px 20px 20px 0;
+}
+h4 {
+  margin-bottom: 30px;
+}
+.input {
+  text-align: center;
+}
+/* div .row {
+  text-align: center;
+} */
+.col-3 {
+  text-align: center;
+}
+.label {
+  text-align: center;
+}
+.submit {
+  margin-top: 40px;
+}
+textarea {
+  width: 100%;
+}
+/* .container {
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  min-height: 100%;
+  width: 100%;
+} */
