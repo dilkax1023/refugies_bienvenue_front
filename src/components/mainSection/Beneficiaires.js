@@ -1,40 +1,146 @@
-import React from "react";
-// import Navbar from "../../components/navigation/Navbar";
+// import React, { useState } from "react";
+import React, { Component } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import "./Beneficiaires.css";
 
 class Beneficiaires extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: "",
+
+      volunteers: [],
+      errorMessage: null,
+      date: new Date("06", "10", "2020"),
+    };
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  //
+  componentDidMount() {
+    const url = "http://localhost:3002/api/volunteer";
+    fetch(url)
+      .then((res) => res.json())
+      .then((json) => {
+        console.log(json);
+        // code
+        this.setState({
+          isLoading: true,
+          errorMessage: json,
+          volunteer: json,
+        });
+      });
+  }
+
+  handleChange(event) {
+    this.setState({
+      [event.target.name]: event.target.value,
+    });
+  }
+
+  handleSubmit(event) {
+    alert("A form was submitted");
+    fetch("http://localhost:3002/api/beneficiaries", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(this.state),
+    }).then((res) => {
+      console.log(res);
+      return res.json();
+    });
+
+    event.preventDefault();
+  }
+
+  onChange = (date) => {
+    this.setState({ date: date });
+  };
   render() {
+    // var { isLoaded, volunteers } = this.state;
+    // if (!isLoaded) {
+    //   return <div>Loading...</div>;
+    // } else {
+    // const [selectedDate, setSelectedDate] = useState(null);
+    // const [value, onChange] = useState(new Date());
+    // const [startDate, setStartDate] = useState(new Date());
     return (
       <div className="container">
         <h1>Bénéficiaires</h1>
-
         <h4>Identification</h4>
         <div className="row">
           <div className="col-3">
+            Nom
             <form>
               <label>
-                <input type="text" name="nom" />
-                <p>Nom</p>
+                <input
+                  class="form-control"
+                  type="text"
+                  name="lastName"
+                  onChange={this.handleChange}
+                />
               </label>
             </form>
           </div>
-          <div className="col-3">
-            <form>
-              <label>
-                <input type="text" name="prenom" />
-                <p>Prénom</p>
-              </label>
-            </form>
-          </div>
+        </div>
 
+        <div className="row">
           <div className="col-3">
+            Prénom
             <form>
               <label>
-                <input type="text" name="born" />
+                <input
+                  class="form-control"
+                  type="text"
+                  name="firstName"
+                  onChange={this.handleChange}
+                />
+              </label>
+            </form>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-3">
+            Date de naissance
+            <DatePicker selected={this.state.date} onChange={this.onChange} />
+          </div>
+        </div>
+        {/* <form>
+              <label>
+                <input
+                  type="text"
+                  name="birthDate"
+                  onChange={this.handleChange}
+                />
                 <p>Date de naissance</p>
               </label>
+            </form> */}
+        {/* 
+            <DatePicker
+              selected={selectedDate}
+              // onSelect={handleDateSelect} //when day is clicked
+              onChange={(date) => setSelectedDate(date)} //only when value has changed
+            />
+          </div> */}
+
+        <div className="row">
+          <div className="col-3">
+            Sexe
+            <form>
+              <label>
+                <input
+                  class="form-control"
+                  type="text"
+                  name="gender"
+                  onChange={this.handleChange}
+                />
+              </label>
             </form>
           </div>
-          <div className="col-3">
+        </div>
+        {/* <div className="col-3">
             <form>
               <label>
                 <select id="inputState" class="form-control">
@@ -46,139 +152,219 @@ class Beneficiaires extends React.Component {
                 <p>Sexe</p>
               </label>
             </form>
-          </div>
-        </div>
-        {/* hebergeur */}
-        <h4>Hébergeur</h4>
+          </div> */}
+
         <div className="row">
           <div className="col-3">
             <form>
               <label>
-                <input type="text" name="nom" />
-                <p>Nom</p>
+                Numéro de téléphone
+                <input
+                  class="form-control"
+                  type="text"
+                  name="phone"
+                  onChange={this.handleChange}
+                />
               </label>
             </form>
           </div>
           <div className="col-3">
+            Email
             <form>
               <label>
-                <input type="text" name="prenom" />
-                <p>Prénom</p>
-              </label>
-            </form>
-          </div>
-
-          <div className="col-3">
-            <form>
-              <label>
-                <select id="inputState" class="form-control">
-                  <option selected></option>
-                  <option>Oui</option>
-                  <option>Non</option>
-                </select>
-                <p>Héberger?</p>
-              </label>
-            </form>
-          </div>
-          <div className="col-3">
-            <form>
-              <label>
-                <input type="text" name="nom" />
-                <p>
-                  Si pas héberger: liste d’attente (depuis le jj/mm/aa) + à la
-                  rue ?
-                </p>
+                <input
+                  class="form-control"
+                  type="text"
+                  name="mail"
+                  onChange={this.handleChange}
+                />
               </label>
             </form>
           </div>
         </div>
+        <div className="row">
+          <div className="col-3">
+            Adresse
+            <form>
+              <label>
+                <input
+                  class="form-control"
+                  type="text"
+                  name="streetName"
+                  size="60"
+                  onChange={this.handleChange}
+                />
+              </label>
+            </form>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-3">
+            Postal
+            <form>
+              <label>
+                <input
+                  class="form-control"
+                  type="text"
+                  name="zipCode"
+                  onChange={this.handleChange}
+                />
+              </label>
+            </form>
+          </div>
+          <div className="col-3">
+            Ville
+            <form>
+              <label>
+                <input
+                  class="form-control"
+                  type="text"
+                  name="city"
+                  onChange={this.handleChange}
+                />
+              </label>
+            </form>
+          </div>
+        </div>
+        {/* benevole referent */}
+
+        <h4>Bénévole Référent</h4>
+        {/* <h2>{this.state.volunteer.firstName}</h2> */}
+        <div className="row">
+          <div className="col-3">
+            <form>
+              <label>
+                Volunteers
+                <select id="inputState" className="form-control">
+                  <option selected></option>
+                  <option></option>
+                  <option></option>
+                  <option></option>
+                </select>
+              </label>
+            </form>
+          </div>
+        </div>
+        {/* <ul>{volunteers.map(volunteer => (
+
+            ))};</ul> */}
+        {/* <div className="row">
+            <div className="col-3">
+              <form>
+                <label>
+                  <input type="text" name="mail" onChange={this.handleChange} />
+                  <p>Mail du bénévole</p>
+                </label>
+              </form>
+            </div>
+            <div className="col-3">
+              <form>
+                <label>
+                  <input
+                    type="text"
+                    name="prenom"
+                    onChange={this.handleChange}
+                  />
+                  <p>Prénom</p>
+                </label>
+              </form>
+            </div>
+          </div> */}
         {/*  */}
-        <div className="row">
+        {/* <div className="row">
           <div className="col-3">
             <form>
               <label>
-                <select id="inputState" class="form-control">
-                  <option selected></option>
-                  <option>Oui</option>
-                  <option>Non</option>
-                </select>
-                <p>Fin de cohabitation?</p>
+                <input type="text" name="nom" onChange={this.handleChange} />
+                <p>Fin de cohabitation?: jj/mm/aa</p>
               </label>
             </form>
           </div>
           <div className="col-3">
             <form>
               <label>
-                <input type="text" name="nom" />
-                <p>Si oui quand: jj/mm/aa</p>
+                <input
+                  type="text"
+                  name="dateExitAssociation"
+                  onChange={this.handleChange}
+                />
+                <p>Fin de suivi par RB?: jj/mm/aa</p>
               </label>
             </form>
           </div>
-
-          <div className="col-3">
-            <form>
-              <label>
-                <select id="inputState" class="form-control">
-                  <option selected></option>
-                  <option>Oui</option>
-                  <option>Non</option>
-                </select>
-                <p>Fin de suivi par RB?</p>
-              </label>
-            </form>
-          </div>
-          <div className="col-3">
-            <form>
-              <label>
-                <input type="text" name="nom" />
-                <p>Si oui quand: jj/mm/aa</p>
-              </label>
-            </form>
-          </div>
-        </div>
-
+        </div> */}
         {/* date arrive en france */}
         <div className="row">
           <div className="col-3">
-            <label>
-              <input type="text" name="nom" />
+            Date de prise en charge par RB
+            {/* <input
+                type="text"
+                name="dateArrivalAssociation"
+                onChange={this.handleChange}
+              /> */}
+            <DatePicker selected={this.state.date} onChange={this.onChange} />
+          </div>
+          <div className="col-3">
+            {/* <input
+                  type="text"
+                  name="dateExitAssociation"
+                  onChange={this.handleChange}
+                /> */}
+            Fin de suivi par RB?
+            <DatePicker selected={this.state.date} onChange={this.onChange} />
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-3">
+            {/* <label>
+              <input
+                type="text"
+                name="dateArrivalFrance"
+                onChange={this.handleChange}
+              />
               <p>Date d'arrivée en France</p>
-            </label>
+            </label> */}
+            Date d'arrivée en France
+            <DatePicker selected={this.state.date} onChange={this.onChange} />
           </div>
+
           <div className="col-3">
-            <label>
-              <input type="text" name="prenom" />
-              <p>Date de prise en charge par l'association</p>
-            </label>
-          </div>
-          <div className="col-3">
-            <label>
-              <input type="text" name="prenom" />
+            {/* <label>
+              <input
+                type="text"
+                name="datePiObtaining"
+                onChange={this.handleChange}
+              />
               <p>
                 Date d’obtention de la PI ( Deux types de protections : Le
                 statut de réfugié et la protection subsidiaire)
               </p>
-            </label>
+            </label> */}
+            Date d’obtention de la PI
+            <DatePicker selected={this.state.date} onChange={this.onChange} />
           </div>
         </div>
         <div className="row">
           <div className="col-3">
             <label>
-              <input type="text" name="nom" />
-              <p>Date du prochain RDV mensuel prévus: jj/mm/aa</p>
+              {/* <input type="text" name="date" onChange={this.handleChange} /> */}
+              Date du prochain RDV mensuel
+              <DatePicker selected={this.state.date} onChange={this.onChange} />
             </label>
           </div>
           <div className="col-3">
             <label>
-              <input type="text" name="prenom" />
-              <p>
-                Numéro ADGREF C’est le numéro d’étranger de10 chiffres qui
-                figure sur le titre de séjour
-              </p>
+              Numéro ADGREF
+              <input
+                class="form-control"
+                type="text"
+                name="agdrefNumber"
+                onChange={this.handleChange}
+              />
             </label>
           </div>
 
-          <div className="col-3">
+          {/* <div className="col-3">
             <form>
               <label>
                 <select id="inputState" class="form-control">
@@ -193,10 +379,23 @@ class Beneficiaires extends React.Component {
                 <p>Niveau de français</p>
               </label>
             </form>
-          </div>
-          <textarea>Commentaires</textarea>
+          </div> */}
         </div>
-
+        <div className="row">
+          <div className="col-3">
+            Niveau de français (A1, A2, B1, B2, C1, C2)
+            <form>
+              <label>
+                <input
+                  class="form-control"
+                  type="text"
+                  name="frenchLevelComments"
+                  onChange={this.handleChange}
+                />
+              </label>
+            </form>
+          </div>
+        </div>
         {/* bancaire */}
         <div>
           <h4>Compte Bancaire</h4>
@@ -204,60 +403,97 @@ class Beneficiaires extends React.Component {
             <div className="col-3">
               <form>
                 <label>
-                  <select id="inputState" class="form-control">
+                  Compte bancaire?
+                  <select
+                    id="inputState"
+                    name="isBankAccount"
+                    class="form-control"
+                    onChange={this.handleChange}
+                  >
                     <option selected></option>
                     <option>Oui</option>
                     <option>Non</option>
                   </select>
-                  <p>Compte bancaire?</p>
                 </label>
               </form>
             </div>
 
-            <div className="col-3">
-              <label>
-                <input type="text" name="nom" />
-                <p>Si oui, quelle banque? </p>
-              </label>
-            </div>
-            <div className="col-3">
-              <label>
-                <input type="text" name="nom" />
-                <p>Si oui, depuis quand: jj/mm/aa</p>
-              </label>
-            </div>
-            <div className="col-3">
+            {/* <div className="col-3">
               <form>
                 <label>
-                  <select id="inputState" class="form-control">
-                    <option selected></option>
-                    <option>Oui</option>
-                    <option>Non</option>
-                  </select>
-                  <p>Permis de conduire?</p>
+                  <input type="text" name="nom" />
+                  <p>Si oui, quelle banque? </p>
+                </label>
+              </form>
+            </div> */}
+            <div className="col-3">
+              {/* <form>
+                <label>
+                  <input
+                    type="text"
+                    name="bankName"
+                    onChange={this.handleChange}
+                  />
+                  <p>Si oui, depuis quand: jj/mm/aa</p>
+                </label>
+              </form> */}
+              Si oui, depuis quand
+              <DatePicker selected={this.state.date} onChange={this.onChange} />
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-3">
+              DA
+              <form>
+                <label>
+                  <input
+                    class="form-control"
+                    type="text"
+                    name="cirDaStatus"
+                    onChange={this.handleChange}
+                  />
+                </label>
+              </form>
+            </div>
+            <div className="col-3">
+              CIR
+              <form>
+                <label>
+                  <input
+                    class="form-control"
+                    type="text"
+                    name="cirOrDa"
+                    onChange={this.handleChange}
+                  />
                 </label>
               </form>
             </div>
           </div>
-        </div>
-        <div>
           <div className="row">
             <div className="col-3">
+              Permis de conduire
               <form>
                 <label>
-                  <select id="inputState" class="form-control">
+                  <select
+                    id="inputState"
+                    name="hasDrivingLicence"
+                    class="form-control"
+                    onChange={this.handleChange}
+                  >
                     <option selected></option>
-                    <option>DA</option>
-                    <option>CIR</option>
+                    <option>Oui</option>
+                    <option>Non</option>
                   </select>
-                  <p></p>
                 </label>
               </form>
             </div>
             <div className="col-3">
+              Commentaires
               <form>
-                <textarea></textarea>
-                <p>Commentaire/état procédure: mises à jour </p>
+                <textarea
+                  name="statusComments"
+                  onChange={this.handleChange}
+                ></textarea>
               </form>
             </div>
           </div>
@@ -266,50 +502,72 @@ class Beneficiaires extends React.Component {
         <div>
           <h4>Formation</h4>
           <div className="row">
-            <div className="col-3">
+            {/* <div className="col-3">
               <form>
                 <label>
                   <input type="text" name="nom" />
                   <p>Formation ancienne</p>
                 </label>
               </form>
-            </div>
+            </div> */}
             <div className="col-3">
+              Formation actuelle
               <form>
                 <label>
-                  <input type="text" name="nom" />
-                  <p>Formation actuelle</p>
+                  <input
+                    class="form-control"
+                    type="text"
+                    name="currentTraining"
+                    onChange={this.handleChange}
+                  />
                 </label>
               </form>
             </div>
             <div className="col-3">
+              Formation souahaité
               <form>
                 <label>
-                  <input type="text" name="nom" />
-                  <p>Formation souahaité </p>
+                  <input
+                    class="form-control"
+                    type="text"
+                    name="wishedTraining"
+                    onChange={this.handleChange}
+                  />
+                </label>
+              </form>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-3">
+              Accès à la formation?
+              <form>
+                <label>
+                  <input
+                    class="form-control"
+                    type="text"
+                    name="trainingAccessMode"
+                    onChange={this.handleChange}
+                  />
                 </label>
               </form>
             </div>
 
             <div className="col-3">
+              Commentaires
               <form>
-                <label>
-                  <input type="text" name="nom" />
-                  <p>Quel accès à la formation?</p>
-                </label>
+                <textarea
+                  class="form-control"
+                  name="trainingComments"
+                  onChange={this.handleChange}
+                ></textarea>
               </form>
             </div>
           </div>
-          <form>
-            <textarea></textarea>
-          </form>
-          <p>Commentaire</p>
-        </div>
-        {/* travail */}
-        <div>
-          <h4>Profession</h4>
-          <div className="row">
-            <div className="col-3">
+          {/* travail */}
+          <div>
+            <h4>Profession</h4>
+            <div className="row">
+              {/* <div className="col-3">
               <form>
                 <label>
                   <select id="inputState" class="form-control">
@@ -320,167 +578,235 @@ class Beneficiaires extends React.Component {
                   <p>Profession en cours?</p>
                 </label>
               </form>
-            </div>
+            </div> */}
 
-            <div className="col-3">
+              {/* <div className="col-3">
               <form>
                 <label>
                   <input type="text" name="nom" />
                   <p>Profession ancienne</p>
                 </label>
               </form>
+            </div> */}
+              <div className="col-3">
+                Profession actuelle
+                <form>
+                  <label>
+                    <input
+                      class="form-control"
+                      type="text"
+                      name="currentJob"
+                      onChange={this.handleChange}
+                    />
+                  </label>
+                </form>
+              </div>
+              <div className="col-3">
+                Profession souahaité
+                <form>
+                  <label>
+                    <input
+                      class="form-control"
+                      type="text"
+                      name="wishedJob"
+                      onChange={this.handleChange}
+                    />
+                  </label>
+                </form>
+              </div>
             </div>
-            <div className="col-3">
-              <form>
-                <label>
-                  <input type="text" name="nom" />
-                  <p>Profession actuelle</p>
-                </label>
-              </form>
+            <div className="row">
+              <div className="col-3">
+                Accés a la profession
+                <form>
+                  <label>
+                    <input
+                      class="form-control"
+                      type="text"
+                      name="jobaccessMode"
+                      onChange={this.handleChange}
+                    />
+                  </label>
+                </form>
+              </div>
+
+              <div className="col-3">
+                Revenus?
+                <form>
+                  <label>
+                    <select
+                      id="inputState"
+                      name="hasIncome"
+                      class="form-control"
+                      onChange={this.handleChange}
+                    >
+                      <option selected></option>
+                      <option>Oui</option>
+                      <option>Non</option>
+                    </select>
+                  </label>
+                </form>
+              </div>
             </div>
-            <div className="col-3">
-              <form>
+            <div className="row">
+              <div className="col-3">
+                Montant mensuel
                 <label>
-                  <input type="text" name="nom" />
-                  <p>Profession souahaité </p>
+                  <input
+                    class="form-control"
+                    type="text"
+                    name="incomeValue"
+                    onChange={this.handleChange}
+                  />
                 </label>
-              </form>
+              </div>
+              <div className="col-3">
+                CV + LDM
+                <label>
+                  <input type="file" name="nom" />
+                </label>
+              </div>
             </div>
-          </div>
-          <div className="row">
-            <div className="col-3">
-              <form>
-                <label>
-                  <select id="inputState" class="form-control">
-                    <option selected></option>
-                    <option>Oui</option>
-                    <option>Non</option>
-                  </select>
-                  <p>Revenus?</p>
-                </label>
-              </form>
+            <div className="row">
+              <div className="col-3">
+                Commentaire
+                <form>
+                  <textarea class="form-control" name="jobComments"></textarea>
+                </form>
+              </div>
             </div>
 
-            <div className="col-3">
-              <label>
-                <input type="text" name="nom" />
-                <p>Montant mensuel</p>
-              </label>
+            {/* santé */}
+            <h4>Santé</h4>
+            <div className="row">
+              <div className="col-3">
+                CMU?
+                <form>
+                  <label>
+                    <select id="inputState" name="hasCmu" class="form-control">
+                      <option selected></option>
+                      <option>Oui</option>
+                      <option>Non</option>
+                    </select>
+                  </label>
+                </form>
+              </div>
             </div>
-            <div className="col-3">
-              <label>
-                <input type="file" name="nom" />
-                <p>CV + LDM</p>
-              </label>
+            <div className="row">
+              <div className="col-3">
+                Si oui, date de début
+                {/* <form>
+                  <label>
+                    <input
+                      type="text"
+                      name="cmuStartDate"
+                      onChange={this.handleChange}
+                    />
+                  </label>
+                </form> */}
+                <DatePicker
+                  selected={this.state.date}
+                  onChange={this.onChange}
+                />
+              </div>
+              <div className="col-3">
+                Date de fin
+                {/* <form>
+                  <label>
+                    <input
+                      type="text"
+                      name="cmuEndDate"
+                      onChange={this.handleChange}
+                    />
+                  </label>
+                </form> */}
+                <DatePicker
+                  selected={this.state.date}
+                  onChange={this.onChange}
+                />
+              </div>
             </div>
-            <div className="col-3">
-              <form>
-                <textarea></textarea>
-              </form>
-              <p>Commentaire</p>
+            <div className="row">
+              <div className="col-3">
+                Commentaire
+                <form>
+                  <textarea
+                    class="form-control"
+                    name="healthComments"
+                    onChange={this.handleChange}
+                  ></textarea>
+                </form>
+              </div>
             </div>
-          </div>
-        </div>
-        {/* santé */}
-        <h4>Santé</h4>
-
-        <div className="row">
-          <div className="col-3">
-            <form>
-              <label>
-                <select id="inputState" class="form-control">
-                  <option selected></option>
-                  <option>Oui</option>
-                  <option>Non</option>
-                </select>
-                <p>CMU?</p>
-              </label>
-            </form>
-          </div>
-
-          <div className="col-3">
-            <form>
-              <label>
-                <input type="text" name="nom" />
-                <p>Si oui, date de début </p>
-              </label>
-            </form>
-          </div>
-          <div className="col-3">
-            <form>
-              <label>
-                <input type="text" name="nom" />
-                <p>Date de fin </p>
-              </label>
-            </form>
-          </div>
-          <div className="col-3">
-            <form>
-              <textarea></textarea>
-            </form>
-            <p>Commentaire</p>
-          </div>
-        </div>
-        {/* Logement */}
-        <h4>Logement</h4>
-        <div className="row">
-          <div className="col-3">
-            <form>
-              <label>
-                <select id="inputState" class="form-control">
-                  <option selected></option>
-                  <option>Oui</option>
-                  <option>Non</option>
-                </select>
-                <p>Accès au parc privé?</p>
-              </label>
-            </form>
-          </div>
-          <div className="col-3">
-            <form>
-              <label>
-                <select id="inputState" class="form-control">
-                  <option selected></option>
-                  <option>Oui</option>
-                  <option>Non</option>
-                </select>
-                <p>LS + DALO?</p>
-              </label>
-            </form>
-          </div>
-          <div className="col-3">
-            <form>
-              <label>
-                <input type="text" name="nom" />
-                <p>Si oui, depuis quand: jj/mm/aa</p>
-              </label>
-            </form>
-          </div>
-          <div className="col-3">
-            <form>
-              <label>
-                <select id="inputState" class="form-control">
-                  <option selected></option>
-                  <option>Oui</option>
-                  <option>Non</option>
-                </select>
+            {/* Logement */}
+            <h4>Logement</h4>
+            <div className="row">
+              <div className="col-3">
+                Accès au parc privé?
+                <form>
+                  <label>
+                    <select id="inputState" class="form-control">
+                      <option selected></option>
+                      <option>Oui</option>
+                      <option>Non</option>
+                    </select>
+                  </label>
+                </form>
+              </div>
+              <div className="col-3">
+                LS + DALO?
+                <form>
+                  <label>
+                    <select id="inputState" class="form-control">
+                      <option selected></option>
+                      <option>Oui</option>
+                      <option>Non</option>
+                    </select>
+                  </label>
+                </form>
+              </div>
+            </div>
+            <div className="row">
+              <div className="col-3">
+                Si oui, depuis quand?
+                {/* <form>
+                  <label>
+                    <input type="text" name="nom" />
+                    <p>Si oui, depuis quand: jj/mm/aa</p>
+                  </label>
+                </form> */}
+                <DatePicker
+                  selected={this.state.date}
+                  onChange={this.onChange}
+                />
+              </div>
+              <div className="col-3">
                 <p>SIAO?</p>
-              </label>
-            </form>
+                <form>
+                  <label>
+                    <select id="inputState" class="form-control">
+                      <option selected></option>
+                      <option>Oui</option>
+                      <option>Non</option>
+                    </select>
+                  </label>
+                </form>
+              </div>
+            </div>
+            <div className="row">
+              <div className="col-3">
+                Commentaire
+                <form>
+                  <textarea class="form-control"></textarea>
+                </form>
+              </div>
+            </div>
+            <input type="submit" value="Envoyer le formulaire"></input>
           </div>
         </div>
-        <div className="row">
-          <div className="col-3">
-            <form>
-              <textarea></textarea>
-            </form>
-            <p>Commentaire</p>
-          </div>
-        </div>
-
-        <input type="submit" value="Envoyer le formulaire"></input>
       </div>
     );
   }
 }
+// }
 export default Beneficiaires;
