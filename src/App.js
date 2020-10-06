@@ -7,6 +7,7 @@ import Signup from './pages/signup/Signup';
 import Home from './pages/home/Home';
 import Contact from './pages/contact/Contact';
 import PageBeneficiaires from './pages/beneficiaires/PageBeneficiaires';
+// import BeneficiairesPage from './pages/beneficiaires/BeneficiairesPage';
 import Hebergement from './pages/hebergement/Hebergement';
 import RdvDeSuivi from './pages/rdv/RdvDeSuivi';
 
