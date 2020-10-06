@@ -1,7 +1,8 @@
 .navbar {
-	background-color: #16145a;
+  background-color: #16145a;
+  height: 100%;
 }
 
 .navbar h2 {
-	color: #ffffff;
+  color: #ffffff;
 }

@@ -20,6 +20,7 @@ div .identification,
   background: #fff;
   padding: 30px;
   width: 100%;
+  max-width: 100%;
   margin-top: 50px;
   position: relative;
   -webkit-box-shadow: 0px 20px 20px 0;
@@ -27,28 +28,10 @@ div .identification,
 h4 {
   margin-bottom: 30px;
 }
-.input {
-  text-align: center;
-}
-/* div .row {
-  text-align: center;
-} */
-.col-3 {
-  text-align: center;
-}
-.label {
-  text-align: center;
-}
+
 .submit {
   margin-top: 40px;
 }
 textarea {
   width: 100%;
 }
-/* .container {
-  align-items: center;
-  text-align: center;
-  justify-content: center;
-  min-height: 100%;
-  width: 100%;
-} */

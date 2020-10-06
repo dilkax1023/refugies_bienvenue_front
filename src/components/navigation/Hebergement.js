@@ -1,5 +1,5 @@
 import React from "react";
-import Navbar from "./Navbar";
+// import Navbar from "./Navbar";
 import Card from "../core/Card";
 class Hebergement extends React.Component {
   render() {
