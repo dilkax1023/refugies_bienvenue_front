@@ -2,7 +2,7 @@ import React from "react";
 import Navbar from "../../components/navigation/Navbar";
 import Hebergement from "../../components/mainSection/Hebergement";
 
-const PageHebergements = (props) => {
+const PageHebergement = (props) => {
   return (
     <div className="my-3 mx-5">
       <div className="row">
@@ -17,4 +17,4 @@ const PageHebergements = (props) => {
   );
 };
 
-export default PageHebergements;
+export default PageHebergement;
