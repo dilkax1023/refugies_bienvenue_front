@@ -10,7 +10,7 @@ const Home = props => {
 					<Navbar />
 				</div>
 				<div className='col-md-9 col-lg-10 main'>
-					<HomeMain />
+					<HomeMain onLogout={props.onLogout} />
 				</div>
 			</div>
 		</div>
