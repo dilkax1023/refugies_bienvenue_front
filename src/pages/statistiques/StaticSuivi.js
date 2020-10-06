@@ -56,4 +56,3 @@
       <Chart data={data} series={series} axes={axes} />
     </div>
   )
-}

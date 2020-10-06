@@ -22,14 +22,10 @@ class App extends React.Component {
 
 	componentDidMount() {
 		const token = localStorage.getItem('token');
-		const expiryDate = localStorage.getItem('expiryDate');
-		if (!token || !expiryDate) {
+		if (!token) {
 			return;
 		}
-		if (new Date(expiryDate) <= new Date()) {
-			this.logoutHandler();
-			return;
-		}
+
 		const userId = localStorage.getItem('userId');
 		this.setState({ isAuth: true, token: token, userId: userId });
 	}
