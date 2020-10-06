@@ -48,7 +48,7 @@ class Beneficiaires extends React.Component {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(this.state),
     }).then((res) => {
-      console.log(res);
+      // console.log(res);
       return res.json();
     });
 
