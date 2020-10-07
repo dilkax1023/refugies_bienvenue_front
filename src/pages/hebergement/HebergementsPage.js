@@ -1,8 +1,8 @@
 import React from "react";
 import Navbar from "../../components/navigation/Navbar";
-import Beneficiaires from "../../components/mainSection/Beneficiaires";
+import Card from "../../components/UI/Card";
 
-const PageBeneficiaires = (props) => {
+const HebergementsPage = (props) => {
   return (
     <div className="my-3 mx-5">
       <div className="row">
@@ -10,15 +10,11 @@ const PageBeneficiaires = (props) => {
           <Navbar />
         </div>
         <div className="col-md-9 col-lg-10 main">
-          <Beneficiaires />
-          <button className="btn btn-outline-success">
-            {/* to add onClick={addBeneficier} */}
-            Ajouter un bénéficiaire
-          </button>
+          <Card title="LISTES D'HEBERGEMENTS" />
         </div>
       </div>
     </div>
   );
 };
 
-export default PageBeneficiaires;
+export default HebergementsPage;
