@@ -7,21 +7,12 @@ class Signup extends React.Component {
 		signupForm: {
 			email: {
 				value: '',
-				valid: false,
-				touched: false,
-				// validators: [required, email],
 			},
 			password: {
 				value: '',
-				valid: false,
-				touched: false,
-				// validators: [required, length({ min: 5 })],
 			},
 			passwordConfirmation: {
 				value: '',
-				valid: false,
-				touched: false,
-				// validators: [required],
 			},
 			formIsValid: false,
 		},
@@ -29,25 +20,16 @@ class Signup extends React.Component {
 
 	inputChangeHandler = (input, value) => {
 		this.setState(prevState => {
-			// let isValid = true;
-			// for (const validator of prevState.signupForm[input].validators) {
-			// 	isValid = isValid && validator(value);
-			// }
 			const updatedForm = {
 				...prevState.signupForm,
 				[input]: {
 					...prevState.signupForm[input],
-					// valid: isValid,
 					value: value,
 				},
 			};
-			// let formIsValid = true;
-			// for (const inputName in updatedForm) {
-			// 	formIsValid = formIsValid && updatedForm[inputName].valid;
-			// }
+
 			return {
 				signupForm: updatedForm,
-				// formIsValid: formIsValid,
 			};
 		});
 	};

@@ -5,10 +5,14 @@ import './App.css';
 import Login from './pages/login/Login';
 import Signup from './pages/signup/Signup';
 import Home from './pages/home/Home';
-import Contact from './pages/contact/Contact';
+import ContactsController from './pages/contact/ContactsController';
+import ContactController from './pages/contact/ContactController';
 import PageBeneficiaires from './pages/beneficiaires/PageBeneficiaires';
+// import BeneficiairesPage from './pages/beneficiaires/BeneficiairesPage';
 import Hebergement from './pages/hebergement/Hebergement';
 import RdvDeSuivi from './pages/rdv/RdvDeSuivi';
+import HebergementsPage from './pages/hebergement/HebergementsPage';
+import BeneficiairesPage from './pages/beneficiaires/BeneficiairesPage';
 
 class App extends React.Component {
 	state = {
@@ -52,7 +56,7 @@ class App extends React.Component {
 					authData.signupForm.passwordConfirmation.value,
 			}),
 		})
-			.then(res => {
+			.then((res) => {
 				if (res.status === 422) {
 					throw new Error(
 						"Validation failed. Make sure the email address isn't used yet!"
@@ -64,7 +68,7 @@ class App extends React.Component {
 				}
 				return res.json();
 			})
-			.then(resData => {
+			.then((resData) => {
 				console.log(resData);
 				this.setState({
 					isAuth: false,
@@ -72,7 +76,7 @@ class App extends React.Component {
 					Submitted: true,
 				});
 			})
-			.catch(err => {
+			.catch((err) => {
 				console.log(err);
 				this.setState({
 					isAuth: false,
@@ -95,7 +99,7 @@ class App extends React.Component {
 				password: authData.password,
 			}),
 		})
-			.then(res => {
+			.then((res) => {
 				if (res.status === 422) {
 					throw new Error('Validation failed.');
 				}
@@ -105,7 +109,7 @@ class App extends React.Component {
 				}
 				return res.json();
 			})
-			.then(res => {
+			.then((res) => {
 				console.log('this is from App.js', res);
 				this.setState({
 					isAuth: true,
@@ -117,7 +121,7 @@ class App extends React.Component {
 				localStorage.setItem('token', res.data.token);
 				localStorage.setItem('userId', res.data._id);
 			})
-			.catch(err => {
+			.catch((err) => {
 				console.log(err);
 				this.setState({
 					isAuth: false,
@@ -130,15 +134,15 @@ class App extends React.Component {
 	render() {
 		let redirect = null;
 		if (this.state.Submitted) {
-			redirect = <Redirect to='/' />;
+			redirect = <Redirect to="/" />;
 		}
 
 		let routes = (
 			<Switch>
 				<Route
-					path='/'
+					path="/"
 					exact
-					render={props => (
+					render={(props) => (
 						<Login
 							{...props}
 							onLogin={this.loginHandler}
@@ -147,8 +151,8 @@ class App extends React.Component {
 					)}
 				/>
 				<Route
-					path='/signup'
-					render={props => (
+					path="/signup"
+					render={(props) => (
 						<Signup
 							{...props}
 							onSignup={this.signupHandler}
@@ -156,23 +160,26 @@ class App extends React.Component {
 						/>
 					)}
 				/>
-				<Redirect to='/' />
+				<Redirect to="/" />
 			</Switch>
 		);
 		if (this.state.isAuth) {
 			routes = (
 				<Switch>
 					<Route
-						path='/'
+						path="/"
 						exact
-						render={props => (
+						render={(props) => (
 							<Home {...props} onLogout={this.logoutHandler} />
 						)}
 					/>
-					<Route path='/beneficiary' component={PageBeneficiaires} />
-					<Route path='/hebergement' component={Hebergement} />
-					<Route path='/rdv' component={RdvDeSuivi} />
-					<Route path='/contact' component={Contact} />
+					<Route path="/beneficiary" component={PageBeneficiaires} />
+					<Route path="/beneficiarys" component={HebergementsPage} />
+					<Route path="/hebergement" component={Hebergement} />
+					<Route path="/hebergements" component={HebergementsPage} />
+					<Route path="/rdv" component={RdvDeSuivi} />
+					<Route path="/contacts/:id" component={ContactController} />
+					<Route path="/contacts" component={ContactsController} />
 				</Switch>
 			);
 		}
