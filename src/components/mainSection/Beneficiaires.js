@@ -1,6 +1,9 @@
 // import React, { useState } from "react";
 import React, { Component } from 'react';
 import DatePicker from 'react-datepicker';
+import Select from 'react-select';
+import AsyncSelect from 'react-select/async';
+import Volunteers from './Volunteers';
 import 'react-datepicker/dist/react-datepicker.css';
 import './Beneficiaires.css';
 
@@ -22,6 +25,7 @@ class Beneficiaires extends React.Component {
 	//
 	componentDidMount() {
 		const url = 'http://localhost:3002/api/volunteer';
+		// http://localhost:3002/api/volunteer
 		fetch(url)
 			.then((res) => res.json())
 			.then((json) => {
@@ -58,14 +62,8 @@ class Beneficiaires extends React.Component {
 	onChange = (date) => {
 		this.setState({ date: date });
 	};
+
 	render() {
-		// var { isLoaded, volunteers } = this.state;
-		// if (!isLoaded) {
-		//   return <div>Loading...</div>;
-		// } else {
-		// const [selectedDate, setSelectedDate] = useState(null);
-		// const [value, onChange] = useState(new Date());
-		// const [startDate, setStartDate] = useState(new Date());
 		return (
 			<div className="container ">
 				<h1>Bénéficiaire</h1>
@@ -78,7 +76,7 @@ class Beneficiaires extends React.Component {
 							<form>
 								<label>
 									<input
-										class="form-control"
+										className="form-control"
 										type="text"
 										name="lastName"
 										onChange={this.handleChange}
@@ -92,7 +90,7 @@ class Beneficiaires extends React.Component {
 							<form>
 								<label>
 									<input
-										class="form-control"
+										className="form-control"
 										type="text"
 										name="firstName"
 										onChange={this.handleChange}
@@ -107,6 +105,7 @@ class Beneficiaires extends React.Component {
 							<DatePicker
 								selected={this.state.date}
 								onChange={this.onChange}
+								name="birthDate"
 							/>
 						</div>
 
@@ -134,7 +133,7 @@ class Beneficiaires extends React.Component {
 								<label>
 									<input
 										text-align="items-center"
-										class="form-control"
+										className="form-control"
 										type="text"
 										name="gender"
 										onChange={this.handleChange}
@@ -150,7 +149,7 @@ class Beneficiaires extends React.Component {
 								<label>
 									Numéro de téléphone
 									<input
-										class="form-control"
+										className="form-control"
 										type="text"
 										name="phone"
 										onChange={this.handleChange}
@@ -163,7 +162,7 @@ class Beneficiaires extends React.Component {
 							<form>
 								<label>
 									<input
-										class="form-control"
+										className="form-control"
 										type="text"
 										name="mail"
 										onChange={this.handleChange}
@@ -178,11 +177,24 @@ class Beneficiaires extends React.Component {
 					<h4>Adresse</h4>
 					<div className="row justify-content-md-center">
 						<div className="col-xl-3">
-							Adresse
+							Numéro de rue
 							<form>
 								<label>
 									<input
-										class="form-control"
+										className="form-control"
+										type="text"
+										name="streetNumber"
+										onChange={this.handleChange}
+									/>
+								</label>
+							</form>
+						</div>
+						<div className="col-xl-3">
+							Nom de rue
+							<form>
+								<label>
+									<input
+										className="form-control"
 										type="text"
 										name="streetName"
 										onChange={this.handleChange}
@@ -197,7 +209,7 @@ class Beneficiaires extends React.Component {
 							<form>
 								<label>
 									<input
-										class="form-control"
+										className="form-control"
 										type="text"
 										name="zipCode"
 										onChange={this.handleChange}
@@ -210,7 +222,7 @@ class Beneficiaires extends React.Component {
 							<form>
 								<label>
 									<input
-										class="form-control"
+										className="form-control"
 										type="text"
 										name="city"
 										onChange={this.handleChange}
@@ -227,20 +239,17 @@ class Beneficiaires extends React.Component {
 					{/* <h2>{this.state.volunteer.firstName}</h2> */}
 					<div className="row justify-content-md-center">
 						<div className="col-xl-3">
-							<form>
-								<label>
-									Bénevole
-									<select
+							Bénevole
+							{/* <select
 										id="inputState"
 										className="form-control"
 									>
-										<option selected></option>
+										<option defaultValue></option>
 										<option></option>
 										<option></option>
 										<option></option>
-									</select>
-								</label>
-							</form>
+									</select> */}
+							<Volunteers className="form-control " />
 						</div>
 						<div className="col-xl-3">
 							Permis de conduire
@@ -249,10 +258,10 @@ class Beneficiaires extends React.Component {
 									<select
 										id="inputState"
 										name="hasDrivingLicence"
-										class="form-control"
+										className="form-control"
 										onChange={this.handleChange}
 									>
-										<option selected></option>
+										<option defaultValue></option>
 										<option>Oui</option>
 										<option>Non</option>
 									</select>
@@ -320,6 +329,7 @@ class Beneficiaires extends React.Component {
 							<DatePicker
 								selected={this.state.date}
 								onChange={this.onChange}
+								name="dateArrivalAssociation"
 							/>
 						</div>
 						<div className="col-xl-3">
@@ -332,6 +342,7 @@ class Beneficiaires extends React.Component {
 							<DatePicker
 								selected={this.state.date}
 								onChange={this.onChange}
+								name="dateExitAssociation"
 							/>
 						</div>
 					</div>
@@ -349,6 +360,7 @@ class Beneficiaires extends React.Component {
 							<DatePicker
 								selected={this.state.date}
 								onChange={this.onChange}
+								name="dateArrivalFrance"
 							/>
 						</div>
 
@@ -368,6 +380,7 @@ class Beneficiaires extends React.Component {
 							<DatePicker
 								selected={this.state.date}
 								onChange={this.onChange}
+								name="datePiObtaining"
 							/>
 						</div>
 					</div>
@@ -386,7 +399,7 @@ class Beneficiaires extends React.Component {
 							<label>
 								Numéro ADGREF
 								<input
-									class="form-control"
+									className="form-control"
 									type="text"
 									name="agdrefNumber"
 									onChange={this.handleChange}
@@ -417,7 +430,7 @@ class Beneficiaires extends React.Component {
 							<form>
 								<label>
 									<input
-										class="form-control"
+										className="form-control"
 										type="text"
 										name="frenchLevelComments"
 										onChange={this.handleChange}
@@ -438,10 +451,10 @@ class Beneficiaires extends React.Component {
 									<select
 										id="inputState"
 										name="isBankAccount"
-										class="form-control"
+										className="form-control"
 										onChange={this.handleChange}
 									>
-										<option selected></option>
+										<option defaultValue></option>
 										<option>Oui</option>
 										<option>Non</option>
 									</select>
@@ -450,20 +463,33 @@ class Beneficiaires extends React.Component {
 						</div>
 
 						<div className="col-xl-3">
-							Si oui, depuis quand
+							Nom de banque
+							<form>
+								<label>
+									<input
+										className="form-control"
+										type="text"
+										name="bankName"
+										onChange={this.handleChange}
+									/>
+								</label>
+							</form>
+						</div>
+					</div>
+					{/* Si oui, depuis quand
 							<DatePicker
 								selected={this.state.date}
 								onChange={this.onChange}
 							/>
 						</div>
-					</div>
+					</div> */}
 					<div className="row justify-content-md-center">
-						<div className="col-6 col-md-3">
+						<div className="col-xl-3">
 							DA
 							<form>
 								<label>
 									<input
-										class="form-control"
+										className="form-control"
 										type="text"
 										name="cirDaStatus"
 										onChange={this.handleChange}
@@ -476,7 +502,7 @@ class Beneficiaires extends React.Component {
 							<form>
 								<label>
 									<input
-										class="form-control"
+										className="form-control"
 										type="text"
 										name="cirOrDa"
 										onChange={this.handleChange}
@@ -490,7 +516,7 @@ class Beneficiaires extends React.Component {
 							Commentaires
 							<form>
 								<textarea
-									class="form-control"
+									className="form-control"
 									name="statusComments"
 									onChange={this.handleChange}
 								></textarea>
@@ -498,6 +524,7 @@ class Beneficiaires extends React.Component {
 						</div>
 					</div>
 				</div>
+
 				{/* formations */}
 				<div className="formation">
 					<h4>Formation</h4>
@@ -510,12 +537,12 @@ class Beneficiaires extends React.Component {
                 </label>
               </form>
             </div> */}
-						<div className="col-6 col-md-3">
+						<div className="col-xl-3">
 							Formation actuelle
 							<form>
 								<label>
 									<input
-										class="form-control"
+										className="form-control"
 										type="text"
 										name="currentTraining"
 										onChange={this.handleChange}
@@ -523,12 +550,12 @@ class Beneficiaires extends React.Component {
 								</label>
 							</form>
 						</div>
-						<div className="col-6 col-md-3">
+						<div className="col-xl-3">
 							Formation souahaité
 							<form>
 								<label>
 									<input
-										class="form-control"
+										className="form-control"
 										type="text"
 										name="wishedTraining"
 										onChange={this.handleChange}
@@ -543,7 +570,7 @@ class Beneficiaires extends React.Component {
 							<form>
 								<label>
 									<input
-										class="form-control"
+										className="form-control"
 										type="text"
 										name="trainingAccessMode"
 										onChange={this.handleChange}
@@ -556,7 +583,7 @@ class Beneficiaires extends React.Component {
 							Commentaires
 							<form>
 								<textarea
-									class="form-control"
+									className="form-control"
 									name="trainingComments"
 									onChange={this.handleChange}
 								></textarea>
@@ -568,33 +595,12 @@ class Beneficiaires extends React.Component {
 				<div className="profession">
 					<h4>Profession</h4>
 					<div className="row justify-content-md-center">
-						{/* <div className="col-3">
-              <form>
-                <label>
-                  <select id="inputState" class="form-control">
-                    <option selected></option>
-                    <option>Oui</option>
-                    <option>Non</option>
-                  </select>
-                  <p>Profession en cours?</p>
-                </label>
-              </form>
-            </div> */}
-
-						{/* <div className="col-3">
-              <form>
-                <label>
-                  <input type="text" name="nom" />
-                  <p>Profession ancienne</p>
-                </label>
-              </form>
-            </div> */}
 						<div className="col-6 col-md-3">
 							Profession actuelle
 							<form>
 								<label>
 									<input
-										class="form-control"
+										className="form-control"
 										type="text"
 										name="currentJob"
 										onChange={this.handleChange}
@@ -607,7 +613,7 @@ class Beneficiaires extends React.Component {
 							<form>
 								<label>
 									<input
-										class="form-control"
+										className="form-control"
 										type="text"
 										name="wishedJob"
 										onChange={this.handleChange}
@@ -622,7 +628,7 @@ class Beneficiaires extends React.Component {
 							<form>
 								<label>
 									<input
-										class="form-control"
+										className="form-control"
 										type="text"
 										name="jobaccessMode"
 										onChange={this.handleChange}
@@ -638,10 +644,10 @@ class Beneficiaires extends React.Component {
 									<select
 										id="inputState"
 										name="hasIncome"
-										class="form-control"
+										className="form-control"
 										onChange={this.handleChange}
 									>
-										<option selected></option>
+										<option defaultValue></option>
 										<option>Oui</option>
 										<option>Non</option>
 									</select>
@@ -654,7 +660,7 @@ class Beneficiaires extends React.Component {
 							Montant mensuel
 							<label>
 								<input
-									class="form-control"
+									className="form-control"
 									type="text"
 									name="incomeValue"
 									onChange={this.handleChange}
@@ -673,7 +679,7 @@ class Beneficiaires extends React.Component {
 							Commentaire
 							<form>
 								<textarea
-									class="form-control"
+									className="form-control"
 									name="jobComments"
 								></textarea>
 							</form>
@@ -691,9 +697,9 @@ class Beneficiaires extends React.Component {
 									<select
 										id="inputState"
 										name="hasCmu"
-										class="form-control"
+										className="form-control"
 									>
-										<option selected></option>
+										<option defaultValue></option>
 										<option>Oui</option>
 										<option>Non</option>
 									</select>
@@ -716,6 +722,7 @@ class Beneficiaires extends React.Component {
 							<DatePicker
 								selected={this.state.date}
 								onChange={this.onChange}
+								name="cmuStartDate"
 							/>
 						</div>
 						<div className="col-6 col-md-3">
@@ -732,6 +739,7 @@ class Beneficiaires extends React.Component {
 							<DatePicker
 								selected={this.state.date}
 								onChange={this.onChange}
+								name="cmuEndDate"
 							/>
 						</div>
 					</div>
@@ -740,7 +748,7 @@ class Beneficiaires extends React.Component {
 							Commentaire
 							<form>
 								<textarea
-									class="form-control"
+									className="form-control"
 									name="healthComments"
 									onChange={this.handleChange}
 								></textarea>
@@ -758,9 +766,10 @@ class Beneficiaires extends React.Component {
 								<label>
 									<select
 										id="inputState"
-										class="form-control"
+										className="form-control"
+										name="accessPrivatePark"
 									>
-										<option selected></option>
+										<option defaultValue></option>
 										<option>Oui</option>
 										<option>Non</option>
 									</select>
@@ -773,9 +782,10 @@ class Beneficiaires extends React.Component {
 								<label>
 									<select
 										id="inputState"
-										class="form-control"
+										className="form-control"
+										name="requestLsDalo"
 									>
-										<option selected></option>
+										<option defaultValue></option>
 										<option>Oui</option>
 										<option>Non</option>
 									</select>
@@ -795,6 +805,7 @@ class Beneficiaires extends React.Component {
 							<DatePicker
 								selected={this.state.date}
 								onChange={this.onChange}
+								name="dateRequestLsDalo"
 							/>
 						</div>
 						<div className="col-6 col-md-3">
@@ -803,9 +814,10 @@ class Beneficiaires extends React.Component {
 								<label>
 									<select
 										id="inputState"
-										class="form-control"
+										className="form-control"
+										name="siao"
 									>
-										<option selected></option>
+										<option defaultValue></option>
 										<option>Oui</option>
 										<option>Non</option>
 									</select>
@@ -817,14 +829,14 @@ class Beneficiaires extends React.Component {
 						<div className="col-6 col-md-3">
 							Commentaire
 							<form>
-								<textarea class="form-control"></textarea>
+								<textarea className="form-control"></textarea>
 							</form>
 						</div>
 					</div>
 				</div>
-				<div className="submit">
+				{/* <div className="submit">
 					<input type="submit" value="Envoyer le formulaire"></input>
-				</div>
+				</div> */}
 			</div>
 		);
 	}
