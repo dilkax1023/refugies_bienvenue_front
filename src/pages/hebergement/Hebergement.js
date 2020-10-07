@@ -59,26 +59,26 @@ class Hebergement extends React.Component {
 									<div className="col-xl-3">
 										<form>
 											<label>
+												Nom
 												<input
 													type="text"
 													className="form-control"
 													name="lastName"
 													onChange={this.handleChange}
 												/>
-												<p>Nom</p>
 											</label>
 										</form>
 									</div>
 									<div className="col-xl-3">
 										<form>
 											<label>
+												Prénom
 												<input
 													type="text"
 													className="form-control"
 													name="firstName"
 													onChange={this.handleChange}
 												/>
-												<p>Prénom</p>
 											</label>
 										</form>
 									</div>
@@ -291,16 +291,12 @@ class Hebergement extends React.Component {
 								</div>
 							</div>
 
-							{/* <div className="submit">
-								<input
-									type="submit"
-									value="Envoyer le formulaire"
-								></input>
-							</div> */}
-							<button className="btn btn-outline-success">
-								{/* to add onClick={addhebergement} */}
-								Ajouter un hébergement
-							</button>
+							<div className="text-center">
+								<button className="btn btn-outline-success ">
+									{/* to add onClick={addhebergement} */}
+									Ajouter un hébergement
+								</button>
+							</div>
 						</div>
 					</div>
 				</div>

@@ -1,7 +1,7 @@
-div {
-	margin-bottom: 15px;
+h1 {
 	text-align: center;
 }
+
 div .identification,
 .adresse,
 .benevole,
@@ -16,6 +16,7 @@ div .identification,
 	background: #fff;
 	padding: 30px;
 	width: 100%;
+	margin-bottom: 50px;
 	max-width: 100%;
 	margin-top: 50px;
 	position: relative;
@@ -25,12 +26,6 @@ h4 {
 	margin-bottom: 30px;
 }
 
-.submit {
-	margin-top: 40px;
-}
 textarea {
 	width: 100%;
 }
-/* .asyncselect {
-	max-height: 30px;
-} */

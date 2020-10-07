@@ -1,8 +1,8 @@
 // import React, { useState } from "react";
 import React, { Component } from 'react';
 import DatePicker from 'react-datepicker';
-import Select from 'react-select';
-import AsyncSelect from 'react-select/async';
+// import Select from 'react-select';
+// import AsyncSelect from 'react-select/async';
 import Volunteers from './Volunteers';
 import 'react-datepicker/dist/react-datepicker.css';
 import './Beneficiaires.css';
@@ -11,32 +11,43 @@ class Beneficiaires extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			name: '',
-
-			volunteers: [],
+			beneficiairie: {
+				firstName: '',
+				lastName: '',
+				birthDate: '',
+				gender: '',
+				phone: '',
+				mail: '',
+				dateArrivalFrance: '',
+				dateArrivalAssociation: '',
+				dateExitAssociation: '',
+				datePiObtaining: '',
+				agdrefNumber: '',
+				cirOrDa: '',
+				cirDaStatus: '',
+				isBankAccount: false,
+				bankName: '',
+				hasDrivingLicence: false,
+				drivingLicenceDate: '',
+				administrativeComments: '',
+				hasCmu: false,
+				cmuStartDate: '',
+				cmuEndDate: '',
+				needsSpecificFollowup: false,
+				specificFollowup: '',
+				healthComments: '',
+				accessPrivatePark: false,
+				nature: '',
+				isHomeless: false,
+				requestLsDalo: false,
+				dateRequestLsDalo: '',
+			},
 			errorMessage: null,
 			date: new Date('2020-06-10'),
 		};
 
 		this.handleChange = this.handleChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
-	}
-
-	//
-	componentDidMount() {
-		const url = 'http://localhost:3002/api/volunteer';
-		// http://localhost:3002/api/volunteer
-		fetch(url)
-			.then((res) => res.json())
-			.then((json) => {
-				console.log(json);
-				// code
-				this.setState({
-					isLoading: true,
-					errorMessage: json,
-					volunteer: json,
-				});
-			});
 	}
 
 	handleChange(event) {
@@ -109,24 +120,6 @@ class Beneficiaires extends React.Component {
 							/>
 						</div>
 
-						{/* <form>
-              <label>
-                <input
-                  type="text"
-                  name="birthDate"
-                  onChange={this.handleChange}
-                />
-                <p>Date de naissance</p>
-              </label>
-            </form> */}
-						{/* 
-            <DatePicker
-              selected={selectedDate}
-              // onSelect={handleDateSelect} //when day is clicked
-              onChange={(date) => setSelectedDate(date)} //only when value has changed
-            />
-          </div> */}
-
 						<div className="col-xl-3">
 							Sexe
 							<form>
@@ -142,7 +135,6 @@ class Beneficiaires extends React.Component {
 							</form>
 						</div>
 					</div>
-
 					<div className="row justify-content-md-center">
 						<div className="col-xl-3">
 							<form>
@@ -240,16 +232,7 @@ class Beneficiaires extends React.Component {
 					<div className="row justify-content-md-center">
 						<div className="col-xl-3">
 							Bénevole
-							{/* <select
-										id="inputState"
-										className="form-control"
-									>
-										<option defaultValue></option>
-										<option></option>
-										<option></option>
-										<option></option>
-									</select> */}
-							<Volunteers className="form-control " />
+							<Volunteers />
 						</div>
 						<div className="col-xl-3">
 							Permis de conduire
@@ -269,54 +252,7 @@ class Beneficiaires extends React.Component {
 							</form>
 						</div>
 					</div>
-					{/* <ul>{volunteers.map(volunteer => (
 
-            ))};</ul> */}
-					{/* <div className="row">
-            <div className="col-3">
-              <form>
-                <label>
-                  <input type="text" name="mail" onChange={this.handleChange} />
-                  <p>Mail du bénévole</p>
-                </label>
-              </form>
-            </div>
-            <div className="col-3">
-              <form>
-                <label>
-                  <input
-                    type="text"
-                    name="prenom"
-                    onChange={this.handleChange}
-                  />
-                  <p>Prénom</p>
-                </label>
-              </form>
-            </div>
-          </div> */}
-					{/*  */}
-					{/* <div className="row">
-          <div className="col-3">
-            <form>
-              <label>
-                <input type="text" name="nom" onChange={this.handleChange} />
-                <p>Fin de cohabitation?: jj/mm/aa</p>
-              </label>
-            </form>
-          </div>
-          <div className="col-3">
-            <form>
-              <label>
-                <input
-                  type="text"
-                  name="dateExitAssociation"
-                  onChange={this.handleChange}
-                />
-                <p>Fin de suivi par RB?: jj/mm/aa</p>
-              </label>
-            </form>
-          </div>
-        </div> */}
 					{/* date arrive en france */}
 					<div className="row justify-content-md-center">
 						<div className="col-xl-3">
@@ -348,14 +284,6 @@ class Beneficiaires extends React.Component {
 					</div>
 					<div className="row justify-content-md-center">
 						<div className="col-xl-3">
-							{/* <label>
-              <input
-                type="text"
-                name="dateArrivalFrance"
-                onChange={this.handleChange}
-              />
-              <p>Date d'arrivée en France</p>
-            </label> */}
 							Date d'arrivée en France
 							<DatePicker
 								selected={this.state.date}
@@ -529,14 +457,6 @@ class Beneficiaires extends React.Component {
 				<div className="formation">
 					<h4>Formation</h4>
 					<div className="row justify-content-md-center">
-						{/* <div className="col-3">
-              <form>
-                <label>
-                  <input type="text" name="nom" />
-                  <p>Formation ancienne</p>
-                </label>
-              </form>
-            </div> */}
 						<div className="col-xl-3">
 							Formation actuelle
 							<form>
@@ -565,7 +485,7 @@ class Beneficiaires extends React.Component {
 						</div>
 					</div>
 					<div className="row justify-content-md-center">
-						<div className="col-6 col-md-3">
+						<div className="col-xl-3 ">
 							Accès à la formation?
 							<form>
 								<label>
@@ -579,7 +499,7 @@ class Beneficiaires extends React.Component {
 							</form>
 						</div>
 
-						<div className="col-6 col-md-3">
+						<div className="col-xl-3 ">
 							Commentaires
 							<form>
 								<textarea
@@ -595,7 +515,7 @@ class Beneficiaires extends React.Component {
 				<div className="profession">
 					<h4>Profession</h4>
 					<div className="row justify-content-md-center">
-						<div className="col-6 col-md-3">
+						<div className="col-xl-3 ">
 							Profession actuelle
 							<form>
 								<label>
@@ -608,7 +528,7 @@ class Beneficiaires extends React.Component {
 								</label>
 							</form>
 						</div>
-						<div className="col-6 col-md-3">
+						<div className="col-xl-3 ">
 							Profession souahaité
 							<form>
 								<label>
@@ -623,7 +543,7 @@ class Beneficiaires extends React.Component {
 						</div>
 					</div>
 					<div className="row justify-content-md-center">
-						<div className="col-6 col-md-3">
+						<div className="col-xl-3 ">
 							Accés a la profession
 							<form>
 								<label>
@@ -637,7 +557,7 @@ class Beneficiaires extends React.Component {
 							</form>
 						</div>
 
-						<div className="col-6 col-md-3">
+						<div className="col-xl-3 ">
 							Revenus?
 							<form>
 								<label>
@@ -656,7 +576,7 @@ class Beneficiaires extends React.Component {
 						</div>
 					</div>
 					<div className="row justify-content-md-center">
-						<div className="col-6 col-md-3">
+						<div className="col-xl-3 ">
 							Montant mensuel
 							<label>
 								<input
@@ -667,7 +587,7 @@ class Beneficiaires extends React.Component {
 								/>
 							</label>
 						</div>
-						<div className="col-6 col-md-3">
+						<div className="col-xl-3 ">
 							CV + LDM
 							<label>
 								<input type="file" name="nom" />
@@ -675,7 +595,7 @@ class Beneficiaires extends React.Component {
 						</div>
 					</div>
 					<div className="row justify-content-md-center">
-						<div className="col-6 col-md-3">
+						<div className="col-xl-3 ">
 							Commentaire
 							<form>
 								<textarea
@@ -690,7 +610,7 @@ class Beneficiaires extends React.Component {
 				<div className="sante">
 					<h4>Santé</h4>
 					<div className="row justify-content-md-center">
-						<div className="col-6 col-md-3">
+						<div className="col-xl-3 ">
 							CMU?
 							<form>
 								<label>
@@ -708,7 +628,7 @@ class Beneficiaires extends React.Component {
 						</div>
 					</div>
 					<div className="row justify-content-md-center">
-						<div className="col-6 col-md-3">
+						<div className="col-xl-3 ">
 							Si oui, date de début
 							{/* <form>
                   <label>
@@ -725,7 +645,7 @@ class Beneficiaires extends React.Component {
 								name="cmuStartDate"
 							/>
 						</div>
-						<div className="col-6 col-md-3">
+						<div className="col-xl-3 ">
 							Date de fin
 							{/* <form>
                   <label>
@@ -744,7 +664,7 @@ class Beneficiaires extends React.Component {
 						</div>
 					</div>
 					<div className="row justify-content-md-center">
-						<div className="col-6 col-md-3">
+						<div className="col-xl-3 ">
 							Commentaire
 							<form>
 								<textarea
@@ -760,7 +680,7 @@ class Beneficiaires extends React.Component {
 				<div className="logement">
 					<h4>Logement</h4>
 					<div className="row justify-content-md-center">
-						<div className="col-6 col-md-3">
+						<div className="col-xl-3 ">
 							Accès au parc privé?
 							<form>
 								<label>
@@ -776,7 +696,7 @@ class Beneficiaires extends React.Component {
 								</label>
 							</form>
 						</div>
-						<div className="col-6 col-md-3">
+						<div className="col-xl-3 ">
 							LS + DALO?
 							<form>
 								<label>
@@ -794,7 +714,7 @@ class Beneficiaires extends React.Component {
 						</div>
 					</div>
 					<div className="row justify-content-md-center">
-						<div className="col-6 col-md-3">
+						<div className="col-xl-3 ">
 							Si oui, depuis quand?
 							{/* <form>
                   <label>
@@ -808,7 +728,7 @@ class Beneficiaires extends React.Component {
 								name="dateRequestLsDalo"
 							/>
 						</div>
-						<div className="col-6 col-md-3">
+						<div className="col-xl-3 ">
 							<p>SIAO?</p>
 							<form>
 								<label>
@@ -826,7 +746,7 @@ class Beneficiaires extends React.Component {
 						</div>
 					</div>
 					<div className="row justify-content-md-center">
-						<div className="col-6 col-md-3">
+						<div className="col-xl-3 ">
 							Commentaire
 							<form>
 								<textarea className="form-control"></textarea>
@@ -834,9 +754,6 @@ class Beneficiaires extends React.Component {
 						</div>
 					</div>
 				</div>
-				{/* <div className="submit">
-					<input type="submit" value="Envoyer le formulaire"></input>
-				</div> */}
 			</div>
 		);
 	}

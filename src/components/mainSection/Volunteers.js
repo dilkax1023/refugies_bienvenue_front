@@ -1,48 +1,51 @@
 import React, { Component } from 'react';
-import AsyncSelect from 'react-select/async';
+// import AsyncSelect from 'react-select/async';
 
 class Volunteers extends Component {
-	state = { selectedVolunteers: [] };
-
-	onChange = (selectedVolunteers) => {
-		this.setstate({ selectedVolunteers: selectedVolunteers || [] });
-		// this.onChange = this.onChange.bind(this);
+	state = {
+		selectedVolunteer: [],
+		volunteerData: [],
 	};
-	// this.onChange = this.onChange.bind(this);
-	loadOptions = async (inputText, callback) => {
-		const response = await fetch(
-			`https://jsonplaceholder.typicode.com/users`
-		);
-		const json = await response.json();
 
-		callback(
-			json.map((i) => ({
-				label: i.name,
-				value: i.id,
-				username: i.username,
-			}))
-		);
-	};
+	componentDidMount() {
+		fetch('https://jsonplaceholder.typicode.com/users')
+			.then((response) => response.json())
+
+			.then((data) => {
+				console.log(data);
+				this.setState({ volunteerData: data });
+			});
+	}
 
 	renderEveryVolunteer = (volunteer) => {
 		return <img src={volunteer.avatar} alt="volunteer" />;
 		// if the volunteer have profile pic
 	};
 	render() {
+		const volunteers = [...this.state.volunteerData];
+		const volunteersListe = volunteers.map((volunteer) => {
+			return <option key={volunteer.id}>{volunteer.name}</option>;
+		});
 		return (
 			<div className="volunteers">
-				<div>
-					{this.state.selectedVolunteers.map(
-						this.renderEveryVolunteer
-					)}
-				</div>
+				<div></div>
 
-				<AsyncSelect
-					value={this.state.selectedVolunteers}
-					onChange={this.onChange}
-					placeholder={'volunteers'}
-					loadOptions={this.loadOptions}
-				/>
+				<div class="form-group">
+					<label for="exampleFormControlSelect1"></label>
+					<select
+						class="form-control"
+						id="exampleFormControlSelect1"
+						value={this.state.selectedVolunteer}
+						onChange={(e) => {
+							console.log(e.target.value);
+							this.setState({
+								selectedVolunteer: e.target.value,
+							});
+						}}
+					>
+						{volunteersListe}
+					</select>
+				</div>
 			</div>
 		);
 	}
