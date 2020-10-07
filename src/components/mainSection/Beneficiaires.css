@@ -1,6 +1,6 @@
 div {
-  margin-bottom: 15px;
-  text-align: center;
+	margin-bottom: 15px;
+	text-align: center;
 }
 div .identification,
 .adresse,
@@ -10,24 +10,27 @@ div .identification,
 .profession,
 .logement,
 .sante {
-  -webkit-border-radius: 50px 50px 50px 50px;
-  text-align: center;
-  border-radius: 10px 10px 10px 10px;
-  background: #fff;
-  padding: 30px;
-  width: 100%;
-  max-width: 100%;
-  margin-top: 50px;
-  position: relative;
-  -webkit-box-shadow: 0px 20px 20px 0;
+	-webkit-border-radius: 50px 50px 50px 50px;
+	text-align: center;
+	border-radius: 10px 10px 10px 10px;
+	background: #fff;
+	padding: 30px;
+	width: 100%;
+	max-width: 100%;
+	margin-top: 50px;
+	position: relative;
+	-webkit-box-shadow: 0px 10px 15px 0;
 }
 h4 {
-  margin-bottom: 30px;
+	margin-bottom: 30px;
 }
 
 .submit {
-  margin-top: 40px;
+	margin-top: 40px;
 }
 textarea {
-  width: 100%;
+	width: 100%;
 }
+/* .asyncselect {
+	max-height: 30px;
+} */
