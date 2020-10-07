@@ -157,7 +157,6 @@ class App extends React.Component {
 						/>
 					)}
 				/>
-				<Redirect to='/' />
 			</Switch>
 		);
 		if (this.state.isAuth) {

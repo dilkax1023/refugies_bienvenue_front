@@ -1,6 +1,7 @@
 import React from 'react';
 import Card from '../UI/Card';
-import SeachBar from '../searchbar/SearchBar';
+import SearchBar from '../searchbar/SearchBar';
+import Table from '../UI/Table';
 
 class HomeMain extends React.Component {
 	constructor(props) {
@@ -9,14 +10,15 @@ class HomeMain extends React.Component {
 			term: '',
 			beneficiairesData: [],
 			nbrDePersonneEnFormation: null,
-			meetings: [],
+			contacts: [],
+			filteredList: [],
 		};
 	}
 
 	componentDidMount() {
 		// this.setState({ authLoading: true });
 		this.fetchData('http://localhost:3002/api/beneficiaries');
-		this.fetchData('http://localhost:3002/api/meetings');
+		this.fetchData('http://localhost:3002/api/contacts');
 	}
 
 	fetchData = url => {
@@ -32,8 +34,8 @@ class HomeMain extends React.Component {
 				if (url === 'http://localhost:3002/api/beneficiaries') {
 					this.setState({ beneficiairesData: resData.data });
 				}
-				if (url === 'http://localhost:3002/api/meetings') {
-					this.setState({ meetings: resData.data });
+				if (url === 'http://localhost:3002/api/contacts') {
+					this.setState({ contacts: resData.data });
 				}
 			})
 			.catch(err => console.log(err));
@@ -45,10 +47,27 @@ class HomeMain extends React.Component {
 
 	onClickSearch = e => {
 		e.preventDefault();
+		this.setState({ term: '' });
+
+		const searchTerm = this.state.term;
+		const allbeneficiaires = [...this.state.beneficiairesData];
+		const allContacts = [...this.state.contacts];
+		this.getFilteredList(allbeneficiaires, searchTerm);
+		this.getFilteredList(allContacts, searchTerm);
+	};
+
+	getFilteredList = (arr, term) => {
+		const filteredArr = arr.filter(
+			el =>
+				el.firstName === term ||
+				el.lastName === term ||
+				el.mail === term
+		);
+		this.setState({ filteredList: filteredArr });
 	};
 
 	render() {
-		console.log(this.state.meetings);
+		console.log(this.state.contacts);
 
 		let personneEnFormation;
 		const beneficiaires = [...this.state.beneficiairesData];
@@ -102,17 +121,12 @@ class HomeMain extends React.Component {
 						<Card title='Profile' onLogout={this.props.onLogout} />
 					</div>
 				</div>
-				<SeachBar
+				<SearchBar
 					onClickSearch={this.onClickSearch}
 					onInputChange={this.onInputChange}
 				/>
-				<div className='row'>
-					<div className='col-lg-5 col-md-6'>
-						<Card title='Alertes' />
-					</div>
-					<div className='col-lg-7 col-md-6'>
-						<Card title='Todo' />
-					</div>
+				<div className='row '>
+					<Table filteredList={this.state.filteredList} />
 				</div>
 			</React.Fragment>
 		);
