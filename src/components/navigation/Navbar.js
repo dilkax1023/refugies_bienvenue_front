@@ -6,7 +6,7 @@ const Navbar = () => {
 	return (
 		<div className="d-flex flex-column align-items-center w-100">
 			<h2 className="text-center mb-5">REFUGEES BIENVENUE</h2>
-			<Button path="/home" name="HOME" />
+			<Button path="/" name="HOME" />
 			<Button path="/beneficiary" name="BENEFICIAIRE" />
 			<Button path="/beneficiarys" name="LISTES DES BENEFICIAIRES" />
 			<Button path="/hebergement" name="HEBERGEMENT" />

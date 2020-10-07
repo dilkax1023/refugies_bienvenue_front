@@ -6,6 +6,7 @@ import Login from './pages/login/Login';
 import Signup from './pages/signup/Signup';
 import Home from './pages/home/Home';
 import ContactsController from './pages/contact/ContactsController';
+import ContactController from './pages/contact/ContactController';
 import PageBeneficiaires from './pages/beneficiaires/PageBeneficiaires';
 // import BeneficiairesPage from './pages/beneficiaires/BeneficiairesPage';
 import Hebergement from './pages/hebergement/Hebergement';
@@ -177,6 +178,7 @@ class App extends React.Component {
 					<Route path="/hebergement" component={Hebergement} />
 					<Route path="/hebergements" component={HebergementsPage} />
 					<Route path="/rdv" component={RdvDeSuivi} />
+					<Route path="/contacts/:id" component={ContactController} />
 					<Route path="/contacts" component={ContactsController} />
 				</Switch>
 			);

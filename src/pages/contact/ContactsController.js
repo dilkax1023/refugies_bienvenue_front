@@ -28,7 +28,7 @@ class ContactsController extends Component {
 		const { contacts } = this.state;
 
 		return (
-			<div className="my-3 mx-5">
+			<div className="container my-3">
 				<div className="row">
 					<div className="col-md-3 col-lg-2 navbar">
 						<Navbar />
@@ -40,7 +40,9 @@ class ContactsController extends Component {
 								Aucun contact trouvé. Ajoutez-en ci-dessus !
 							</h2>
 						) : (
-							<Contacts contacts={contacts} />
+							<div class="row">
+								<Contacts contacts={contacts} />
+							</div>
 						)}
 					</div>
 				</div>
