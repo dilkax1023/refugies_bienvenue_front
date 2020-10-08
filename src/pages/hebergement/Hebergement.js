@@ -291,11 +291,16 @@ class Hebergement extends React.Component {
 								</div>
 							</div>
 
-							<div className="text-center">
-								<button className="btn btn-outline-success ">
-									{/* to add onClick={addhebergement} */}
-									Ajouter un hébergement
-								</button>
+							<div className="row justify-content-md-center">
+								<form onsubmit={this.handleSubmit}>
+									<button
+										type="submit"
+										className="btn btn-outline-success"
+									>
+										{/* to add onClick={addBeneficier} */}
+										Ajouter un bénéficiaire
+									</button>
+								</form>
 							</div>
 						</div>
 					</div>

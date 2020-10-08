@@ -11,12 +11,6 @@ const PageBeneficiaires = (props) => {
 				</div>
 				<div className="col-md-9 col-lg-10 main">
 					<Beneficiaires />
-					<div className="text-center">
-						<button className="btn btn-outline-success">
-							{/* to add onClick={addBeneficier} */}
-							Ajouter un bénéficiaire
-						</button>
-					</div>
 				</div>
 			</div>
 		</div>

@@ -11,39 +11,16 @@ class Beneficiaires extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			beneficiairie: {
-				firstName: '',
-				lastName: '',
-				birthDate: '',
-				gender: '',
-				phone: '',
-				mail: '',
-				dateArrivalFrance: '',
-				dateArrivalAssociation: '',
-				dateExitAssociation: '',
-				datePiObtaining: '',
-				agdrefNumber: '',
-				cirOrDa: '',
-				cirDaStatus: '',
-				isBankAccount: false,
-				bankName: '',
-				hasDrivingLicence: false,
-				drivingLicenceDate: '',
-				administrativeComments: '',
-				hasCmu: false,
-				cmuStartDate: '',
-				cmuEndDate: '',
-				needsSpecificFollowup: false,
-				specificFollowup: '',
-				healthComments: '',
-				accessPrivatePark: false,
-				nature: '',
-				isHomeless: false,
-				requestLsDalo: false,
-				dateRequestLsDalo: '',
-			},
+			beneficiairie: {},
+			// selectedVolunteer: [],
+			// volunteerData: [],
+			// name: [],
+
 			errorMessage: null,
 			date: new Date('2020-06-10'),
+			volunteers: {
+				name: '',
+			},
 		};
 
 		this.handleChange = this.handleChange.bind(this);
@@ -63,7 +40,7 @@ class Beneficiaires extends React.Component {
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify(this.state),
 		}).then((res) => {
-			// console.log(res);
+			console.log(res);
 			return res.json();
 		});
 
@@ -84,7 +61,7 @@ class Beneficiaires extends React.Component {
 					<div className="row justify-content-md-center">
 						<div className="col-xl-3">
 							Nom
-							<form>
+							<form onSubmit={this.handleSubmit}>
 								<label>
 									<input
 										className="form-control"
@@ -98,7 +75,7 @@ class Beneficiaires extends React.Component {
 
 						<div className="col-xl-3 ">
 							Prénom
-							<form>
+							<form onSubmit={this.handleSubmit}>
 								<label>
 									<input
 										className="form-control"
@@ -122,7 +99,7 @@ class Beneficiaires extends React.Component {
 
 						<div className="col-xl-3">
 							Sexe
-							<form>
+							<form onSubmit={this.handleSubmit}>
 								<label>
 									<input
 										text-align="items-center"
@@ -137,7 +114,7 @@ class Beneficiaires extends React.Component {
 					</div>
 					<div className="row justify-content-md-center">
 						<div className="col-xl-3">
-							<form>
+							<form onSubmit={this.handleSubmit}>
 								<label>
 									Numéro de téléphone
 									<input
@@ -151,7 +128,7 @@ class Beneficiaires extends React.Component {
 						</div>
 						<div className="col-xl-3">
 							Email
-							<form>
+							<form onSubmit={this.handleSubmit}>
 								<label>
 									<input
 										className="form-control"
@@ -170,7 +147,7 @@ class Beneficiaires extends React.Component {
 					<div className="row justify-content-md-center">
 						<div className="col-xl-3">
 							Numéro de rue
-							<form>
+							<form onSubmit={this.handleSubmit}>
 								<label>
 									<input
 										className="form-control"
@@ -183,7 +160,7 @@ class Beneficiaires extends React.Component {
 						</div>
 						<div className="col-xl-3">
 							Nom de rue
-							<form>
+							<form onSubmit={this.handleSubmit}>
 								<label>
 									<input
 										className="form-control"
@@ -198,7 +175,7 @@ class Beneficiaires extends React.Component {
 					<div className="row justify-content-md-center">
 						<div className="col-xl-3">
 							Postal
-							<form>
+							<form onSubmit={this.handleSubmit}>
 								<label>
 									<input
 										className="form-control"
@@ -211,7 +188,7 @@ class Beneficiaires extends React.Component {
 						</div>
 						<div className="col-xl-3">
 							Ville
-							<form>
+							<form onSubmit={this.handleSubmit}>
 								<label>
 									<input
 										className="form-control"
@@ -233,10 +210,17 @@ class Beneficiaires extends React.Component {
 						<div className="col-xl-3">
 							Bénevole
 							<Volunteers />
+							<input
+								type="text" // hidden
+								key="volunteer._id"
+								name="volunteerId"
+								onChange={this.handleChange}
+							></input>
 						</div>
+
 						<div className="col-xl-3">
 							Permis de conduire
-							<form>
+							<form onSubmit={this.handleSubmit}>
 								<label>
 									<select
 										id="inputState"
@@ -334,28 +318,11 @@ class Beneficiaires extends React.Component {
 								/>
 							</label>
 						</div>
-
-						{/* <div className="col-3">
-            <form>
-              <label>
-                <select id="inputState" class="form-control">
-                  <option selected></option>
-                  <option>A1</option>
-                  <option>A2</option>
-                  <option>B1</option>
-                  <option>B2</option>
-                  <option>C1</option>
-                  <option>C2</option>
-                </select>
-                <p>Niveau de français</p>
-              </label>
-            </form>
-          </div> */}
 					</div>
 					<div className="row justify-content-md-center">
 						<div className="col-xl-3">
 							Niveau de français (A1, A2, B1, B2, C1, C2)
-							<form>
+							<form onSubmit={this.handleSubmit}>
 								<label>
 									<input
 										className="form-control"
@@ -373,7 +340,7 @@ class Beneficiaires extends React.Component {
 					<h4>Compte Bancaire</h4>
 					<div className="row justify-content-md-center">
 						<div className="col-xl-3">
-							<form>
+							<form onSubmit={this.handleSubmit}>
 								<label>
 									Compte bancaire?
 									<select
@@ -392,7 +359,7 @@ class Beneficiaires extends React.Component {
 
 						<div className="col-xl-3">
 							Nom de banque
-							<form>
+							<form onSubmit={this.handleSubmit}>
 								<label>
 									<input
 										className="form-control"
@@ -414,7 +381,7 @@ class Beneficiaires extends React.Component {
 					<div className="row justify-content-md-center">
 						<div className="col-xl-3">
 							DA
-							<form>
+							<form onSubmit={this.handleSubmit}>
 								<label>
 									<input
 										className="form-control"
@@ -427,7 +394,7 @@ class Beneficiaires extends React.Component {
 						</div>
 						<div className="col-xl-3">
 							CIR
-							<form>
+							<form onSubmit={this.handleSubmit}>
 								<label>
 									<input
 										className="form-control"
@@ -442,7 +409,7 @@ class Beneficiaires extends React.Component {
 					<div className="row justify-content-md-center">
 						<div className="col-xl-3">
 							Commentaires
-							<form>
+							<form onSubmit={this.handleSubmit}>
 								<textarea
 									className="form-control"
 									name="statusComments"
@@ -459,7 +426,7 @@ class Beneficiaires extends React.Component {
 					<div className="row justify-content-md-center">
 						<div className="col-xl-3">
 							Formation actuelle
-							<form>
+							<form onSubmit={this.handleSubmit}>
 								<label>
 									<input
 										className="form-control"
@@ -472,7 +439,7 @@ class Beneficiaires extends React.Component {
 						</div>
 						<div className="col-xl-3">
 							Formation souahaité
-							<form>
+							<form onSubmit={this.handleSubmit}>
 								<label>
 									<input
 										className="form-control"
@@ -487,7 +454,7 @@ class Beneficiaires extends React.Component {
 					<div className="row justify-content-md-center">
 						<div className="col-xl-3 ">
 							Accès à la formation?
-							<form>
+							<form onSubmit={this.handleSubmit}>
 								<label>
 									<input
 										className="form-control"
@@ -501,7 +468,7 @@ class Beneficiaires extends React.Component {
 
 						<div className="col-xl-3 ">
 							Commentaires
-							<form>
+							<form onSubmit={this.handleSubmit}>
 								<textarea
 									className="form-control"
 									name="trainingComments"
@@ -517,7 +484,7 @@ class Beneficiaires extends React.Component {
 					<div className="row justify-content-md-center">
 						<div className="col-xl-3 ">
 							Profession actuelle
-							<form>
+							<form onSubmit={this.handleSubmit}>
 								<label>
 									<input
 										className="form-control"
@@ -530,7 +497,7 @@ class Beneficiaires extends React.Component {
 						</div>
 						<div className="col-xl-3 ">
 							Profession souahaité
-							<form>
+							<form onSubmit={this.handleSubmit}>
 								<label>
 									<input
 										className="form-control"
@@ -545,7 +512,7 @@ class Beneficiaires extends React.Component {
 					<div className="row justify-content-md-center">
 						<div className="col-xl-3 ">
 							Accés a la profession
-							<form>
+							<form onSubmit={this.handleSubmit}>
 								<label>
 									<input
 										className="form-control"
@@ -559,7 +526,7 @@ class Beneficiaires extends React.Component {
 
 						<div className="col-xl-3 ">
 							Revenus?
-							<form>
+							<form onSubmit={this.handleSubmit}>
 								<label>
 									<select
 										id="inputState"
@@ -578,29 +545,41 @@ class Beneficiaires extends React.Component {
 					<div className="row justify-content-md-center">
 						<div className="col-xl-3 ">
 							Montant mensuel
-							<label>
-								<input
-									className="form-control"
-									type="text"
-									name="incomeValue"
-									onChange={this.handleChange}
-								/>
-							</label>
+							<form onSubmit={this.handleSubmit}>
+								<label>
+									<input
+										className="form-control"
+										type="text"
+										name="incomeValue"
+										onChange={this.handleChange}
+									/>
+								</label>
+							</form>
 						</div>
 						<div className="col-xl-3 ">
 							CV + LDM
-							<label>
-								<input type="file" name="nom" />
-							</label>
+							<form
+								onSubmit={this.handleSubmit}
+								encType="multipart/form-data"
+							>
+								<label>
+									<input
+										type="file"
+										onChange={this.handleChange}
+										name="nom"
+									/>
+								</label>
+							</form>
 						</div>
 					</div>
 					<div className="row justify-content-md-center">
 						<div className="col-xl-3 ">
 							Commentaire
-							<form>
+							<form onSubmit={this.handleSubmit}>
 								<textarea
 									className="form-control"
 									name="jobComments"
+									onChange={this.handleChange}
 								></textarea>
 							</form>
 						</div>
@@ -612,12 +591,13 @@ class Beneficiaires extends React.Component {
 					<div className="row justify-content-md-center">
 						<div className="col-xl-3 ">
 							CMU?
-							<form>
+							<form onSubmit={this.handleSubmit}>
 								<label>
 									<select
 										id="inputState"
 										name="hasCmu"
 										className="form-control"
+										onChange={this.handleChange}
 									>
 										<option defaultValue></option>
 										<option>Oui</option>
@@ -630,35 +610,19 @@ class Beneficiaires extends React.Component {
 					<div className="row justify-content-md-center">
 						<div className="col-xl-3 ">
 							Si oui, date de début
-							{/* <form>
-                  <label>
-                    <input
-                      type="text"
-                      name="cmuStartDate"
-                      onChange={this.handleChange}
-                    />
-                  </label>
-                </form> */}
 							<DatePicker
 								selected={this.state.date}
 								onChange={this.onChange}
+								onSubmit={this.handleSubmit}
 								name="cmuStartDate"
 							/>
 						</div>
 						<div className="col-xl-3 ">
 							Date de fin
-							{/* <form>
-                  <label>
-                    <input
-                      type="text"
-                      name="cmuEndDate"
-                      onChange={this.handleChange}
-                    />
-                  </label>
-                </form> */}
 							<DatePicker
 								selected={this.state.date}
 								onChange={this.onChange}
+								onSubmit={this.handleSubmit}
 								name="cmuEndDate"
 							/>
 						</div>
@@ -666,7 +630,7 @@ class Beneficiaires extends React.Component {
 					<div className="row justify-content-md-center">
 						<div className="col-xl-3 ">
 							Commentaire
-							<form>
+							<form onSubmit={this.handleSubmit}>
 								<textarea
 									className="form-control"
 									name="healthComments"
@@ -682,12 +646,13 @@ class Beneficiaires extends React.Component {
 					<div className="row justify-content-md-center">
 						<div className="col-xl-3 ">
 							Accès au parc privé?
-							<form>
+							<form onSubmit={this.handleSubmit}>
 								<label>
 									<select
 										id="inputState"
 										className="form-control"
 										name="accessPrivatePark"
+										onChange={this.handleChange}
 									>
 										<option defaultValue></option>
 										<option>Oui</option>
@@ -698,12 +663,13 @@ class Beneficiaires extends React.Component {
 						</div>
 						<div className="col-xl-3 ">
 							LS + DALO?
-							<form>
+							<form onSubmit={this.handleSubmit}>
 								<label>
 									<select
 										id="inputState"
 										className="form-control"
 										name="requestLsDalo"
+										onChange={this.handleChange}
 									>
 										<option defaultValue></option>
 										<option>Oui</option>
@@ -730,12 +696,13 @@ class Beneficiaires extends React.Component {
 						</div>
 						<div className="col-xl-3 ">
 							<p>SIAO?</p>
-							<form>
+							<form onSubmit={this.handleSubmit}>
 								<label>
 									<select
 										id="inputState"
 										className="form-control"
 										name="siao"
+										onChange={this.handleChange}
 									>
 										<option defaultValue></option>
 										<option>Oui</option>
@@ -753,6 +720,17 @@ class Beneficiaires extends React.Component {
 							</form>
 						</div>
 					</div>
+				</div>
+				<div className="row justify-content-md-center">
+					<form onSubmit={this.handleSubmit}>
+						<button
+							type="submit"
+							className="btn btn-outline-success"
+						>
+							{/* to add onClick={addBeneficier} */}
+							Ajouter un bénéficiaire
+						</button>
+					</form>
 				</div>
 			</div>
 		);

@@ -5,6 +5,8 @@ class Volunteers extends Component {
 	state = {
 		selectedVolunteer: [],
 		volunteerData: [],
+		volunteerID: {},
+		volunteer: {},
 	};
 
 	componentDidMount() {
@@ -13,7 +15,7 @@ class Volunteers extends Component {
 
 			.then((data) => {
 				console.log(data);
-				this.setState({ volunteerData: data });
+				this.setState({ volunteerData: data, volunteerId: data._id });
 			});
 	}
 
@@ -21,31 +23,40 @@ class Volunteers extends Component {
 		return <img src={volunteer.avatar} alt="volunteer" />;
 		// if the volunteer have profile pic
 	};
+
 	render() {
 		const volunteers = [...this.state.volunteerData];
 		const volunteersListe = volunteers.map((volunteer) => {
-			return <option key={volunteer.id}>{volunteer.name}</option>;
+			return (
+				<option key={volunteer.id}>
+					{volunteer.name}
+					{volunteer._id}
+				</option>
+			);
 		});
 		return (
 			<div className="volunteers">
-				<div></div>
-
-				<div class="form-group">
-					<label for="exampleFormControlSelect1"></label>
-					<select
-						class="form-control"
-						id="exampleFormControlSelect1"
-						value={this.state.selectedVolunteer}
-						onChange={(e) => {
-							console.log(e.target.value);
-							this.setState({
-								selectedVolunteer: e.target.value,
-							});
-						}}
-					>
-						{volunteersListe}
-					</select>
-				</div>
+				<form onSubmit={this.handleSubmit}>
+					<div className="form-group">
+						<label htmlFor="exampleFormControlSelect1">
+							<select
+								className="form-control"
+								id="exampleFormControlSelect1"
+								value={this.state.selectedVolunteer}
+								onChange={(e) => {
+									console.log(e.target.value);
+									this.setState({
+										selectedVolunteer: e.target.value,
+										volunteerId: e.target.value,
+										// volunteerData: e.target.value,
+									});
+								}}
+							>
+								{volunteersListe}
+							</select>
+						</label>
+					</div>
+				</form>
 			</div>
 		);
 	}
