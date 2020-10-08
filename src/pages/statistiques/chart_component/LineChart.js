@@ -22,24 +22,48 @@ function LineChart() {
 				pointBackgroundColor: 'rgba(45, 162, 235, 0.2)',
 				pointBorderColor: 'rgba(45, 162, 235, 0.2)',
 			},
+			{
+				label: 'Durée moyenne des hébergements',
+				data: [29, 25, 64],
+				borderColor: ['rgba(239, 146, 53, 0.2)'],
+				backgroundColor: ['rgba(239, 146, 53, 0.2)'],
+				pointBackgroundColor: 'rgba(239, 146, 53, 0.2)',
+				pointBorderColor: 'rgba(239, 146, 53, 0.2)',
+			},
+			{
+				label: 'Nombre des hébergements par personne BPI',
+				data: [129, 425, 364],
+				borderColor: ['rgba(53, 239, 103, 0.2)'],
+				backgroundColor: ['rgba(53, 239, 103, 0.2)'],
+				pointBackgroundColor: 'rgba(53, 239, 103, 0.2)',
+				pointBorderColor: 'rgba(53, 239, 103, 0.2)',
+			},
+			{
+				label: 'Nombre de médiations entre hébergés et hébergeurs',
+				data: [12, 42, 36],
+				borderColor: ['rgba(53, 158, 239, 0.2)'],
+				backgroundColor: ['rgba(53, 158, 239, 0.2)'],
+				pointBackgroundColor: 'rgba(53, 158, 239, 0.2)',
+				pointBorderColor: 'rgba(53, 158, 239, 0.2)',
+			},
 		],
 	};
 
 	const options = {
 		title: {
 			display: true,
-			// text: 'Line Chart',
+			text: 'Hébergement',
 		},
-		scales: {
-			yAxes: [
-				{
-					ticks: {
-						min: 0,
-						stepSize: 500,
-					},
-				},
-			],
-		},
+		// scales: {
+		// 	yAxes: [
+		// 		{
+		// 			ticks: {
+		// 				min: 0,
+		// 				stepSize: 500,
+		// 			},
+		// 		},
+		// 	],
+		// },
 	};
 	return <Line data={data} options={options} />;
 }
