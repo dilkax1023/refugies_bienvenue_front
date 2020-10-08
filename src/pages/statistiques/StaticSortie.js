@@ -1,16 +1,16 @@
 import React from 'react';
-import LineChart from './chart_component/LineChart';
+import DoughnutChart from './chart_component/DoughnutChart';
 import './Statistique.css';
 // import Navbar from '../../components/navigation/Navbar';
 
-class StaticHebergement extends React.Component {
+class StaticSortie extends React.Component {
 	render() {
 		return (
 			<div className="chart justify-content-center">
-				<LineChart />
+				<DoughnutChart />
 			</div>
 		);
 	}
 }
 
-export default StaticHebergement;
+export default StaticSortie;
