@@ -8,7 +8,7 @@ function LineChart() {
 		datasets: [
 			{
 				label: "Nombre d'hébergeurs dans une année",
-				data: [4, 2, 4, 3, 3],
+				data: [4, 1.75, 4.25, 3, 3],
 				borderColor: ['rgba(255, 206, 86, 0.2)'],
 				backgroundColor: ['rgba(255, 206, 86, 0.2)'],
 				pointBackgroundColor: 'rgba(255, 206, 86, 0.2)',
@@ -16,7 +16,7 @@ function LineChart() {
 			},
 			{
 				label: "Nombre des désistements qui n'ont pas abouti",
-				data: [2, 3, 1, 3, 2],
+				data: [2, 3.2, 1.75, 3, 2],
 				borderColor: ['rgba(45, 162, 235, 0.2)'],
 				backgroundColor: ['rgba(45, 162, 235, 0.2)'],
 				pointBackgroundColor: 'rgba(45, 162, 235, 0.2)',
@@ -24,7 +24,7 @@ function LineChart() {
 			},
 			{
 				label: 'Durée moyenne des hébergements',
-				data: [2, 5, 6, 2, 3],
+				data: [2, 5, 5.25, 2.5, 3],
 				borderColor: ['rgba(239, 146, 53, 0.2)'],
 				backgroundColor: ['rgba(239, 146, 53, 0.2)'],
 				pointBackgroundColor: 'rgba(239, 146, 53, 0.2)',
@@ -32,7 +32,7 @@ function LineChart() {
 			},
 			{
 				label: 'Nombre des hébergements par personne BPI',
-				data: [2, 2, 4, 3, 2],
+				data: [2.6, 2, 4, 3, 1],
 				borderColor: ['rgba(53, 239, 103, 0.2)'],
 				backgroundColor: ['rgba(53, 239, 103, 0.2)'],
 				pointBackgroundColor: 'rgba(53, 239, 103, 0.2)',
@@ -40,7 +40,7 @@ function LineChart() {
 			},
 			{
 				label: 'Nombre de médiations entre hébergés et hébergeurs',
-				data: [2, 2, 3, 2, 1],
+				data: [1.2, 2, 3, 2, 1],
 				borderColor: ['rgba(53, 158, 239, 0.2)'],
 				backgroundColor: ['rgba(53, 158, 239, 0.2)'],
 				pointBackgroundColor: 'rgba(53, 158, 239, 0.2)',
