@@ -2,7 +2,7 @@ import React from 'react';
 import { Line } from 'react-chartjs-2';
 
 function LineChart() {
-	// labels are the propierties;
+	// labels is title; x-axis=label, y-axis=data
 	const data = {
 		labels: 'Hébergeurs',
 		datasets: [
@@ -24,7 +24,24 @@ function LineChart() {
 			},
 		],
 	};
-	return <Line data={data} />;
+
+	const options = {
+		title: {
+			display: true,
+			// text: 'Line Chart',
+		},
+		scales: {
+			yAxes: [
+				{
+					ticks: {
+						min: 0,
+						stepSize: 500,
+					},
+				},
+			],
+		},
+	};
+	return <Line data={data} options={options} />;
 }
 
 export default LineChart;

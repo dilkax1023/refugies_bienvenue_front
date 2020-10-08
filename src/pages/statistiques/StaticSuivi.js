@@ -1,6 +1,19 @@
-// import React from "react";
-// import { Chart } from 'react-charts';
+import React from 'react';
+import BarChart from './chart_component/BarChart';
 // // import Navbar from '../../components/navigation/Navbar';
+
+class StaticSuivi extends React.Component {
+	render() {
+		return (
+			<div className="chart justify-content-center">
+				<BarChart />
+			</div>
+		);
+	}
+}
+
+export default StaticSuivi;
+
 // function MyChart() {
 //   const data = React.useMemo(
 //     () => [

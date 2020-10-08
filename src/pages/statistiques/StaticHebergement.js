@@ -3,7 +3,7 @@ import LineChart from './chart_component/LineChart';
 import './StaticHebergement.css';
 // import Navbar from '../../components/navigation/Navbar';
 
-class StatHebergement extends React.Component {
+class StaticHebergement extends React.Component {
 	render() {
 		return (
 			<div className="chart justify-content-center">
@@ -13,25 +13,11 @@ class StatHebergement extends React.Component {
 	}
 }
 
-export default StatHebergement;
+export default StaticHebergement;
 
 // function MyChart() {
 // 	const data = React.useMemo(
 // 		() => [
-// 			{
-// 				label: "Nombre d'hébergeurs dans une année",
-// 				data: [
-// 					[0, 1],
-// 					[1, 2],
-// 				],
-// 			},
-// 			{
-// 				label: "Nombre de désistements qui n'ont pas abouti",
-// 				data: [
-// 					[0, 3],
-// 					[1, 1],
-// 				],
-// 			},
 // 			{
 // 				label: 'Durée moyenne des hébergements',
 // 				data: [
