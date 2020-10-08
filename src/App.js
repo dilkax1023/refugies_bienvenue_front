@@ -2,14 +2,12 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import { Route, Redirect, Switch } from 'react-router-dom';
 import './App.css';
-import Login from './pages/login/Login';
-import Signup from './pages/signup/Signup';
+import Login from './pages/auth/Login';
+import Signup from './pages/auth/Signup';
 import Home from './pages/home/Home';
-import ContactsController from './pages/contact/ContactsController';
+// import ContactsController from './pages/contact/ContactsController';
 import ContactController from './pages/contact/ContactController';
-import PageBeneficiaires from './pages/beneficiaires/PageBeneficiaires';
-// import BeneficiairesPage from './pages/beneficiaires/BeneficiairesPage';
-import Hebergement from './pages/hebergement/Hebergement';
+// import Hebergement from './pages/hebergement/Hebergement';
 import RdvDeSuivi from './pages/rdv/RdvDeSuivi';
 import HebergementsPage from './pages/hebergement/HebergementsPage';
 import BeneficiairesPage from './pages/beneficiaires/BeneficiairesPage';
@@ -54,6 +52,8 @@ class App extends React.Component {
 				password: authData.signupForm.password.value,
 				passwordConfirmation:
 					authData.signupForm.passwordConfirmation.value,
+				lastName: authData.signupForm.lastName.value,
+				firstName: authData.signupForm.firstName.value,
 			}),
 		})
 			.then((res) => {
@@ -172,13 +172,12 @@ class App extends React.Component {
 							<Home {...props} onLogout={this.logoutHandler} />
 						)}
 					/>
-					<Route path="/beneficiary" component={PageBeneficiaires} />
+					<Route path="/beneficiary" component={BeneficiairesPage} />
 					<Route path="/beneficiarys" component={HebergementsPage} />
-					<Route path="/hebergement" component={Hebergement} />
+					<Route path="/hebergement" component={HebergementsPage} />
 					<Route path="/hebergements" component={HebergementsPage} />
 					<Route path="/rdv" component={RdvDeSuivi} />
-					<Route path="/contacts/:id" component={ContactController} />
-					<Route path="/contacts" component={ContactsController} />
+					<Route path="/contacts" component={ContactController} />
 				</Switch>
 			);
 		}

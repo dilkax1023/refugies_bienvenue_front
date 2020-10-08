@@ -1,11 +1,18 @@
 body {
 	height: 100%;
 	width: 100vw;
+	overflow-y: scroll;
 	background: linear-gradient(
 		180deg,
 		#e7d3d3 0%,
 		rgba(230, 206, 229, 0.88) 100%
 	);
+}
+
+#page-height {
+	height: 100vh;
+	margin: auto;
+	padding: 3vh;
 }
 
 .login_page img {
@@ -28,7 +35,36 @@ body {
 }
 
 .search-bar {
-	background-image: linear-gradient(180deg, #9093cf 0%, #cfcfcf 100%);
+	background: linear-gradient(
+		89.44deg,
+		#4e3f89 16.05%,
+		#49566e 24.68%,
+		#3f813a 41.19%,
+		#4e3f89 87.24%
+	);
 	border-radius: 10px;
-	/* height: 8vh; */
+}
+
+.container .table tbody tr td a.btn {
+	font-size: 0.5rem;
+}
+
+.btn-info {
+	background: linear-gradient(
+		89.44deg,
+		#4e3f89 16.05%,
+		#49566e 24.68%,
+		#3f813a 41.19%,
+		#4e3f89 87.24%
+	);
+	border-radius: 6px;
+}
+.btn-info:hover {
+	background: linear-gradient(89.19deg, #375d79 20.11%, #b64558 87.08%);
+	border-radius: 6px;
+	transition: 0.5s;
+}
+
+.activeclass {
+	background-color: #42a829;
 }

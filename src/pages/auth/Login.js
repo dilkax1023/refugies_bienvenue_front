@@ -1,6 +1,7 @@
 import React from 'react';
 import illustration from '../../img/Humaaans.png';
 import FormGroup from '../../components/UI/FormGroup';
+import { NavLink } from 'react-router-dom';
 
 class Login extends React.Component {
 	state = {
@@ -15,7 +16,7 @@ class Login extends React.Component {
 	};
 
 	inputChangeHandler = (input, value) => {
-		this.setState(prevState => {
+		this.setState((prevState) => {
 			const updatedForm = {
 				...prevState.loginForm,
 				[input]: {
@@ -31,43 +32,50 @@ class Login extends React.Component {
 
 	render() {
 		return (
-			<div className='login_page'>
-				<div className='row'>
-					<div className='col-md-6'>
-						<img src={illustration} alt='' />
+			<div className="login_page">
+				<div className="row">
+					<div className="col-md-6">
+						<img src={illustration} alt="" />
 					</div>
 
-					<div className='col-md-6 login_page-form my-auto w-100'>
-						<h1 className='text-center mb-5 text-uppercase'>
+					<div className="col-md-6 login_page-form my-auto w-100">
+						<h1 className="text-center text-info mb-5 text-uppercase">
 							Log In
 						</h1>
 
 						<form
-							className='w-50 mx-auto'
-							onSubmit={e =>
+							className="w-50 mx-auto"
+							onSubmit={(e) =>
 								this.props.onLogin(e, {
 									email: this.state.loginForm.email.value,
 									password: this.state.loginForm.password
 										.value,
 								})
-							}>
+							}
+						>
 							<FormGroup
-								label='Email'
-								type='email'
-								id='email'
+								label="Email"
+								type="email"
+								id="email"
 								onChange={this.inputChangeHandler}
 								value={this.state.loginForm['email'].value}
 							/>
 							<FormGroup
-								label='Password'
-								type='Password'
-								id='password'
-								control='input'
+								label="Password"
+								type="Password"
+								id="password"
+								control="input"
 								onChange={this.inputChangeHandler}
 								value={this.state.loginForm['password'].value}
 							/>
-
-							<button type='submit' className='btn btn-primary'>
+							<small
+								id="passwordHelpInline"
+								className="text-muted"
+							>
+								Vous n'avez pas de compte? click ici pour
+								<NavLink to="/signup"> Sign up</NavLink>
+							</small>
+							<button type="submit" className="btn btn-primary">
 								Submit
 							</button>
 						</form>

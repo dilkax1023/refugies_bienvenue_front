@@ -5,7 +5,7 @@ import Hebergement from '../../components/mainSection/Hebergement';
 const PageHebergement = (props) => {
 	return (
 		<div className="my-3 mx-5">
-			<div className="row">
+			<div className="row" id="page-height">
 				<div className="col-md-3 col-lg-2 navbar">
 					<Navbar />
 				</div>

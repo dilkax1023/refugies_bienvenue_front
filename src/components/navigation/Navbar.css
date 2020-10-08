@@ -1,8 +1,13 @@
 .navbar {
-  background-color: #16145a;
-  height: 100%;
+	background-color: #16145a;
+	height: 100%;
 }
 
 .navbar h2 {
-  color: #ffffff;
+	color: #ffffff;
+}
+
+.navbar a {
+	font-size: 0.9rem;
+	font-weight: 500;
 }
