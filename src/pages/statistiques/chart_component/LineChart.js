@@ -4,7 +4,7 @@ import { Line } from 'react-chartjs-2';
 function LineChart() {
 	// labels is title; x-axis=label, y-axis=data
 	const data = {
-		labels: 'Hébergeurs',
+		labels: ['1', '2', '3', '4', '5'],
 		datasets: [
 			{
 				label: "Nombre d'hébergeurs dans une année",
