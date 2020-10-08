@@ -54,16 +54,16 @@ function LineChart() {
 			display: true,
 			text: 'Hébergement',
 		},
-		// scales: {
-		// 	yAxes: [
-		// 		{
-		// 			ticks: {
-		// 				min: 0,
-		// 				stepSize: 500,
-		// 			},
-		// 		},
-		// 	],
-		// },
+		scales: {
+			yAxes: [
+				{
+					ticks: {
+						min: 0,
+						// stepSize: 500,
+					},
+				},
+			],
+		},
 	};
 	return <Line data={data} options={options} />;
 }
