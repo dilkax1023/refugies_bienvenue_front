@@ -1,5 +1,6 @@
 import React from 'react';
 import BarChart from './chart_component/BarChart';
+import './Statistique.css';
 // // import Navbar from '../../components/navigation/Navbar';
 
 class StaticSuivi extends React.Component {

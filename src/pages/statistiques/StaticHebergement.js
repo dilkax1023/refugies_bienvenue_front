@@ -1,6 +1,6 @@
 import React from 'react';
 import LineChart from './chart_component/LineChart';
-import './StaticHebergement.css';
+import './Statistique.css';
 // import Navbar from '../../components/navigation/Navbar';
 
 class StaticHebergement extends React.Component {
