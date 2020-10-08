@@ -1,21 +1,20 @@
-// import React from "react";
-// import { Chart } from 'react-charts';
+import React from 'react';
+import BarChart from './chart_component/BarChart';
+import './Statistique.css';
 // // import Navbar from '../../components/navigation/Navbar';
-// function MyChart() {
-//   const data = React.useMemo(
-//     () => [
-//       {
-//         label: "Sexe",
-//         data: [[0, 1], [1, 2]]
-//       },
-//       {
-//         label: "Age",
-//         data: [[0, 3], [1, 1]]
-//       },
-//       {
-//         label: "Statut administratif (DA/BPI/DUBLIN)",
-//         data: [[3, 6], [4, 4]]
-//       },
+
+class StaticSuivi extends React.Component {
+	render() {
+		return (
+			<div className="chart justify-content-center">
+				<BarChart />
+			</div>
+		);
+	}
+}
+
+export default StaticSuivi;
+
 //       {
 //         label: "Pourcentage de personne en formation/travail",
 //         data: [[3, 6], [4, 4]]
@@ -27,6 +26,7 @@
 //     ],
 //     []
 // )
+<<<<<<< HEAD
 
 // const series = React.useMemo(
 // 	() => ({
@@ -56,3 +56,5 @@
 // 		<Chart data={data} series={series} axes={axes} />
 // 	</div>
 // );
+=======
+>>>>>>> 5def5e75a54ba514289f462334a9a586813ff66b

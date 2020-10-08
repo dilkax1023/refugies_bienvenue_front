@@ -5,7 +5,6 @@ import './App.css';
 import Login from './pages/auth/Login';
 import Signup from './pages/auth/Signup';
 import Home from './pages/home/Home';
-// import ContactsController from './pages/contact/ContactsController';
 import ContactController from './pages/contact/ContactController';
 // import Hebergement from './pages/hebergement/Hebergement';
 import RdvDeSuivi from './pages/rdv/RdvDeSuivi';
