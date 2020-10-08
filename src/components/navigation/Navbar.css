@@ -5,6 +5,8 @@
 
 .navbar h2 {
 	color: #ffffff;
+	font-family: 'Lobster Two', cursive;
+	letter-spacing: 2px;
 }
 
 .navbar a {

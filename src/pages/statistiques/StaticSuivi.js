@@ -26,35 +26,3 @@ export default StaticSuivi;
 //     ],
 //     []
 // )
-<<<<<<< HEAD
-
-// const series = React.useMemo(
-// 	() => ({
-// 		type: 'bar',
-// 	}),
-// 	[]
-// );
-
-// const axes = React.useMemo(
-// 	() => [
-// 		{ primary: true, type: 'ordinal', position: 'left' },
-// 		{ type: 'linear', position: 'bottom', stacked: true },
-// 	],
-// 	[]
-// );
-
-// const lineChart = (
-// 	// A react-chart hyper-responsively and continuously fills the available
-// 	// space of its parent element automatically
-// 	<div
-// 		style={{
-// 			width: '400px',
-// 			height: '300px',
-// 		}}
-// 	>
-// 		<h1>Les Suivis</h1>
-// 		<Chart data={data} series={series} axes={axes} />
-// 	</div>
-// );
-=======
->>>>>>> 5def5e75a54ba514289f462334a9a586813ff66b
