@@ -9,10 +9,10 @@ function LineChart() {
 			{
 				label: "Nombre d'hébergeurs dans une année",
 				data: [4, 1.75, 4.25, 3, 3],
-				borderColor: ['rgba(255, 206, 86, 0.2)'],
-				backgroundColor: ['rgba(255, 206, 86, 0.2)'],
-				pointBackgroundColor: 'rgba(255, 206, 86, 0.2)',
-				pointBorderColor: 'rgba(255, 206, 86, 0.2)',
+				borderColor: ['rgba(229, 89, 192, 0.2)'],
+				backgroundColor: ['rgba(229, 89, 192, 0.2)'],
+				pointBackgroundColor: 'rgba(229, 89, 192, 0.2)',
+				pointBorderColor: 'rgba(229, 89, 192, 0.2)',
 			},
 			{
 				label: "Nombre des désistements qui n'ont pas abouti",
