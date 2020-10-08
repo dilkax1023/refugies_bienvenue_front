@@ -8,15 +8,21 @@ function BarChart() {
 		datasets: [
 			{
 				label: 'Année 2019',
-				data: [5, 3, 4],
+				data: [3.6, 3, 4],
 				borderColor: ['rgba(239, 146, 53, 0.5)'],
-				backgroundColor: ['rgba(239, 146, 53, 0.5)'],
+				backgroundColor: [
+					'rgba(239, 146, 53, 0.5)',
+					'rgba(255, 205, 86, 0.5)',
+				],
 			},
 			{
 				label: 'Année 2020',
-				data: [1, 4, 3],
+				data: [4, 4, 3],
 				borderColor: ['rgba(45, 162, 235, 0.5)'],
-				backgroundColor: ['rgba(45, 162, 235, 0.5)'],
+				backgroundColor: [
+					'rgba(45, 162, 235, 0.5)',
+					'rgba(89, 229, 145, 0.5)',
+				],
 			},
 		],
 	};
