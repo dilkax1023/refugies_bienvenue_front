@@ -10,7 +10,7 @@ body {
 }
 
 #page-height {
-	height: 100vh;
+	min-height: 100vh;
 	margin: auto;
 	padding: 3vh;
 }
@@ -21,7 +21,7 @@ body {
 }
 
 .navbar {
-	height: 95vh;
+	min-height: 95vh;
 	width: 100%;
 }
 

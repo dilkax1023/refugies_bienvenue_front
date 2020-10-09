@@ -10,6 +10,7 @@ import ContactController from './pages/contact/ContactController';
 import RdvDeSuivi from './pages/rdv/RdvDeSuivi';
 import HebergementsPage from './pages/hebergement/HebergementsPage';
 import BeneficiairesPage from './pages/beneficiaires/BeneficiairesPage';
+import Statistique from './pages/statistiques/PageStatistique';
 
 class App extends React.Component {
 	state = {
@@ -177,6 +178,7 @@ class App extends React.Component {
 					<Route path="/hebergements" component={HebergementsPage} />
 					<Route path="/rdv" component={RdvDeSuivi} />
 					<Route path="/contacts" component={ContactController} />
+					<Route path="/stats" component={Statistique} />
 				</Switch>
 			);
 		}

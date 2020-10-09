@@ -11,7 +11,7 @@ class HomeMain extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			term: '',
+			term: 'CAF',
 			beneficiairesData: [],
 			nbrDePersonneEnFormation: null,
 			contacts: [],
