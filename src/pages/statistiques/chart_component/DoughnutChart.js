@@ -7,7 +7,7 @@ function DoughnutChart() {
 		datasets: [
 			{
 				label: 'Année 2020',
-				data: [4, 2.5],
+				data: [4.35, 2.5],
 				backgroundColor: [
 					'rgba(255, 99, 132, 1)',
 					'rgba(255, 205, 86, 1)',

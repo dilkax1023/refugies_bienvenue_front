@@ -8,7 +8,7 @@ function BarChart() {
 		datasets: [
 			{
 				label: 'Année 2019',
-				data: [3.6, 2.1, 4],
+				data: [3.6, 2.1, 3.4],
 				borderColor: ['rgba(239, 146, 53, 0.5)'],
 				backgroundColor: [
 					'rgba(239, 146, 53, 0.5)',
@@ -22,6 +22,7 @@ function BarChart() {
 				backgroundColor: [
 					'rgba(45, 162, 235, 0.5)',
 					'rgba(89, 229, 145, 0.5)',
+					'rgba(110, 104, 104, 0.5)',
 				],
 			},
 		],

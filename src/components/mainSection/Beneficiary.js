@@ -12,15 +12,8 @@ class Beneficiaires extends React.Component {
 		super(props);
 		this.state = {
 			beneficiairie: {},
-			// selectedVolunteer: [],
-			// volunteerData: [],
-			// name: [],
-
 			errorMessage: null,
 			date: new Date('2020-06-10'),
-			volunteers: {
-				name: '',
-			},
 		};
 
 		this.handleChange = this.handleChange.bind(this);

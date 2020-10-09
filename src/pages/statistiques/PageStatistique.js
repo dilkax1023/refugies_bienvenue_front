@@ -11,13 +11,13 @@ const PageStatistique = (props) => {
 				<div className="col-md-3 col-lg-2 navbar">
 					<Navbar />
 				</div>
-				<div className="col-md-9 col-lg-10 main">
+				<div className="col-md-9 col-lg-9 main">
 					<StaticHebergement />
 				</div>
-				<div className="col-md-9 col-lg-12 main">
+				<div className="col-md-6 col-lg-6 main">
 					<StaticSuivi />
 				</div>
-				<div className="col-md-9 col-lg-12 main">
+				<div className="col-6 col-md-6 col-lg-6 main">
 					<StaticSortie />
 				</div>
 			</div>
