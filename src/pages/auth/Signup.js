@@ -50,7 +50,7 @@ class Signup extends React.Component {
 						<img src={illustration} alt="" />
 					</div>
 					<div className="col-md-6 login_page-form my-auto w-100">
-						<h1 className="text-center mb-3 text-uppercase border-bottom w-min-content text-info">
+						<h1 className="text-center mb-3 text-uppercase border-bottom w-min-content text-primary">
 							Sign Up
 						</h1>
 						<form

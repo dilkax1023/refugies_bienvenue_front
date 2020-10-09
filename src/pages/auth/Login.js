@@ -39,7 +39,7 @@ class Login extends React.Component {
 					</div>
 
 					<div className="col-md-6 login_page-form my-auto w-100">
-						<h1 className="text-center text-info mb-5 text-uppercase">
+						<h1 className="text-center text-primary mb-5 text-uppercase">
 							Log In
 						</h1>
 
