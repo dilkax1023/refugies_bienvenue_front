@@ -22,6 +22,7 @@ function BarChart() {
 				backgroundColor: [
 					'rgba(45, 162, 235, 0.5)',
 					'rgba(89, 229, 145, 0.5)',
+					'rgba(110, 104, 104, 0.5)',
 				],
 			},
 		],
