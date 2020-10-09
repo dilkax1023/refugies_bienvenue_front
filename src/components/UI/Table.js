@@ -17,7 +17,7 @@ const Table = ({ filteredList, title }) => {
 					<th scope="col">Date de naissance</th>
 					<th scope="col" className="text-right">
 						<Button
-							path="/"
+							path="/beneficiaires/add"
 							name="Ajouter"
 							styling="mt-1 px-3  btn btn-primary font-weight-bold"
 						/>

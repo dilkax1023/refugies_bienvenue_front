@@ -10,6 +10,7 @@ import ContactController from './pages/contact/ContactController';
 import RdvDeSuivi from './pages/rdv/RdvDeSuivi';
 import HebergementsPage from './pages/hebergement/HebergementsPage';
 import BeneficiairesPage from './pages/beneficiaires/BeneficiairesPage';
+import Beneficiary from './components/mainSection/Beneficiary';
 import Statistique from './pages/statistiques/PageStatistique';
 
 class App extends React.Component {
@@ -173,7 +174,12 @@ class App extends React.Component {
 						)}
 					/>
 					<Route path="/beneficiary" component={BeneficiairesPage} />
-					<Route path="/beneficiarys" component={HebergementsPage} />
+					<Route
+						path="/beneficiaires"
+						exact
+						component={BeneficiairesPage}
+					/>
+					<Route path="/beneficiaires/add" component={Beneficiary} />
 					<Route path="/hebergement" component={HebergementsPage} />
 					<Route path="/hebergements" component={HebergementsPage} />
 					<Route path="/rdv" component={RdvDeSuivi} />
