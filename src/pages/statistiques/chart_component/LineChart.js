@@ -8,7 +8,7 @@ function LineChart() {
 		datasets: [
 			{
 				label: "Nombre d'hébergeurs dans une année",
-				data: [4, 1.75, 4.25, 3, 3],
+				data: [4, 1.75, 4.25, 3.25, 3],
 				borderColor: ['rgba(229, 89, 192, 0.2)'],
 				backgroundColor: ['rgba(229, 89, 192, 0.2)'],
 				pointBackgroundColor: 'rgba(229, 89, 192, 0.2)',
