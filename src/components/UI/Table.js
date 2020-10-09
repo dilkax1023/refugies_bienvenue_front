@@ -131,10 +131,7 @@ const Table = ({ filteredList, title }) => {
 	if (filteredList.length === 0) {
 		filteredResult = (
 			<div className="container my-2">
-				<Card
-					content="Aucune information trouvé, Essayer de cherchez avec correct term! "
-					smallCard="small"
-				/>
+				<Card content="Je vais faire une recherche" smallCard="small" />
 			</div>
 		);
 		return filteredResult;

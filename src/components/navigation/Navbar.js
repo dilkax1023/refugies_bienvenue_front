@@ -4,7 +4,7 @@ import Button from '../UI/Button';
 
 const Navbar = () => {
 	return (
-		<div className="d-flex flex-column align-items-center w-100">
+		<div className="d-flex flex-column align-items-center w-100 fixed">
 			<h2 className="text-center m-5">Refugees bienvenu</h2>
 			<Button path="/" name="HOME" />
 			<Button path="/beneficiary" name="BENEFICIAIRE" />

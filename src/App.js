@@ -48,7 +48,7 @@ class App extends React.Component {
 				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify({
-				mail: authData.signupForm.email.value,
+				mail: authData.signupForm.mail.value,
 				password: authData.signupForm.password.value,
 				passwordConfirmation:
 					authData.signupForm.passwordConfirmation.value,
