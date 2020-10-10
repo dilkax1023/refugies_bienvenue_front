@@ -68,3 +68,10 @@ body {
 .activeclass {
 	background-color: #42a829;
 }
+
+#date-picker {
+	width: 100%;
+	border: 1px solid rgba(185, 182, 182, 0.623) ;
+	padding: 5px 10px;
+	border-radius: 4px;
+}

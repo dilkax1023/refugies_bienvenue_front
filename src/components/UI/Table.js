@@ -55,7 +55,7 @@ const Table = ({ filteredList, title }) => {
 					<th scope="col">Platform</th>
 					<th scope="col" className="text-right">
 						<Button
-							path="/"
+							path="/rdv/add"
 							name="Ajouter"
 							styling="mt-1 px-3  btn btn-primary font-weight-bold"
 						/>

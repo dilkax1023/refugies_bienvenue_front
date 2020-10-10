@@ -8,6 +8,7 @@ import Home from './pages/home/Home';
 import ContactController from './pages/contact/ContactController';
 // import Hebergement from './pages/hebergement/Hebergement';
 import RdvDeSuivi from './pages/rdv/RdvDeSuivi';
+import AddRdv from './pages/rdv/AddRdv';
 import HebergementsPage from './pages/hebergement/HebergementsPage';
 import BeneficiairesPage from './pages/beneficiaires/BeneficiairesPage';
 import Beneficiary from './components/mainSection/Beneficiary';
@@ -55,6 +56,7 @@ class App extends React.Component {
 					authData.signupForm.passwordConfirmation.value,
 				lastName: authData.signupForm.lastName.value,
 				firstName: authData.signupForm.firstName.value,
+				phone: authData.signupForm.phone.value,
 			}),
 		})
 			.then((res) => {
@@ -182,7 +184,8 @@ class App extends React.Component {
 					<Route path="/beneficiaires/add" component={Beneficiary} />
 					<Route path="/hebergement" component={HebergementsPage} />
 					<Route path="/hebergements" component={HebergementsPage} />
-					<Route path="/rdv" component={RdvDeSuivi} />
+					<Route path="/rdv" exact component={RdvDeSuivi} />
+					<Route path="/rdv/add" component={AddRdv} />
 					<Route path="/contacts" component={ContactController} />
 					<Route path="/stats" component={Statistique} />
 				</Switch>

@@ -5,7 +5,7 @@ import FormGroup from '../../components/UI/FormGroup';
 class Signup extends React.Component {
 	state = {
 		signupForm: {
-			email: {
+			mail: {
 				value: '',
 			},
 			password: {
@@ -58,11 +58,11 @@ class Signup extends React.Component {
 							onSubmit={(e) => this.props.onSignup(e, this.state)}
 						>
 							<FormGroup
-								id="email"
+								id="mail"
 								label="Email"
 								type="email"
 								onChange={this.inputChangeHandler}
-								value={this.state.signupForm['email'].value}
+								value={this.state.signupForm['mail'].value}
 							/>
 							<FormGroup
 								id="password"
