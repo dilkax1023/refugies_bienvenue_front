@@ -1,7 +1,6 @@
 body {
-	height: 100%;
+	height: 100vh;
 	width: 100vw;
-	overflow-y: scroll;
 	background: linear-gradient(
 		180deg,
 		#e7d3d3 0%,
@@ -10,9 +9,13 @@ body {
 }
 
 #page-height {
-	min-height: 100vh;
+	height: 96vh;
 	margin: auto;
-	padding: 3vh;
+}
+
+.login_page {
+	height: 100vh;
+	width: 100vw;
 }
 
 .login_page img {
@@ -20,14 +23,48 @@ body {
 	height: 100vh;
 }
 
+
+
 .navbar {
-	min-height: 95vh;
-	width: 100%;
+	background-color: #16145a;
+	height: 96vh;
+	width:20vw;
 }
+
+.navbar h2 {
+	color: #ffffff;
+	font-family: 'Lobster Two', cursive;
+	letter-spacing: 2px;
+}
+
+.navbar a {
+	font-size: 0.9rem;
+	font-weight: 500;
+}
+
 
 .main {
 	background: #f9f9f9;
+	width: 80vw;
+	min-height: 96vh;
+	
 }
+
+@media screen and (min-width: 992px) {
+	.main {
+		position:absolute;
+		left:19vw;
+		top:2vh;
+		min-height: 96vh;
+	}
+
+	.navbar {
+		position: fixed;
+		top: 2vh;
+		left:2vh;
+		bottom: 2vh;
+	}
+  }
 
 .main .card_rdv {
 	box-shadow: 10px 12px 18px rgba(0, 0, 0, 0.25);
@@ -38,8 +75,8 @@ body {
 	background: linear-gradient(
 		89.44deg,
 		#4e3f89 16.05%,
-		#49566e 24.68%,
-		#3f813a 41.19%,
+		#42a3a8 24.68%,
+		rgb(126, 201, 211) 66.19%,
 		#4e3f89 87.24%
 	);
 	border-radius: 10px;
@@ -54,10 +91,11 @@ body {
 		89.44deg,
 		#4e3f89 16.05%,
 		#49566e 24.68%,
-		#3f813a 41.19%,
+		rgb(72, 141, 168) 41.19%,
 		#4e3f89 87.24%
 	);
 	border-radius: 6px;
+	color:rgb(255, 255, 255)
 }
 .btn-info:hover {
 	background: linear-gradient(89.19deg, #375d79 20.11%, #b64558 87.08%);

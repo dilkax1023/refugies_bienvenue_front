@@ -1,45 +1,22 @@
-import { getByTestId } from '@testing-library/react';
 import React from 'react';
 
-function Select({ label, onChange, value, id, volunteers }) {
-	let select = (
-		<React.Fragment>
-			<option className="text-muted">select</option>
-		</React.Fragment>
-	);
-
-	if (label === 'Bénévole') {
-		select = (
-			<React.Fragment>
-				<option className="text-danger">
-					Aucun bénévole dans le list
-				</option>
-			</React.Fragment>
-		);
-	}
+function Select({ label, onChange, value, id, volunteers, interlocutorData }) {
+	let select;
 
 	if (label === 'Bénévole' && volunteers.length > 0) {
-		const volunteersList = volunteers.map((volunteer, index) => {
+		const volunteersList = volunteers.map((volunteer) => {
 			return (
-				<React.Fragment>
-					<option>
-						{volunteer.lastName} {volunteer.firstName}
-					</option>
-				</React.Fragment>
+				<option>
+					{volunteer.lastName} {volunteer.firstName}
+				</option>
 			);
 		});
 
-		select = (
-			<React.Fragment>
-				<option className="text-muted">select un bénévole</option>
-				{volunteersList}
-			</React.Fragment>
-		);
+		select = <React.Fragment>{volunteersList}</React.Fragment>;
 	}
 	if (label === 'Interlocuteur') {
 		select = (
 			<React.Fragment>
-				<option className="text-muted">select un interlocuteur</option>
 				<option>Bénéficiaire</option>
 				<option>Hébergeur</option>
 				<option>Contact</option>
@@ -47,10 +24,21 @@ function Select({ label, onChange, value, id, volunteers }) {
 		);
 	}
 
+	if (label === 'Nom et prénom' && interlocutorData.length > 0) {
+		const interlocutorList = interlocutorData.map((interlocutor) => {
+			console.log(interlocutor);
+			return (
+				<option>
+					{interlocutor.lastName} {interlocutor.firstName}
+				</option>
+			);
+		});
+		select = <React.Fragment>{interlocutorList}</React.Fragment>;
+	}
+
 	if (label === "En recherche d'emploi?") {
 		select = (
 			<React.Fragment>
-				<option className="text-muted">select</option>
 				<option>Oui</option>
 				<option>Non</option>
 			</React.Fragment>
@@ -59,7 +47,6 @@ function Select({ label, onChange, value, id, volunteers }) {
 	if (label === 'En Formation?') {
 		select = (
 			<React.Fragment>
-				<option className="text-muted">select</option>
 				<option>Oui</option>
 				<option>Non</option>
 			</React.Fragment>
@@ -75,6 +62,7 @@ function Select({ label, onChange, value, id, volunteers }) {
 				onChange={(e) => onChange(id, e.target.value)}
 				value={value}
 			>
+				<option className="text-muted">select</option>
 				{select}
 			</select>
 		</div>

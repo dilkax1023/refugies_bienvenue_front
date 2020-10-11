@@ -1,14 +1,21 @@
 import React from 'react';
 
 const Card = ({ title, smallCard, content, onLogout }) => {
+	const small = {
+		height: '65px',
+	};
+
 	return (
-		<div className="card_rdv card mt-2 p-2">
-			<div className="card-header text-center text-danger font-weight-bold border-0 px-1  mb-2 d-flex justify-content-between">
-				<span>{title} </span>
+		<div className="card mt-2 p-2">
+			<div
+				style={smallCard && small}
+				className="card-header text-center text-primary font-weight-bold border-0 px-2 mb-2"
+			>
+				<span>{title}</span>
 				{title === 'Profile' && (
 					<button
 						onClick={onLogout}
-						className="btn btn-outline-success m-0 px-2 py-1 float-right"
+						className="btn btn-outline-primary m-0 px-2 py-1 float-right"
 					>
 						Logout
 					</button>

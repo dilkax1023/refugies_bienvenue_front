@@ -6,7 +6,7 @@ const Table = ({ filteredList, title }) => {
 	const getTableHead = (title) => {
 		let tableHead;
 
-		if (title === 'beneficiaires') {
+		if (title === 'beneficiary') {
 			tableHead = (
 				<tr>
 					<th scope="col">Nom</th>
@@ -26,7 +26,7 @@ const Table = ({ filteredList, title }) => {
 			);
 		}
 
-		if (title === 'contacts') {
+		if (title === 'contact') {
 			tableHead = (
 				<tr>
 					<th scope="col">Nom</th>
@@ -69,7 +69,7 @@ const Table = ({ filteredList, title }) => {
 
 	const getTableBody = (title, person) => {
 		let tableBody;
-		if (title === 'beneficiaires') {
+		if (title === 'beneficiary') {
 			tableBody = (
 				<tr>
 					<td>{person.lastName}</td>
@@ -88,7 +88,7 @@ const Table = ({ filteredList, title }) => {
 				</tr>
 			);
 		}
-		if (title === 'contacts') {
+		if (title === 'contact') {
 			tableBody = (
 				<tr>
 					<td>{person.lastName}</td>
@@ -108,21 +108,25 @@ const Table = ({ filteredList, title }) => {
 			);
 		}
 		if (title === 'meeting') {
-			tableBody = (
-				<tr>
-					<td>{person.interlocutor}</td>
-					<td>{person.date.toString().slice(0, 10)}</td>
-					<td>{person.date.toString().slice(12, 19)}</td>
-					<td>{person.platform}</td>
-					<td className="text-right py-0">
-						<Button
-							path="/"
-							name="Détail"
-							styling="mt-1 px-3  btn btn-info"
-						/>
-					</td>
-				</tr>
-			);
+			if (person.date === null) {
+				tableBody = <tr></tr>;
+			} else {
+				tableBody = (
+					<tr>
+						<td>{person.interlocutor}</td>
+						<td>{person.date.toString().slice(0, 10)}</td>
+						<td>{person.date.toString().slice(12, 19)}</td>
+						<td>{person.platform}</td>
+						<td className="text-right py-0">
+							<Button
+								path={`/rdv/${person._id}`}
+								name="Détail"
+								styling="mt-1 px-3  btn btn-info"
+							/>
+						</td>
+					</tr>
+				);
+			}
 		}
 		return tableBody;
 	};

@@ -8,6 +8,7 @@ const urlBeneficiary = `${Config.protocol}${Config.host}/beneficiaries`;
 const urlContact = `${Config.protocol}${Config.host}/contacts`;
 const urlLodging = `${Config.protocol}${Config.host}/lodging`;
 const urlVolunteer = `${Config.protocol}${Config.host}/volunteers`;
+const urlMeeting = `${Config.protocol}${Config.host}/meeting`;
 
 class Form extends React.Component {
 	state = {
@@ -15,7 +16,13 @@ class Form extends React.Component {
 			name: {
 				value: '',
 			},
+			mail: {
+				value: '',
+			},
 			date: {
+				value: '',
+			},
+			phone: {
 				value: '',
 			},
 			interlocutor: {
@@ -24,7 +31,7 @@ class Form extends React.Component {
 			nameInter: {
 				value: '',
 			},
-			hidden: {
+			mailInter: {
 				value: '',
 			},
 
@@ -48,15 +55,14 @@ class Form extends React.Component {
 			},
 		},
 		volunteers: [],
-		contacts: [],
-		beneficiaries: [],
-		lodgings: [],
+		interlocutorData: [],
+		rdvDetails: {},
 	};
 
 	componentDidMount() {
-		this.fetchData(urlBeneficiary);
-		this.fetchData(urlContact);
-		this.fetchData(urlLodging);
+		const rdvId = this.props.rdvId;
+		const urlRdvDetails = urlMeeting + '/' + rdvId;
+		console.log(urlRdvDetails);
 		this.fetchData(urlVolunteer);
 	}
 
@@ -69,18 +75,14 @@ class Form extends React.Component {
 				return res.json();
 			})
 			.then((resData) => {
-				// console.log('resDa', resData.data);
-				if (url === urlBeneficiary) {
-					this.setState({ beneficiaires: resData.data });
-				}
-				if (url === urlContact) {
-					this.setState({ contacts: resData.data });
-				}
-				if (url === urlLodging) {
-					this.setState({ lodgings: resData.data });
-				}
+				console.log('resDa', resData.data);
 				if (url === urlVolunteer) {
 					this.setState({ volunteers: resData.data });
+				} else {
+					this.setState({
+						interlocutorData: resData.data,
+						rdvDetails: resData.data,
+					});
 				}
 			})
 			.catch((err) => console.log(err));
@@ -95,11 +97,20 @@ class Form extends React.Component {
 					value: value,
 				},
 			};
-
 			return {
 				addRdvForm: updatedForm,
 			};
 		});
+		if (value === 'Bénéficiaire' && input === 'interlocutor') {
+			console.log(input, value);
+			this.fetchData(urlBeneficiary);
+		}
+		if (value === 'Contact' && input === 'interlocutor') {
+			this.fetchData(urlContact);
+		}
+		if (value === 'Hébergeur' && input === 'interlocutor') {
+			this.fetchData(urlLodging);
+		}
 	};
 
 	onFormSubmit = (event, authData) => {
@@ -111,8 +122,10 @@ class Form extends React.Component {
 				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify({
+				mailVolunteer: authData.addRdvForm.mail.value,
 				interlocutor: authData.addRdvForm.interlocutor.value,
-				name: authData.addRdvForm.name.value,
+				mailInterlocutor: authData.addRdvForm.mailInter.value,
+				phoneInterlocutor: authData.addRdvForm.phone.value,
 				date: authData.addRdvForm.date.value,
 				platform: authData.addRdvForm.platform.value,
 				trainingStatus: authData.addRdvForm.trainingStatus.value,
@@ -120,7 +133,6 @@ class Form extends React.Component {
 				attachements: authData.addRdvForm.attachements.value,
 				commentaires: authData.addRdvForm.commentaires.value,
 				summary: authData.addRdvForm.summary.value,
-				// volunteerId: this.state.volunteers.volunteerId,
 			}),
 		})
 			.then((res) => {
@@ -152,6 +164,8 @@ class Form extends React.Component {
 	render() {
 		const addRdvForm = { ...this.state.addRdvForm };
 		const volunteers = [...this.state.volunteers];
+		const interlocutorData = [...this.state.interlocutorData];
+
 		return (
 			<div>
 				<form
@@ -170,10 +184,10 @@ class Form extends React.Component {
 						</div>
 						<div className="col">
 							<FormGroup
-								id="date"
-								date="Date"
+								id="mail"
+								label="Email"
 								onChange={this.inputChangeHandler}
-								value={addRdvForm['date'].value}
+								value={addRdvForm['mail'].value}
 							/>
 						</div>
 					</div>
@@ -193,11 +207,39 @@ class Form extends React.Component {
 								label="Nom et prénom"
 								onChange={this.inputChangeHandler}
 								value={addRdvForm['nameInter'].value}
+								interlocutorData={interlocutorData}
 							/>
 						</div>
 					</div>
 
 					<div className="row">
+						<div className="col">
+							<FormGroup
+								id="mailInter"
+								label="Email"
+								onChange={this.inputChangeHandler}
+								value={addRdvForm['mailInter'].value}
+							/>
+						</div>
+						<div className="col">
+							<FormGroup
+								id="phone"
+								label="Portable"
+								onChange={this.inputChangeHandler}
+								value={addRdvForm['phone'].value}
+							/>
+						</div>
+					</div>
+
+					<div className="row">
+						<div className="col">
+							<FormGroup
+								id="date"
+								date="Date"
+								onChange={this.inputChangeHandler}
+								value={addRdvForm['date'].value}
+							/>
+						</div>
 						<div className="col">
 							<FormGroup
 								id="platform"
@@ -206,6 +248,9 @@ class Form extends React.Component {
 								value={addRdvForm['platform'].value}
 							/>
 						</div>
+					</div>
+
+					<div className="row">
 						<div className="col">
 							<Select
 								id="jobSearchStatus:"
@@ -223,6 +268,7 @@ class Form extends React.Component {
 							/>
 						</div>
 					</div>
+
 					<div className="row">
 						<div className="col">
 							<TextArea

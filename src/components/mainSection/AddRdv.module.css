@@ -1,0 +1,15 @@
+@media screen and (min-width: 992px) {
+	.main {
+		position:absolute;
+		left:19vw;
+		top:2vh;
+		min-height: 96vh;
+	}
+
+	.navbar {
+		position: fixed;
+		top: 2vh;
+		left:2vh;
+		bottom: 2vh;
+	}
+  }

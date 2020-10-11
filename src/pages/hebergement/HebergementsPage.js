@@ -37,7 +37,7 @@ class Hebergement extends React.Component {
 					<div className="col-md-9 col-lg-10 main">
 						<Table
 							filteredList={this.state.beneficiaires}
-							title="beneficiaires"
+							title="beneficiary"
 						/>
 					</div>
 				</div>

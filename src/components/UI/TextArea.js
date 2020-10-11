@@ -10,6 +10,7 @@ const TextArea = ({ onChange, value, label, id }) => {
 				rows="3"
 				onChange={(e) => onChange(id, e.target.value)}
 				value={value}
+				placeholder={label}
 			></textarea>
 		</div>
 	);

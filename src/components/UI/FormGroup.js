@@ -10,6 +10,7 @@ class FormGroup extends React.Component {
 			<input
 				type={type}
 				className="form-control"
+				placeholder={label}
 				onChange={(e) => onChange(id, e.target.value)}
 				value={value}
 			/>
@@ -32,7 +33,7 @@ class FormGroup extends React.Component {
 		}
 
 		return (
-			<div className="form-group mt-2  d-flex flex-column">
+			<div className="form-group  d-flex flex-column">
 				<label>{label || date}</label>
 				{input}
 			</div>
