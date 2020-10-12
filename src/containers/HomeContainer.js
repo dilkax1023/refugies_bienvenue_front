@@ -1,8 +1,8 @@
 import React from 'react';
-import Card from '../UI/Card';
-import SearchBar from '../UI/SearchBar';
-import Table from '../UI/Table';
-import Config from '../../utils/Config';
+import Card from '../components/UI/Card';
+import SearchBar from '../components/UI/SearchBar';
+import Table from '../components/UI/Table';
+import Config from '../utils/Config';
 
 const urlBeneficiary = `${Config.protocol}${Config.host}/beneficiaries`;
 const urlContact = `${Config.protocol}${Config.host}/contacts`;
@@ -10,7 +10,7 @@ const urlLodging = `${Config.protocol}${Config.host}/lodging`;
 const urlVolunteer = `${Config.protocol}${Config.host}/volunteers`;
 const urlMeetings = `${Config.protocol}${Config.host}/meetings`;
 
-class HomeMain extends React.Component {
+class HomeContainer extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -230,4 +230,4 @@ class HomeMain extends React.Component {
 	}
 }
 
-export default HomeMain;
+export default HomeContainer;

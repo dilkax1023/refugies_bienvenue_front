@@ -1,6 +1,6 @@
 import React from 'react';
 import Navbar from '../../components/navigation/Navbar';
-import HomeMain from '../../components/mainSection/HomeMain';
+import HomeContainer from '../../containers/HomeContainer';
 
 const Home = ({ onLogout }) => {
 	return (
@@ -10,7 +10,7 @@ const Home = ({ onLogout }) => {
 					<Navbar />
 				</div>
 				<div className="col-md-9 col-lg-10 main">
-					<HomeMain onLogout={onLogout} />
+					<HomeContainer onLogout={onLogout} />
 				</div>
 			</div>
 		</div>

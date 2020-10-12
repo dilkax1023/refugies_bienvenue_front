@@ -1,7 +1,6 @@
-// import React, { useState } from "react";
 import React, { Component } from 'react';
 import DatePicker from 'react-datepicker';
-import Volunteers from './Volunteers';
+import Volunteers from './VolunteerContainer';
 import './Beneficiaires.css';
 
 class Beneficiaires extends Component {

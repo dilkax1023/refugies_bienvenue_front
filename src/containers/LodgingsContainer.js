@@ -1,8 +1,7 @@
 import React from 'react';
-import Navbar from '../../components/navigation/Navbar';
-import Table from '../../components/UI/Table';
+import Lodgings from '../pages/lodging/Lodgings';
 
-class Lodging extends React.Component {
+class LodgingsContainer extends React.Component {
 	state = {
 		lodgings: [],
 	};
@@ -30,20 +29,10 @@ class Lodging extends React.Component {
 	render() {
 		return (
 			<div>
-				<div className="row" id="page-height">
-					<div className="col-md-3 col-lg-2 navbar">
-						<Navbar />
-					</div>
-					<div className="col-md-9 col-lg-10 main">
-						<Table
-							// filteredList={this.state.lodgings}
-							title="lodging"
-						/>
-					</div>
-				</div>
+				<Lodgings lodgings={this.state.lodgings} />
 			</div>
 		);
 	}
 }
 
-export default Lodging;
+export default LodgingsContainer;

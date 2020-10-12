@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import AsyncSelect from 'react-select/async';
 
 class Volunteers extends Component {
 	state = {

@@ -1,6 +1,6 @@
 import React from 'react';
 import Navbar from '../../components/navigation/Navbar';
-import RdvDetailsMain from '../../components/mainSection/RdvDetailsMain';
+import RdvDetailsContainer from '../../containers/RdvDetailsContainer';
 
 const RdvDetails = (props) => {
 	const rdvId = props.match.params.id;
@@ -12,7 +12,7 @@ const RdvDetails = (props) => {
 					<Navbar />
 				</div>
 				<div className="col-md-9 col-lg-10 main">
-					<RdvDetailsMain rdvId={rdvId} />
+					<RdvDetailsContainer rdvId={rdvId} />
 				</div>
 			</div>
 		</div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import Navbar from '../../components/navigation/Navbar';
-import AddRendezVous from '../../components/mainSection/AddRendezVous';
+import AddRdvContainer from '../../containers/AddRdvContainer';
 
 const AddRdv = () => {
 	return (
@@ -10,7 +10,7 @@ const AddRdv = () => {
 					<Navbar />
 				</div>
 				<div className="col-md-9 col-lg-10 main">
-					<AddRendezVous />
+					<AddRdvContainer />
 				</div>
 			</div>
 		</div>

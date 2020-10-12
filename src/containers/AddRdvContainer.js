@@ -1,13 +1,12 @@
 import React from 'react';
-import Form from '../UI/Form';
-import Config from '../../utils/Config';
+import Form from '../components/UI/Form';
+import Config from '../utils/Config';
 import classes from './AddRdv.module.css';
 
 const urlBeneficiary = `${Config.protocol}${Config.host}/beneficiaries`;
 const urlContact = `${Config.protocol}${Config.host}/contacts`;
 const urlLodging = `${Config.protocol}${Config.host}/lodging`;
 const urlVolunteer = `${Config.protocol}${Config.host}/volunteers`;
-const urlMeeting = `${Config.protocol}${Config.host}/meeting`;
 
 class AddRendezVous extends React.Component {
 	state = {
@@ -55,14 +54,9 @@ class AddRendezVous extends React.Component {
 		},
 		volunteers: [],
 		interlocutorData: [],
-		rdvDetails: {},
 	};
 
 	componentDidMount() {
-		const rdvId = this.props.rdvId;
-		const urlRdvDetails = urlMeeting + '/' + rdvId;
-		console.log(urlRdvDetails);
-		this.fetchData(urlRdvDetails);
 		this.fetchData(urlVolunteer);
 	}
 
@@ -78,11 +72,6 @@ class AddRendezVous extends React.Component {
 				console.log('resDa', resData.data);
 				if (url === urlVolunteer) {
 					this.setState({ volunteers: resData.data });
-				}
-				if (url === '') {
-					this.setState({
-						rdvDetails: resData.data,
-					});
 				} else {
 					this.setState({
 						interlocutorData: resData.data,
@@ -168,7 +157,6 @@ class AddRendezVous extends React.Component {
 	render() {
 		const addRdvForm = { ...this.state.addRdvForm };
 		const volunteers = [...this.state.volunteers];
-		const rdvDetails = [...this.state.rdvDetails];
 		const interlocutorData = [...this.state.interlocutorData];
 
 		return (
@@ -181,7 +169,6 @@ class AddRendezVous extends React.Component {
 					interlocutorData={interlocutorData}
 					onFormSubmit={this.onFormSubmit}
 					authData={addRdvForm}
-					rdvDetails={rdvDetails}
 				/>
 			</div>
 		);

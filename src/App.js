@@ -5,14 +5,14 @@ import './App.css';
 import Login from './pages/auth/Login';
 import Signup from './pages/auth/Signup';
 import Home from './pages/home/Home';
-import ContactController from './pages/contact/ContactController';
+import Contacts from './pages/contact/Contacts';
 import AddLodging from './pages/lodging/AddLodging';
 import RdvDeSuivi from './pages/rdv/RdvDeSuivi';
 import AddRdv from './pages/rdv/AddRdv';
 import RdvDetails from './pages/rdv/RdvDetails';
-import Lodging from './pages/lodging/Lodging';
-import BeneficiairesPage from './pages/beneficiaires/BeneficiairesPage';
-import Beneficiary from './components/mainSection/Beneficiary';
+import Lodgings from './pages/lodging/Lodgings';
+import Beneficiaires from './pages/beneficiary/Beneficiaires';
+import AddBeneficiary from './pages/beneficiary/AddBeneficiary';
 import Statistique from './pages/statistiques/PageStatistique';
 
 class App extends React.Component {
@@ -176,19 +176,26 @@ class App extends React.Component {
 							<Home {...props} onLogout={this.logoutHandler} />
 						)}
 					/>
-					<Route path="/beneficiary" component={BeneficiairesPage} />
 					<Route
-						path="/beneficiaires"
+						path="/beneficiary"
 						exact
-						component={BeneficiairesPage}
+						component={Beneficiaires}
 					/>
-					<Route path="/beneficiaires/add" component={Beneficiary} />
-					<Route path="/lodging" component={Lodging} />
+					{/* <Route
+						path="/beneficiaires"
+						
+						component={Beneficiaires}
+					/> */}
+					<Route
+						path="/beneficiaires/add"
+						component={AddBeneficiary}
+					/>
+					<Route path="/lodging" component={Lodgings} />
 					<Route path="/logding/add" component={AddLodging} />
 					<Route path="/rdv" exact component={RdvDeSuivi} />
 					<Route path="/rdv/add" exact component={AddRdv} />
 					<Route path="/rdv/:id" component={RdvDetails} />
-					<Route path="/contacts" component={ContactController} />
+					<Route path="/contacts" component={Contacts} />
 					<Route path="/stats" component={Statistique} />
 				</Switch>
 			);
