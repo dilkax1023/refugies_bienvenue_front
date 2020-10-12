@@ -6,7 +6,7 @@ import { NavLink } from 'react-router-dom';
 class Login extends React.Component {
 	state = {
 		loginForm: {
-			email: {
+			mail: {
 				value: '',
 			},
 			password: {
@@ -47,7 +47,7 @@ class Login extends React.Component {
 							className="w-50 mx-auto"
 							onSubmit={(e) =>
 								this.props.onLogin(e, {
-									email: this.state.loginForm.email.value,
+									mail: this.state.loginForm.mail.value,
 									password: this.state.loginForm.password
 										.value,
 								})
@@ -56,9 +56,9 @@ class Login extends React.Component {
 							<FormGroup
 								label="Email"
 								type="email"
-								id="email"
+								id="mail"
 								onChange={this.inputChangeHandler}
-								value={this.state.loginForm['email'].value}
+								value={this.state.loginForm['mail'].value}
 							/>
 							<FormGroup
 								label="Password"

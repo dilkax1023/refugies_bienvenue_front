@@ -7,7 +7,7 @@ import Volunteers from './Volunteers';
 import 'react-datepicker/dist/react-datepicker.css';
 import './Beneficiaires.css';
 
-class Beneficiaires extends React.Component {
+class Beneficiaires extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {

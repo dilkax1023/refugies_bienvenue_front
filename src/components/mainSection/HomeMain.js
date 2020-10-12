@@ -6,6 +6,9 @@ import Config from '../../utils/Config';
 
 const urlBeneficiary = `${Config.protocol}${Config.host}/beneficiaries`;
 const urlContact = `${Config.protocol}${Config.host}/contacts`;
+const urlLodging = `${Config.protocol}${Config.host}/lodging`;
+const urlVolunteer = `${Config.protocol}${Config.host}/volunteers`;
+const urlMeetings = `${Config.protocol}${Config.host}/meetings`;
 
 class HomeMain extends React.Component {
 	constructor(props) {
@@ -13,16 +16,25 @@ class HomeMain extends React.Component {
 		this.state = {
 			term: 'CAF',
 			beneficiairesData: [],
-			nbrDePersonneEnFormation: null,
 			contacts: [],
+			lodgings: [],
+			volunteers: [],
+			meetings: [],
+			nbrDePersonneEnFormation: null,
 			filteredListBene: [],
 			filteredListCon: [],
+			filteredListVol: [],
+			filteredListLod: [],
+			filteredListMeet: [],
 		};
 	}
 
 	componentDidMount() {
 		this.fetchData(urlBeneficiary);
 		this.fetchData(urlContact);
+		this.fetchData(urlLodging);
+		this.fetchData(urlVolunteer);
+		this.fetchData(urlMeetings);
 	}
 
 	fetchData = (url) => {
@@ -41,6 +53,15 @@ class HomeMain extends React.Component {
 				if (url === urlContact) {
 					this.setState({ contacts: resData.data });
 				}
+				if (url === urlLodging) {
+					this.setState({ lodgings: resData.data });
+				}
+				if (url === urlVolunteer) {
+					this.setState({ volunteers: resData.data });
+				}
+				if (url === urlMeetings) {
+					this.setState({ meetings: resData.data });
+				}
 			})
 			.catch((err) => console.log(err));
 	};
@@ -57,9 +78,15 @@ class HomeMain extends React.Component {
 		const searchTerm = this.state.term;
 		const allbeneficiaires = [...this.state.beneficiairesData];
 		const allContacts = [...this.state.contacts];
+		const allLodgings = [...this.state.lodgings];
+		const allVolunteers = [...this.state.volunteers];
+		const allMeetings = [...this.state.meetings];
 
 		this.getFilteredList(allbeneficiaires, searchTerm, 'beneficiary');
 		this.getFilteredList(allContacts, searchTerm, 'contact');
+		this.getFilteredList(allLodgings, searchTerm, 'lodging');
+		this.getFilteredList(allVolunteers, searchTerm, 'volunteer');
+		this.getFilteredList(allMeetings, searchTerm, 'meeting');
 	};
 
 	getFilteredList = (arr, term, comefrom) => {
@@ -75,6 +102,15 @@ class HomeMain extends React.Component {
 		if (comefrom === 'beneficiary') {
 			this.setState({ filteredListBene: filteredList });
 		}
+		if (comefrom === 'lodging') {
+			this.setState({ filteredListLod: filteredList });
+		}
+		if (comefrom === 'volunteer') {
+			this.setState({ filteredListVol: filteredList });
+		}
+		if (comefrom === 'meeting') {
+			this.setState({ filteredListMeet: filteredList });
+		}
 	};
 
 	render() {
@@ -84,6 +120,60 @@ class HomeMain extends React.Component {
 			personneEnFormation = beneficiaires.filter(
 				(person) => person.followsCourse === true
 			).length;
+		}
+
+		// console.log('lodgings', this.state.lodgings);
+		// console.log('meetings', this.state.meetings);
+		// console.log('volunteer', this.state.volunteers);
+
+		const {
+			filteredListBene,
+			filteredListCon,
+			filteredListLod,
+			filteredListVol,
+			filteredListMeet,
+		} = this.state;
+
+		let table;
+		if (filteredListBene.length > 0) {
+			table = (
+				<Table
+					title="beneficiary"
+					filteredList={this.state.filteredListBene}
+				/>
+			);
+		}
+		if (filteredListLod.length > 0) {
+			table = (
+				<Table
+					title="lodging"
+					filteredList={this.state.filteredListLod}
+				/>
+			);
+		}
+		if (filteredListCon.length > 0) {
+			table = (
+				<Table
+					title="contact"
+					filteredList={this.state.filteredListCon}
+				/>
+			);
+		}
+		if (filteredListVol.length > 0) {
+			table = (
+				<Table
+					title="volunteer"
+					filteredList={this.state.filteredListVol}
+				/>
+			);
+		}
+		if (filteredListMeet.length > 0) {
+			table = (
+				<Table
+					title="meeting"
+					filteredList={this.state.filteredListMeet}
+				/>
+			);
 		}
 
 		return (
@@ -134,19 +224,7 @@ class HomeMain extends React.Component {
 					onClickSearch={this.onClickSearch}
 					onInputChange={this.onInputChange}
 				/>
-				<div className="row ">
-					{this.state.filteredListCon.length > 0 ? (
-						<Table
-							title="contacts"
-							filteredList={this.state.filteredListCon}
-						/>
-					) : (
-						<Table
-							title="beneficiaires"
-							filteredList={this.state.filteredListBene}
-						/>
-					)}
-				</div>
+				<div className="row ">{table}</div>
 			</React.Fragment>
 		);
 	}

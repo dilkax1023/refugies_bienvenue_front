@@ -8,6 +8,8 @@ import Home from './pages/home/Home';
 import ContactController from './pages/contact/ContactController';
 // import Hebergement from './pages/hebergement/Hebergement';
 import RdvDeSuivi from './pages/rdv/RdvDeSuivi';
+import AddRdv from './pages/rdv/AddRdv';
+import RdvDetails from './pages/rdv/RdvDetails';
 import HebergementsPage from './pages/hebergement/HebergementsPage';
 import BeneficiairesPage from './pages/beneficiaires/BeneficiairesPage';
 import Beneficiary from './components/mainSection/Beneficiary';
@@ -59,6 +61,7 @@ class App extends React.Component {
 					authData.signupForm.passwordConfirmation.value,
 				lastName: authData.signupForm.lastName.value,
 				firstName: authData.signupForm.firstName.value,
+				phone: authData.signupForm.phone.value,
 			}),
 		})
 			.then((res) => {
@@ -100,7 +103,7 @@ class App extends React.Component {
 				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify({
-				mail: authData.email,
+				mail: authData.mail,
 				password: authData.password,
 			}),
 		})
@@ -202,6 +205,9 @@ class App extends React.Component {
 					<Route path="/hebergements" component={HebergementsPage} />
 					<Route path="/bilan" component={BilansController} />
 					<Route path="/rdv" component={RdvDeSuivi} />
+					<Route path="/rdv" exact component={RdvDeSuivi} />
+					<Route path="/rdv/add" exact component={AddRdv} />
+					<Route path="/rdv/:id" component={RdvDetails} />
 					<Route path="/contacts" component={ContactController} />
 					<Route path="/stats" component={Statistique} />
 				</Switch>

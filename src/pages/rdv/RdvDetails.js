@@ -1,8 +1,10 @@
 import React from 'react';
 import Navbar from '../../components/navigation/Navbar';
-import AddRendezVous from '../../components/mainSection/AddRendezVous';
+import RdvDetailsMain from '../../components/mainSection/RdvDetailsMain';
 
-const AddRdv = () => {
+const RdvDetails = (props) => {
+	const rdvId = props.match.params.id;
+
 	return (
 		<div>
 			<div className="row" id="page-height">
@@ -10,11 +12,11 @@ const AddRdv = () => {
 					<Navbar />
 				</div>
 				<div className="col-md-9 col-lg-10 main">
-					<AddRendezVous />
+					<RdvDetailsMain rdvId={rdvId} />
 				</div>
 			</div>
 		</div>
 	);
 };
 
-export default AddRdv;
+export default RdvDetails;

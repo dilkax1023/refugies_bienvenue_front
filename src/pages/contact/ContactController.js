@@ -37,7 +37,7 @@ class Contact extends React.Component {
 					<div className="col-md-9 col-lg-10 main">
 						<Table
 							filteredList={this.state.contacts}
-							title="contacts"
+							title="contact"
 						/>
 					</div>
 				</div>
