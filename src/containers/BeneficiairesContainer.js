@@ -1,7 +1,7 @@
 import React from 'react';
 import Beneficiaries from '../pages/beneficiary/Beneficiaires';
 
-class BeneficiarisContainer extends React.Component {
+class BeneficiairesContainer extends React.Component {
 	state = {
 		beneficiaires: [],
 	};
@@ -29,10 +29,10 @@ class BeneficiarisContainer extends React.Component {
 	render() {
 		return (
 			<div>
-				<Beneficiaries filteredList={this.state.beneficiaires} />
+				<Beneficiaries beneficiaires={this.state.beneficiaires} />
 			</div>
 		);
 	}
 }
 
-export default BeneficiarisContainer;
+export default BeneficiairesContainer;

@@ -21,6 +21,7 @@ const Card = ({ title, smallCard, content, onLogout }) => {
 					</button>
 				)}
 			</div>
+
 			<ul className="list-unstyled border-none">
 				{smallCard ? (
 					<li className={'mt-1'}>

@@ -3,6 +3,7 @@ import Card from '../components/UI/Card';
 import SearchBar from '../components/UI/SearchBar';
 import Table from '../components/UI/Table';
 import Config from '../utils/Config';
+import CardSearchResult from '../components/UI/CardSearchResult';
 
 const urlBeneficiary = `${Config.protocol}${Config.host}/beneficiaries`;
 const urlContact = `${Config.protocol}${Config.host}/contacts`;
@@ -14,7 +15,7 @@ class HomeContainer extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			term: 'CAF',
+			term: '',
 			beneficiairesData: [],
 			contacts: [],
 			lodgings: [],
@@ -46,7 +47,7 @@ class HomeContainer extends React.Component {
 				return res.json();
 			})
 			.then((resData) => {
-				// console.log('resDa', resData.data);
+				console.log('resDa', resData.data);
 				if (url === urlBeneficiary) {
 					this.setState({ beneficiairesData: resData.data });
 				}
@@ -67,15 +68,17 @@ class HomeContainer extends React.Component {
 	};
 
 	onInputChange = (term) => {
-		const sTerm = term.toLowerCase();
+		const sTerm = term.toString().toLowerCase();
 		this.setState({ term: sTerm });
 	};
 
-	onClickSearch = async (e) => {
+	onClickSearch = (e) => {
 		e.preventDefault();
-		this.setState({ term: '' });
+		let searchTerm = this.state.term;
+		if (searchTerm === '') {
+			return;
+		}
 
-		const searchTerm = this.state.term;
 		const allbeneficiaires = [...this.state.beneficiairesData];
 		const allContacts = [...this.state.contacts];
 		const allLodgings = [...this.state.lodgings];
@@ -95,6 +98,9 @@ class HomeContainer extends React.Component {
 			const loweredArray = myArray.join('/').toLowerCase().split('/');
 			return loweredArray.indexOf(term) !== -1;
 		});
+
+		// if (filteredList === []) {
+		// }
 
 		if (comefrom === 'contact') {
 			this.setState({ filteredListCon: filteredList });
@@ -134,46 +140,24 @@ class HomeContainer extends React.Component {
 			filteredListMeet,
 		} = this.state;
 
-		let table;
+		let table = <CardSearchResult />;
+
 		if (filteredListBene.length > 0) {
 			table = (
-				<Table
-					title="beneficiary"
-					filteredList={this.state.filteredListBene}
-				/>
+				<Table title="beneficiary" filteredList={filteredListBene} />
 			);
 		}
 		if (filteredListLod.length > 0) {
-			table = (
-				<Table
-					title="lodging"
-					filteredList={this.state.filteredListLod}
-				/>
-			);
+			table = <Table title="lodging" filteredList={filteredListLod} />;
 		}
 		if (filteredListCon.length > 0) {
-			table = (
-				<Table
-					title="contact"
-					filteredList={this.state.filteredListCon}
-				/>
-			);
+			table = <Table title="contact" filteredList={filteredListCon} />;
 		}
 		if (filteredListVol.length > 0) {
-			table = (
-				<Table
-					title="volunteer"
-					filteredList={this.state.filteredListVol}
-				/>
-			);
+			table = <Table title="volunteer" filteredList={filteredListVol} />;
 		}
 		if (filteredListMeet.length > 0) {
-			table = (
-				<Table
-					title="meeting"
-					filteredList={this.state.filteredListMeet}
-				/>
-			);
+			table = <Table title="meeting" filteredList={filteredListMeet} />;
 		}
 
 		return (
@@ -223,8 +207,9 @@ class HomeContainer extends React.Component {
 				<SearchBar
 					onClickSearch={this.onClickSearch}
 					onInputChange={this.onInputChange}
+					value={this.state.term}
 				/>
-				<div className="row ">{table}</div>
+				<div className="row p-0 m-0 w-100">{table}</div>
 			</React.Fragment>
 		);
 	}

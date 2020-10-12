@@ -2,7 +2,15 @@ import React from 'react';
 import Card from './Card';
 import Button from './Button';
 
-const Table = ({ filteredList, title }) => {
+const Table = ({
+	filteredList,
+	title,
+
+	// lodgings,
+	// beneficiaires,
+	// meetings,
+}) => {
+	console.log('hello guyas', filteredList);
 	const getTableHead = (title) => {
 		let tableHead;
 
@@ -147,6 +155,7 @@ const Table = ({ filteredList, title }) => {
 				</tr>
 			);
 		}
+
 		if (title === 'meeting') {
 			if (person.date === null) {
 				tableBody = <tr></tr>;
@@ -155,7 +164,7 @@ const Table = ({ filteredList, title }) => {
 					<tr>
 						<td>{person.interlocutor}</td>
 						<td>{person.date.toString().slice(0, 10)}</td>
-						<td>{person.date.toString().slice(12, 19)}</td>
+						<td>{person.date.toString().slice(11, 19)}</td>
 						<td>{person.platform}</td>
 						<td className="text-right py-0">
 							<Button
@@ -172,22 +181,94 @@ const Table = ({ filteredList, title }) => {
 	};
 
 	let filteredResult;
+	// let contactList;
+	// let beneList;
+	// let meetingList;
+	// let lodgingList;
+
 	if (filteredList.length === 0) {
 		filteredResult = (
 			<div className="container my-2">
-				<Card content="Je vais faire une recherche" smallCard="small" />
+				<Card smallCard="small" content="Données ne sont pas trouvés" />
 			</div>
 		);
-		return filteredResult;
+		return filteredList;
+	} else {
+		filteredResult = filteredList.map((person, index) => {
+			return (
+				<React.Fragment key={index}>
+					{getTableBody(title, person)}
+				</React.Fragment>
+			);
+		});
 	}
 
-	filteredResult = filteredList.map((person, index) => {
-		return (
-			<React.Fragment key={index}>
-				{getTableBody(title, person)}
-			</React.Fragment>
-		);
-	});
+	// if (contacts === 0) {
+	// 	contactList = (
+	// 		<div className="container my-2">
+	// 			<Card content="Données ne sont pas encore listé" />
+	// 		</div>
+	// 	);
+
+	// 	return contactList;
+	// } else {
+	// 	contactList = contacts.map((contact, index) => {
+	// 		return (
+	// 			<React.Fragment key={index}>
+	// 				{getTableBody('contact', contact)}
+	// 			</React.Fragment>
+	// 		);
+	// 	});
+	// }
+
+	// if (beneficiaires === undefined) {
+	// 	beneList = (
+	// 		<div className="container my-2">
+	// 			<Card content="Données ne sont pas encore listé" />
+	// 		</div>
+	// 	);
+
+	// 	return beneList;
+	// }
+	// beneList = beneficiaires.map((beneficiary, index) => {
+	// 	return (
+	// 		<React.Fragment key={index}>
+	// 			{getTableBody('beneficiary', beneficiary)}
+	// 		</React.Fragment>
+	// 	);
+	// });
+
+	// if (meetings === undefined) {
+	// 	meetingList = (
+	// 		<div className="container my-2">
+	// 			<Card content="Données ne sont pas encore listé" />
+	// 		</div>
+	// 	);
+	// 	return meetingList;
+	// }
+	// meetingList = meetings.map((meeting, index) => {
+	// 	return (
+	// 		<React.Fragment key={index}>
+	// 			{getTableBody('meeting', meeting)}
+	// 		</React.Fragment>
+	// 	);
+	// });
+
+	// if (lodgings === undefined) {
+	// 	lodgingList = (
+	// 		<div className="container my-2">
+	// 			<Card content="Données ne sont pas encore listé" />
+	// 		</div>
+	// 	);
+	// 	return lodgingList;
+	// }
+	// lodgingList = lodgings.map((lodging, index) => {
+	// 	return (
+	// 		<React.Fragment key={index}>
+	// 			{getTableBody('lodging', lodging)}
+	// 		</React.Fragment>
+	// 	);
+	// });
 
 	return (
 		<div className="container my-2">

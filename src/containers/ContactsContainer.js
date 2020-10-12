@@ -1,13 +1,16 @@
 import React from 'react';
 import Contacts from '../pages/contact/Contacts';
+import Config from '../utils/Config';
 
-class Contact extends React.Component {
+const urlContact = `${Config.protocol}${Config.host}/contacts`;
+
+class ContactsContainer extends React.Component {
 	state = {
 		contacts: [],
 	};
 
 	componentDidMount() {
-		this.fetchData('http://localhost:3002/api/contacts');
+		this.fetchData(urlContact);
 	}
 
 	fetchData = (url) => {
@@ -19,7 +22,7 @@ class Contact extends React.Component {
 				return res.json();
 			})
 			.then((resData) => {
-				console.log('resDa', resData.data);
+				console.log('resDaContact', resData.data);
 
 				this.setState({ contacts: resData.data });
 			})
@@ -35,4 +38,4 @@ class Contact extends React.Component {
 	}
 }
 
-export default Contact;
+export default ContactsContainer;
