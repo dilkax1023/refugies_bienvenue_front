@@ -12,6 +12,10 @@ import HebergementsPage from './pages/hebergement/HebergementsPage';
 import BeneficiairesPage from './pages/beneficiaires/BeneficiairesPage';
 import Beneficiary from './components/mainSection/Beneficiary';
 import Statistique from './pages/statistiques/PageStatistique';
+import BilansController from './pages/bilan/BilansController';
+import BilanController from './pages/bilan/BilanController';
+import BeneficiaryBilansController from './pages/bilan/BeneficiaryBilansController';
+import AddBilan from './components/mainSection/AddBilan';
 
 class App extends React.Component {
 	state = {
@@ -173,6 +177,20 @@ class App extends React.Component {
 							<Home {...props} onLogout={this.logoutHandler} />
 						)}
 					/>
+					<Route
+						path="/beneficiaires/:beneficiaryId/bilans/ajouter"
+						exact
+						component={AddBilan}
+					/>
+					<Route
+						path="/beneficiaires/:beneficiaryId/bilans/:bilanId"
+						exact
+						component={BilanController}
+					/>
+					<Route
+						path="/beneficiaires/:id/bilans"
+						component={BeneficiaryBilansController}
+					/>
 					<Route path="/beneficiary" component={BeneficiairesPage} />
 					<Route
 						path="/beneficiaires"
@@ -182,6 +200,7 @@ class App extends React.Component {
 					<Route path="/beneficiaires/add" component={Beneficiary} />
 					<Route path="/hebergement" component={HebergementsPage} />
 					<Route path="/hebergements" component={HebergementsPage} />
+					<Route path="/bilan" component={BilansController} />
 					<Route path="/rdv" component={RdvDeSuivi} />
 					<Route path="/contacts" component={ContactController} />
 					<Route path="/stats" component={Statistique} />
