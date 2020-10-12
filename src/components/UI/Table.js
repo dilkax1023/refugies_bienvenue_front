@@ -118,6 +118,11 @@ const Table = ({ filteredList, title }) => {
 							name="Détail"
 							styling="mt-1 px-3  btn btn-info"
 						/>
+						<Button
+							path={`/beneficiaires/${person._id}/bilans/ajouter`}
+							name="Ajouter un bilan"
+							styling="mt-1 px-3  btn btn-info"
+						/>
 					</td>
 				</tr>
 			);
