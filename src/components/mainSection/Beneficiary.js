@@ -1,10 +1,7 @@
 // import React, { useState } from "react";
 import React, { Component } from 'react';
 import DatePicker from 'react-datepicker';
-// import Select from 'react-select';
-// import AsyncSelect from 'react-select/async';
 import Volunteers from './Volunteers';
-import 'react-datepicker/dist/react-datepicker.css';
 import './Beneficiaires.css';
 
 class Beneficiaires extends Component {

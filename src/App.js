@@ -6,11 +6,11 @@ import Login from './pages/auth/Login';
 import Signup from './pages/auth/Signup';
 import Home from './pages/home/Home';
 import ContactController from './pages/contact/ContactController';
-// import Hebergement from './pages/hebergement/Hebergement';
+import AddLodging from './pages/lodging/AddLodging';
 import RdvDeSuivi from './pages/rdv/RdvDeSuivi';
 import AddRdv from './pages/rdv/AddRdv';
 import RdvDetails from './pages/rdv/RdvDetails';
-import HebergementsPage from './pages/hebergement/HebergementsPage';
+import Lodging from './pages/lodging/Lodging';
 import BeneficiairesPage from './pages/beneficiaires/BeneficiairesPage';
 import Beneficiary from './components/mainSection/Beneficiary';
 import Statistique from './pages/statistiques/PageStatistique';
@@ -183,8 +183,8 @@ class App extends React.Component {
 						component={BeneficiairesPage}
 					/>
 					<Route path="/beneficiaires/add" component={Beneficiary} />
-					<Route path="/hebergement" component={HebergementsPage} />
-					<Route path="/hebergements" component={HebergementsPage} />
+					<Route path="/lodging" component={Lodging} />
+					<Route path="/logding/add" component={AddLodging} />
 					<Route path="/rdv" exact component={RdvDeSuivi} />
 					<Route path="/rdv/add" exact component={AddRdv} />
 					<Route path="/rdv/:id" component={RdvDetails} />

@@ -7,7 +7,7 @@ const Navbar = () => {
 			<h2 className="text-center m-5">Refugees bienvenu</h2>
 			<Button path="/" name="HOME" />
 			<Button path="/beneficiary" name="BENEFICIAIRE" />
-			<Button path="/hebergement" name="HEBERGEMENT" />
+			<Button path="/lodging" name="HEBERGEMENT" />
 			<Button path="/rdv" name="RDV DE SUIVI" />
 			<Button path="/contacts" name="CONTACTS" />
 			<Button path="/stats" name="STATISTIQUES" />

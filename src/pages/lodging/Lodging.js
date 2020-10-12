@@ -2,13 +2,13 @@ import React from 'react';
 import Navbar from '../../components/navigation/Navbar';
 import Table from '../../components/UI/Table';
 
-class Hebergement extends React.Component {
+class Lodging extends React.Component {
 	state = {
-		beneficiaires: [],
+		lodgings: [],
 	};
 
 	componentDidMount() {
-		this.fetchData('http://localhost:3002/api/beneficiaries');
+		this.fetchData('http://localhost:3002/api/lodging');
 	}
 
 	fetchData = (url) => {
@@ -22,7 +22,7 @@ class Hebergement extends React.Component {
 			.then((resData) => {
 				console.log('resDa', resData.data);
 
-				this.setState({ beneficiaires: resData.data });
+				this.setState({ lodgings: resData.data });
 			})
 			.catch((err) => console.log(err));
 	};
@@ -36,8 +36,8 @@ class Hebergement extends React.Component {
 					</div>
 					<div className="col-md-9 col-lg-10 main">
 						<Table
-							filteredList={this.state.beneficiaires}
-							title="beneficiary"
+							// filteredList={this.state.lodgings}
+							title="lodging"
 						/>
 					</div>
 				</div>
@@ -46,4 +46,4 @@ class Hebergement extends React.Component {
 	}
 }
 
-export default Hebergement;
+export default Lodging;

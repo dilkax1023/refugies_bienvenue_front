@@ -38,7 +38,7 @@ class Rdv extends React.Component {
 					</div>
 					<div className="col-md-9 col-lg-10 main">
 						<Table
-							filteredList={this.state.meetings}
+							// filteredList={this.state.meetings}
 							title="meeting"
 						/>
 					</div>

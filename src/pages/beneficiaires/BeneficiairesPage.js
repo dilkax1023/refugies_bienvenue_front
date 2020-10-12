@@ -36,7 +36,7 @@ class Beneficiary extends React.Component {
 					</div>
 					<div className="col-md-9 col-lg-10 main">
 						<Table
-							filteredList={this.state.beneficiaires}
+							// filteredList={this.state.beneficiaires}
 							title="beneficiary"
 						/>
 					</div>

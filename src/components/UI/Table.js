@@ -25,6 +25,26 @@ const Table = ({ filteredList, title }) => {
 				</tr>
 			);
 		}
+		if (title === 'lodging') {
+			tableHead = (
+				<tr>
+					<th scope="col">Nom</th>
+					<th scope="col">Prénom</th>
+					<th scope="col">Age</th>
+					<th scope="col">Portable</th>
+					<th scope="col">É-mail</th>
+					<th scope="col">AvailableFrom</th>
+					<th scope="col">AvailableTo</th>
+					<th scope="col" className="text-right">
+						<Button
+							path="/logding/add"
+							name="Ajouter"
+							styling="mt-1 px-3  btn btn-primary font-weight-bold"
+						/>
+					</th>
+				</tr>
+			);
+		}
 
 		if (title === 'contact') {
 			tableHead = (
@@ -78,6 +98,26 @@ const Table = ({ filteredList, title }) => {
 					<td>{person.phone}</td>
 					<td>{person.mail}</td>
 					<td>{person.birthDate.toString().slice(0, 10)}</td>
+					<td className="text-right py-0">
+						<Button
+							path="/"
+							name="Détail"
+							styling="mt-1 px-3  btn btn-info"
+						/>
+					</td>
+				</tr>
+			);
+		}
+		if (title === 'lodging') {
+			tableBody = (
+				<tr>
+					<td>{person.lastName}</td>
+					<td>{person.firstName}</td>
+					<td>{person.age}</td>
+					<td>{person.phone}</td>
+					<td>{person.mail}</td>
+					<td>{person.availableFrom.toString().slice(0, 10)}</td>
+					<td>{person.availableTo.toString().slice(0, 10)}</td>
 					<td className="text-right py-0">
 						<Button
 							path="/"
