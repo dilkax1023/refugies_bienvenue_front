@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import Bilan from '../../components/mainSection/Bilan';
-import Config from '../../utils/Config';
+import Bilan from '../pages/bilan/Bilan';
+import Config from '../utils/Config';
+
 const { host, protocol } = Config;
 
-class BilanController extends Component {
+class BilanContainer extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -30,4 +31,4 @@ class BilanController extends Component {
 	}
 }
 
-export default BilanController;
+export default BilanContainer;

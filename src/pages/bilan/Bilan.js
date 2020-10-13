@@ -1,5 +1,5 @@
 import React from 'react';
-import Navbar from '../navigation/Navbar';
+import Navbar from '../../components/navigation/Navbar';
 import './Bilan.css';
 
 const renderBilan = (bilan) => {

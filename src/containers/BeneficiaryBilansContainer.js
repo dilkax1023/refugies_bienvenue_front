@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import Bilans from '../../components/mainSection/Bilans';
-import Config from '../../utils/Config';
+import BeneficiaryBilans from '../pages/bilan/BeneficiaryBilans';
+import Config from '../utils/Config';
 const { host, protocol } = Config;
 
-class BilansController extends Component {
+class BeneficiaryBilansContainer extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -12,7 +12,8 @@ class BilansController extends Component {
 	}
 
 	componentDidMount() {
-		const url = `${protocol}${host}/beneficiaries/reports`;
+		const { id } = this.props.match.params;
+		const url = `${protocol}${host}/beneficiaries/${id}/reports`;
 		fetch(url)
 			.then((res) => res.json())
 			.then((res) =>
@@ -24,8 +25,8 @@ class BilansController extends Component {
 
 	render() {
 		console.log('BilanController this.state.bilans', this.state.bilans);
-		return <Bilans bilans={this.state.bilans} />;
+		return <BeneficiaryBilans bilans={this.state.bilans} />;
 	}
 }
 
-export default BilansController;
+export default BeneficiaryBilansContainer;

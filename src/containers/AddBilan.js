@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Config from '../../utils/Config';
-import Navbar from '../navigation/Navbar';
+import Navbar from '../components/navigation/Navbar';
+import Config from '../utils/Config';
 const { host, protocol } = Config;
 
 class AddBilan extends Component {

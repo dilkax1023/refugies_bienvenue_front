@@ -1,6 +1,6 @@
 import React from 'react';
-import Navbar from '../navigation/Navbar';
-import Table from '../UI/Table';
+import Navbar from '../../components/navigation/Navbar';
+import Table from '../../components/UI/Table';
 
 const Bilans = ({ bilans }) => {
 	return (
