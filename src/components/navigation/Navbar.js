@@ -11,7 +11,7 @@ const Navbar = () => {
 			<Button path="/rdv" name="RDV DE SUIVI" />
 			<Button path="/contacts" name="CONTACTS" />
 			<Button path="/stats" name="STATISTIQUES" />
-			<Button path="/bilan" name="BILAN" />
+			<Button path="/bilan" name="BILANS" />
 			<Button path="/admin" name="ADMIN" />
 		</div>
 	);

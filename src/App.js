@@ -14,6 +14,10 @@ import Lodgings from './containers/LodgingsContainer';
 import Beneficiaires from './containers/BeneficiairesContainer';
 import AddBeneficiary from './pages/beneficiary/AddBeneficiary';
 import Statistique from './pages/statistiques/PageStatistique';
+import BilansController from './pages/bilan/BilansController';
+import BilanController from './pages/bilan/BilanController';
+import BeneficiaryBilansController from './pages/bilan/BeneficiaryBilansController';
+import AddBilan from './components/mainSection/AddBilan';
 
 class App extends React.Component {
 	state = {
@@ -190,8 +194,11 @@ class App extends React.Component {
 						path="/beneficiaires/add"
 						component={AddBeneficiary}
 					/>
-					<Route path="/lodging" component={Lodgings} />
-					<Route path="/logding/add" component={AddLodging} />
+					<Route path="/beneficiaires/add" component={Beneficiary} />
+					<Route path="/hebergement" component={HebergementsPage} />
+					<Route path="/hebergements" component={HebergementsPage} />
+					<Route path="/bilan" component={BilansController} />
+					<Route path="/rdv" component={RdvDeSuivi} />
 					<Route path="/rdv" exact component={RdvDeSuivi} />
 					<Route path="/rdv/add" exact component={AddRdv} />
 					<Route path="/rdv/:id" component={RdvDetails} />
