@@ -33,14 +33,9 @@
 	font-size: 1.1em;
 }
 
-.feedback-section blockquote::first-letter {
-	font-size: 2em;
-	text-transform: uppercase;
-	font-style: italic;
-}
-
 .feedback-section .quotation {
 	font-size: 4.2em;
+	line-height: initial;
 	font-family: 'cursive';
 	font-style: italic;
 }

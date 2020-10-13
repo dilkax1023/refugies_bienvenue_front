@@ -1,0 +1,14 @@
+.add-bilan-title {
+	margin-bottom: 20px;
+}
+
+.add-bilan h2 {
+	margin-bottom: 15px;
+	border-bottom: 1px rgb(152, 166, 199) solid;
+}
+
+.add-bilan input,
+textarea,
+select {
+	margin-bottom: 15px;
+}

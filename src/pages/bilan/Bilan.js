@@ -55,7 +55,9 @@ const renderBilan = (bilan) => {
 										</p>
 										<blockquote>
 											<em className="quotation">“</em>
-											{bilan.commentsFrenchLevel}
+											<span>
+												{bilan.commentsFrenchLevel}
+											</span>
 											<em className="quotation">”</em>
 										</blockquote>
 									</li>

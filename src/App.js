@@ -181,15 +181,10 @@ class App extends React.Component {
 						)}
 					/>
 					<Route
-						path="/beneficiary"
+						path="/beneficiaires"
 						exact
 						component={Beneficiaires}
 					/>
-					{/* <Route
-						path="/beneficiaires"
-						
-						component={Beneficiaires}
-					/> */}
 					<Route
 						path="/beneficiaires/add"
 						component={AddBeneficiary}

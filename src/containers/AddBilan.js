@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Navbar from '../components/navigation/Navbar';
+import './AddBilan.css';
 import Config from '../utils/Config';
 const { host, protocol } = Config;
 
@@ -83,6 +84,8 @@ class AddBilan extends Component {
 			return res.json();
 		});
 
+		this.props.history.push(`/beneficiaires/${beneficiaryId}/bilans`);
+
 		event.preventDefault();
 	}
 
@@ -97,22 +100,28 @@ class AddBilan extends Component {
 						<Navbar />
 					</div>
 					<div className="col-md-9 col-lg-10 main">
-						<h1>Nouveau bilan</h1>
+						<h1 className="add-bilan-title">Nouveau bilan</h1>
 
 						<form
-							className="container-lg justify-content-center"
+							className="container-lg justify-content-center add-bilan"
 							onSubmit={this.handleSubmit}
 						>
 							<div className="form-group date">
-								<label htmlFor="reportDate">
-									Entrez la date du bilan
-								</label>
-								<input
-									type="datetime-local"
-									id="reportDate"
-									name="date"
-									onChange={this.handleChange}
-								/>
+								<div className="form-row align-items-baseline justify-content-end">
+									<label htmlFor="reportDate">
+										Date et heure du bilan
+									</label>
+
+									<div className="col-4">
+										<input
+											type="datetime-local"
+											className="form-control"
+											id="reportDate"
+											name="date"
+											onChange={this.handleChange}
+										/>
+									</div>
+								</div>
 							</div>
 
 							<div className="form-group french-level">
@@ -181,11 +190,12 @@ class AddBilan extends Component {
 											<option value={false}>Non</option>
 										</select>
 									</div>
-									<div className="col-6">
+									<div className="col-12">
 										<label htmlFor="commentsFrenchLevel">
 											Commentaires
 										</label>
 										<textarea
+											className="form-control"
 											id="commentsFrenchLevel"
 											name="commentsFrenchLevel"
 											rows="4"
@@ -200,18 +210,17 @@ class AddBilan extends Component {
 								<h2 className="form-group-title">
 									Gain de confiance
 								</h2>
+								<label htmlFor="confidenceGain">
+									Penses-tu avoir gagné en autonomie pendant
+									le programme RB ? Te sens-tu plus à l’aise
+									pour t'exprimer en français ? Te sens-tu
+									capable d’entreprendre des démarches
+									(professionnelles, administratives…) seul ?
+								</label>
 								<div className="form-row justify-content-center">
-									<div className="col-8">
-										<label htmlFor="confidenceGain">
-											Penses-tu avoir gagné en autonomie
-											pendant le programme RB ? Te sens-tu
-											plus à l’aise pour t'exprimer en
-											français ? Te sens-tu capable
-											d’entreprendre des démarches
-											(professionnelles, administratives…)
-											seul ?
-										</label>
+									<div className="col-12">
 										<textarea
+											className="form-control"
 											id="confidenceGain"
 											name="confidenceGain"
 											rows="5"
@@ -227,7 +236,7 @@ class AddBilan extends Component {
 									Gain en autonomie
 								</h2>
 								<div className="form-row justify-content-center">
-									<div className="col-5">
+									<div className="col-12">
 										<label htmlFor="isAssociationUseful">
 											Le programme RB t'a-t-il permis
 											d'entreprendre des démarches pour ta
@@ -251,40 +260,36 @@ class AddBilan extends Component {
 										</select>
 									</div>
 									{choseUseful === true && (
-										<div className="col-8">
-											<div className="row align-items-baseline">
-												<div className="col-6">
-													<label htmlFor="commentsAssociation">
-														Si oui, quels aspects du
-														programme RB t'a permis
-														d'entreprendre cela
-														(stabilité du logement,
-														accompagnement social,
-														aide hébergeurs...) ?
-													</label>
-													<textarea
-														id="commentsAssociation"
-														name="commentsAssociation"
-														rows="5"
-														onChange={
-															this.handleChange
-														}
-													></textarea>
-												</div>
-												<div className="col-6">
-													<label htmlFor="takenSteps">
-														Quelles démarches as-tu
-														entreprises ?
-													</label>
-													<textarea
-														id="takenSteps"
-														name="takenSteps"
-														rows="5"
-														onChange={
-															this.handleChange
-														}
-													></textarea>
-												</div>
+										<div className="row align-items-baseline">
+											<div className="col-6">
+												<label htmlFor="commentsOnAssociation">
+													Si oui, quels aspects du
+													programme RB t'a permis
+													d'entreprendre cela
+													(stabilité du logement,
+													accompagnement social, aide
+													hébergeurs...) ?
+												</label>
+												<textarea
+													className="form-control"
+													id="commentsOnAssociation"
+													name="commentsOnAssociation"
+													rows="5"
+													onChange={this.handleChange}
+												></textarea>
+											</div>
+											<div className="col-6">
+												<label htmlFor="takenSteps">
+													Quelles démarches as-tu
+													entreprises ?
+												</label>
+												<textarea
+													className="form-control"
+													id="takenSteps"
+													name="takenSteps"
+													rows="5"
+													onChange={this.handleChange}
+												></textarea>
 											</div>
 										</div>
 									)}
@@ -296,36 +301,35 @@ class AddBilan extends Component {
 								<h2 className="form-group-title">
 									Histoire avec RB
 								</h2>
-								<div className="form-row justify-content-center">
-									<div className="col-5">
+								<div className="form-row justify-content-center align-items-baseline">
+									<div className="col-6">
 										<label htmlFor="journeyFeedback">
-											Peux-tu me raconter ton histoire et
-											où et quand tu as rencontré RB ?
+											Peux-tu raconter ton histoire et où
+											et quand tu as rencontré RB ?
 										</label>
 										<textarea
+											className="form-control"
 											id="journeyFeedback"
 											name="journeyFeedback"
 											rows="5"
 											onChange={this.handleChange}
 										></textarea>
 									</div>
-								</div>
-								<div className="form-row justify-content-center">
-									<div className="col-5">
+									<div className="col-6">
 										<label htmlFor="associationFeedback">
 											Peux-tu me raconter ton expérience
 											avec RB ?
 										</label>
 										<textarea
+											className="form-control"
 											id="associationFeedback"
 											name="associationFeedback"
 											rows="5"
 											onChange={this.handleChange}
 										></textarea>
 									</div>
-								</div>
-								<div className="form-row justify-content-center">
-									<div className="col-5">
+
+									<div className="col-12">
 										<label htmlFor="peopleMetFeedback">
 											Peux-tu me parler des gens que tu as
 											rencontrés (hébergeurs, bénévoles,
@@ -336,6 +340,7 @@ class AddBilan extends Component {
 											participé ?
 										</label>
 										<textarea
+											className="form-control"
 											id="peopleMetFeedback"
 											name="peopleMetFeedback"
 											rows="5"
@@ -349,24 +354,27 @@ class AddBilan extends Component {
 							<div className="form-group future">
 								<h2 className="form-group-title">Futur</h2>
 								<div className="form-row justify-content-center">
-									<div className="col-5">
+									<div className="col-12">
 										<label htmlFor="goals">
-											Peux-tu me raconter ton histoire et
-											où et quand tu as rencontré RB ?
+											Qu'envisages-tu pour la suite ?
+											(métier, logement, famille…)
 										</label>
 										<textarea
+											className="form-control"
 											id="goals"
 											name="goals"
 											rows="5"
 											onChange={this.handleChange}
 										></textarea>
 									</div>
+									<button
+										type="submit"
+										className="btn btn-outline-info"
+									>
+										Ajouter le bilan
+									</button>
 								</div>
 							</div>
-
-							<button type="submit" className="btn btn-primary">
-								Ajouter le bilan
-							</button>
 						</form>
 					</div>
 				</div>

@@ -186,14 +186,14 @@ class HomeContainer extends React.Component {
 						<div className="row">
 							<div className="col-6">
 								<Card
-									title="Nbr de personnes acceuilleé"
+									title="Nbr de personnes accueillies"
 									smallCard="small"
 									content="25%"
 								/>
 							</div>
 							<div className="col-6">
 								<Card
-									title="Nbr d’hébergement disponible"
+									title="Hébergements disponibles"
 									smallCard="small"
 									content="25%"
 								/>
@@ -201,7 +201,7 @@ class HomeContainer extends React.Component {
 						</div>
 					</div>
 					<div className="col-lg-3">
-						<Card title="Profile" onLogout={this.props.onLogout} />
+						<Card title="Profil" onLogout={this.props.onLogout} />
 					</div>
 				</div>
 				<SearchBar
