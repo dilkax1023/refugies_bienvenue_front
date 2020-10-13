@@ -10,7 +10,6 @@ class AddBilan extends Component {
 		this.state = {
 			choseUseful: null,
 			beneficiary: this.props.match.params.beneficiaryId,
-			bilan: '',
 		};
 
 		this.handleSelectChange = this.handleSelectChange.bind(this);
@@ -84,9 +83,6 @@ class AddBilan extends Component {
 			.then((res) => res.json())
 			.then((res) => {
 				console.log(res);
-				this.setState({
-					bilan: res.data._id,
-				});
 			});
 
 		event.preventDefault();
