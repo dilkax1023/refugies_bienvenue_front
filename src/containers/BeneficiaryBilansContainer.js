@@ -8,6 +8,7 @@ class BeneficiaryBilansContainer extends Component {
 		super(props);
 		this.state = {
 			bilans: [],
+			message: '',
 		};
 	}
 
@@ -16,16 +17,28 @@ class BeneficiaryBilansContainer extends Component {
 		const url = `${protocol}${host}/beneficiaries/${id}/reports`;
 		fetch(url)
 			.then((res) => res.json())
-			.then((res) =>
+			.then((res) => {
+				if (res.success === false) {
+					this.setState({
+						message: res.message,
+					});
+					return;
+				}
+
 				this.setState({
 					bilans: res.data,
-				})
-			);
+				});
+			});
 	}
 
 	render() {
 		console.log('BilanController this.state.bilans', this.state.bilans);
-		return <BeneficiaryBilans bilans={this.state.bilans} />;
+		return (
+			<BeneficiaryBilans
+				bilans={this.state.bilans}
+				message={this.state.message}
+			/>
+		);
 	}
 }
 

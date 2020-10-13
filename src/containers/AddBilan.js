@@ -10,6 +10,7 @@ class AddBilan extends Component {
 		this.state = {
 			choseUseful: null,
 			beneficiary: this.props.match.params.beneficiaryId,
+			bilan: '',
 		};
 
 		this.handleSelectChange = this.handleSelectChange.bind(this);
@@ -79,14 +80,17 @@ class AddBilan extends Component {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify(this.state),
-		}).then((res) => {
-			console.log(res);
-			return res.json();
-		});
-
-		this.props.history.push(`/beneficiaires/${beneficiaryId}/bilans`);
+		})
+			.then((res) => res.json())
+			.then((res) => {
+				console.log(res);
+				this.setState({
+					bilan: res.data._id,
+				});
+			});
 
 		event.preventDefault();
+		this.props.history.push(`/bilans`);
 	}
 
 	render() {
