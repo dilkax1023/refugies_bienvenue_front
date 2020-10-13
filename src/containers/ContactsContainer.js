@@ -1,5 +1,7 @@
 import React from 'react';
-import Contacts from '../pages/contact/Contacts';
+// import Contacts from '../pages/contact/Contacts';
+import Navbar from '../components/navigation/Navbar';
+import Table from '../components/UI/Table';
 import Config from '../utils/Config';
 
 const urlContact = `${Config.protocol}${Config.host}/contacts`;
@@ -32,7 +34,17 @@ class ContactsContainer extends React.Component {
 	render() {
 		return (
 			<div>
-				<Contacts contacts={this.state.contacts} />
+				<div className="row" id="page-height">
+					<div className="col-md-3 col-lg-2 navbar">
+						<Navbar />
+					</div>
+					<div className="col-md-9 col-lg-10 main">
+						<Table
+							filteredList={this.state.contacts}
+							title="contact"
+						/>
+					</div>
+				</div>
 			</div>
 		);
 	}

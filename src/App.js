@@ -5,13 +5,13 @@ import './App.css';
 import Login from './pages/auth/Login';
 import Signup from './pages/auth/Signup';
 import Home from './pages/home/Home';
-import Contacts from './pages/contact/Contacts';
+import Contacts from './containers/ContactsContainer';
 import AddLodging from './pages/lodging/AddLodging';
-import RdvDeSuivi from './pages/rdv/RdvDeSuivi';
-import AddRdv from './pages/rdv/AddRdv';
+import RdvDeSuivi from './containers/RdvDeSuiviContainer';
+import AddRdv from './containers/AddRdvContainer';
 import RdvDetails from './pages/rdv/RdvDetails';
-import Lodgings from './pages/lodging/Lodgings';
-import Beneficiaires from './pages/beneficiary/Beneficiaires';
+import Lodgings from './containers/LodgingsContainer';
+import Beneficiaires from './containers/BeneficiairesContainer';
 import AddBeneficiary from './pages/beneficiary/AddBeneficiary';
 import Statistique from './pages/statistiques/PageStatistique';
 

@@ -1,12 +1,11 @@
 import React from 'react';
-// import Clock from '../../utils/Clock';
+import Clock from '../../utils/Clock';
 
 const SearchBar = ({ onClickSearch, onInputChange, value }) => {
 	return (
 		<div className="row search-bar mx-2 mt-3 ">
 			<div className="col-lg-3 col-md-6">
-				{/* <p className="py-2 mb-0 text-light pl-3">Jeu. 18 Oct 2020</p> */}
-				{/* <Clock left="left" /> */}
+				<Clock left="left" />
 			</div>
 			<div className="col-lg-6 col-md-6">
 				<form
@@ -31,7 +30,9 @@ const SearchBar = ({ onClickSearch, onInputChange, value }) => {
 					</div>
 				</form>
 			</div>
-			<div className="col-lg-3 col-md-6">{/* <Clock /> */}</div>
+			<div className="col-lg-3 col-md-6">
+				<Clock />
+			</div>
 		</div>
 	);
 };

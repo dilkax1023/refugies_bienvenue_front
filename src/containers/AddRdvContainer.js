@@ -2,21 +2,20 @@ import React from 'react';
 import Form from '../components/UI/Form';
 import Config from '../utils/Config';
 import classes from './AddRdv.module.css';
+import Navbar from '../components/navigation/Navbar';
 
 const urlBeneficiary = `${Config.protocol}${Config.host}/beneficiaries`;
 const urlContact = `${Config.protocol}${Config.host}/contacts`;
 const urlLodging = `${Config.protocol}${Config.host}/lodging`;
 const urlVolunteer = `${Config.protocol}${Config.host}/volunteers`;
 
-class AddRendezVous extends React.Component {
+class AddRdvContainer extends React.Component {
 	state = {
 		addRdvForm: {
 			name: {
 				value: '',
 			},
-			mail: {
-				value: '',
-			},
+
 			date: {
 				value: '',
 			},
@@ -160,19 +159,29 @@ class AddRendezVous extends React.Component {
 		const interlocutorData = [...this.state.interlocutorData];
 
 		return (
-			<div className="container mt-5 w-100">
-				<h3 className="text-center text-primary text-uppercase font-weight-bold">
-					Ajouter un rendez-vous
-				</h3>
-				<Form
-					volunteers={volunteers}
-					interlocutorData={interlocutorData}
-					onFormSubmit={this.onFormSubmit}
-					authData={addRdvForm}
-				/>
+			<div>
+				<div className="row" id="page-height">
+					<div className="col-md-3 col-lg-2 navbar">
+						<Navbar />
+					</div>
+					<div className="col-md-9 col-lg-10 main">
+						<div className="container mt-5 w-100">
+							<h3 className="text-center text-primary text-uppercase font-weight-bold my-5">
+								Ajouter un rendez-vous
+							</h3>
+							<Form
+								volunteers={volunteers}
+								interlocutorData={interlocutorData}
+								onFormSubmit={this.onFormSubmit}
+								authData={addRdvForm}
+								inputChangeHandler={this.inputChangeHandler}
+							/>
+						</div>
+					</div>
+				</div>
 			</div>
 		);
 	}
 }
 
-export default AddRendezVous;
+export default AddRdvContainer;

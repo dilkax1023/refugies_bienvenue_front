@@ -2,15 +2,7 @@ import React from 'react';
 import Card from './Card';
 import Button from './Button';
 
-const Table = ({
-	filteredList,
-	title,
-
-	// lodgings,
-	// beneficiaires,
-	// meetings,
-}) => {
-	console.log('hello guyas', filteredList);
+const Table = ({ filteredList, title }) => {
 	const getTableHead = (title) => {
 		let tableHead;
 
@@ -202,73 +194,6 @@ const Table = ({
 			);
 		});
 	}
-
-	// if (contacts === 0) {
-	// 	contactList = (
-	// 		<div className="container my-2">
-	// 			<Card content="Données ne sont pas encore listé" />
-	// 		</div>
-	// 	);
-
-	// 	return contactList;
-	// } else {
-	// 	contactList = contacts.map((contact, index) => {
-	// 		return (
-	// 			<React.Fragment key={index}>
-	// 				{getTableBody('contact', contact)}
-	// 			</React.Fragment>
-	// 		);
-	// 	});
-	// }
-
-	// if (beneficiaires === undefined) {
-	// 	beneList = (
-	// 		<div className="container my-2">
-	// 			<Card content="Données ne sont pas encore listé" />
-	// 		</div>
-	// 	);
-
-	// 	return beneList;
-	// }
-	// beneList = beneficiaires.map((beneficiary, index) => {
-	// 	return (
-	// 		<React.Fragment key={index}>
-	// 			{getTableBody('beneficiary', beneficiary)}
-	// 		</React.Fragment>
-	// 	);
-	// });
-
-	// if (meetings === undefined) {
-	// 	meetingList = (
-	// 		<div className="container my-2">
-	// 			<Card content="Données ne sont pas encore listé" />
-	// 		</div>
-	// 	);
-	// 	return meetingList;
-	// }
-	// meetingList = meetings.map((meeting, index) => {
-	// 	return (
-	// 		<React.Fragment key={index}>
-	// 			{getTableBody('meeting', meeting)}
-	// 		</React.Fragment>
-	// 	);
-	// });
-
-	// if (lodgings === undefined) {
-	// 	lodgingList = (
-	// 		<div className="container my-2">
-	// 			<Card content="Données ne sont pas encore listé" />
-	// 		</div>
-	// 	);
-	// 	return lodgingList;
-	// }
-	// lodgingList = lodgings.map((lodging, index) => {
-	// 	return (
-	// 		<React.Fragment key={index}>
-	// 			{getTableBody('lodging', lodging)}
-	// 		</React.Fragment>
-	// 	);
-	// });
 
 	return (
 		<div className="container my-2">

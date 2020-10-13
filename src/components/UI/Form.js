@@ -9,6 +9,7 @@ const Form = ({
 	interlocutorData,
 	volunteers,
 	rdvDetails,
+	inputChangeHandler,
 }) => {
 	console.log(rdvDetails, 'rdvdetails');
 	return (
@@ -22,7 +23,7 @@ const Form = ({
 						<Select
 							id="name"
 							label="Bénévole"
-							onChange={this.inputChangeHandler}
+							onChange={inputChangeHandler}
 							value={authData['name'].value}
 							volunteers={volunteers}
 						/>
@@ -31,7 +32,7 @@ const Form = ({
 						<FormGroup
 							id="mail"
 							label="Email"
-							onChange={this.inputChangeHandler}
+							onChange={inputChangeHandler}
 							value={authData['mail'].value}
 						/>
 					</div>
@@ -42,7 +43,7 @@ const Form = ({
 						<Select
 							id="interlocutor"
 							label="Interlocuteur"
-							onChange={this.inputChangeHandler}
+							onChange={inputChangeHandler}
 							value={authData['interlocutor'].value}
 						/>
 					</div>
@@ -50,7 +51,7 @@ const Form = ({
 						<Select
 							id="nameInter"
 							label="Nom et prénom"
-							onChange={this.inputChangeHandler}
+							onChange={inputChangeHandler}
 							value={authData['nameInter'].value}
 							interlocutorData={interlocutorData}
 						/>
@@ -62,7 +63,7 @@ const Form = ({
 						<FormGroup
 							id="mailInter"
 							label="Email"
-							onChange={this.inputChangeHandler}
+							onChange={inputChangeHandler}
 							value={authData['mailInter'].value}
 						/>
 					</div>
@@ -70,7 +71,7 @@ const Form = ({
 						<FormGroup
 							id="phone"
 							label="Portable"
-							onChange={this.inputChangeHandler}
+							onChange={inputChangeHandler}
 							value={authData['phone'].value}
 						/>
 					</div>
@@ -81,7 +82,7 @@ const Form = ({
 						<FormGroup
 							id="date"
 							date="Date"
-							onChange={this.inputChangeHandler}
+							onChange={inputChangeHandler}
 							value={authData['date'].value}
 						/>
 					</div>
@@ -89,7 +90,7 @@ const Form = ({
 						<FormGroup
 							id="platform"
 							label="Platform"
-							onChange={this.inputChangeHandler}
+							onChange={inputChangeHandler}
 							value={authData['platform'].value}
 						/>
 					</div>
@@ -100,7 +101,7 @@ const Form = ({
 						<Select
 							id="jobSearchStatus:"
 							label="En recherche d'emploi?"
-							onChange={this.inputChangeHandler}
+							onChange={inputChangeHandler}
 							value={authData['jobSearchStatus'].value}
 						/>
 					</div>
@@ -108,7 +109,7 @@ const Form = ({
 						<Select
 							id="trainingStatus"
 							label="En Formation?"
-							onChange={this.inputChangeHandler}
+							onChange={inputChangeHandler}
 							value={authData['trainingStatus'].value}
 						/>
 					</div>
@@ -119,7 +120,7 @@ const Form = ({
 						<TextArea
 							id="attachements"
 							label="Attachements"
-							onChange={this.inputChangeHandler}
+							onChange={inputChangeHandler}
 							value={authData['attachements'].value}
 						/>
 					</div>
@@ -127,7 +128,7 @@ const Form = ({
 						<TextArea
 							id="commentaires"
 							label="Commentaires"
-							onChange={this.inputChangeHandler}
+							onChange={inputChangeHandler}
 							value={authData['commentaires'].value}
 						/>
 					</div>
@@ -137,7 +138,7 @@ const Form = ({
 						<TextArea
 							id="summary"
 							label="Summary"
-							onChange={this.inputChangeHandler}
+							onChange={inputChangeHandler}
 							value={authData['summary'].value}
 						/>
 					</div>

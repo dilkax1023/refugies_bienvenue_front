@@ -28,7 +28,7 @@ function Select({ label, onChange, value, id, volunteers, interlocutorData }) {
 		const interlocutorList = interlocutorData.map((interlocutor) => {
 			console.log(interlocutor);
 			return (
-				<option>
+				<option value={interlocutor._id}>
 					{interlocutor.lastName} {interlocutor.firstName}
 				</option>
 			);
@@ -53,6 +53,8 @@ function Select({ label, onChange, value, id, volunteers, interlocutorData }) {
 		);
 	}
 
+	console.log(value);
+
 	return (
 		<div className="form-group  mt-2">
 			<label htmlFor="exampleFormControlSelect1">{label}</label>
@@ -60,7 +62,6 @@ function Select({ label, onChange, value, id, volunteers, interlocutorData }) {
 				className="form-control"
 				id="exampleFormControlSelect1"
 				onChange={(e) => onChange(id, e.target.value)}
-				value={value}
 			>
 				<option className="text-muted">select</option>
 				{select}

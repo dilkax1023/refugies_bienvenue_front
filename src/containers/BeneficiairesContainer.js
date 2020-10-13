@@ -1,5 +1,7 @@
 import React from 'react';
-import Beneficiaries from '../pages/beneficiary/Beneficiaires';
+// import Beneficiaries from '../pages/beneficiary/Beneficiaires';
+import Navbar from '../components/navigation/Navbar';
+import Table from '../components/UI/Table';
 
 class BeneficiairesContainer extends React.Component {
 	state = {
@@ -29,7 +31,17 @@ class BeneficiairesContainer extends React.Component {
 	render() {
 		return (
 			<div>
-				<Beneficiaries beneficiaires={this.state.beneficiaires} />
+				<div className="row" id="page-height">
+					<div className="col-md-3 col-lg-2 navbar">
+						<Navbar />
+					</div>
+					<div className="col-md-9 col-lg-10 main">
+						<Table
+							filteredList={this.state.beneficiaires}
+							title="beneficiary"
+						/>
+					</div>
+				</div>
 			</div>
 		);
 	}

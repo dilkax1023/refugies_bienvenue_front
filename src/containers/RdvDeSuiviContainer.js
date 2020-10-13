@@ -1,6 +1,8 @@
 import React from 'react';
-import RdvDeSuivi from '../pages/rdv/RdvDeSuivi';
+// import RdvDeSuivi from '../pages/rdv/RdvDeSuivi';
+import Navbar from '../components/navigation/Navbar';
 import Config from '../utils/Config';
+import Table from '../components/UI/Table';
 
 const urlMeetings = `${Config.protocol}${Config.host}/meetings`;
 
@@ -31,7 +33,17 @@ class RdvDeSuiviContainer extends React.Component {
 	render() {
 		return (
 			<div>
-				<RdvDeSuivi meetings={this.state.meetings} />
+				<div className="row" id="page-height">
+					<div className="col-md-3 col-lg-2 navbar">
+						<Navbar />
+					</div>
+					<div className="col-md-9 col-lg-10 main">
+						<Table
+							filteredList={this.state.meetings}
+							title="meeting"
+						/>
+					</div>
+				</div>
 			</div>
 		);
 	}
